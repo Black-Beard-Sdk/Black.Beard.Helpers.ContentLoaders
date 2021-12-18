@@ -20,7 +20,7 @@ namespace Bb
         {
 
             string textContents = string.Empty;
-            System.Text.Encoding encoding = null;
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
 
             using (MemoryStream fs = new MemoryStream(text))
             {
@@ -141,9 +141,9 @@ namespace Bb
             return json;
         }
 
-        public static TargetType Deserialize<TargetType>(this string self)
+        public static TargetType? Deserialize<TargetType>(this string self)
         {
-            TargetType instance = JsonConvert.DeserializeObject<TargetType>(self);
+            var instance = JsonConvert.DeserializeObject<TargetType>(self);
             return instance;
         }
 

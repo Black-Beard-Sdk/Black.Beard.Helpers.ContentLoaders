@@ -36,7 +36,7 @@ namespace Bb
         {
 
             string fileContents = string.Empty;
-            System.Text.Encoding encoding = null;
+            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
             FileInfo _file = new FileInfo(_path);
 
             using (FileStream fs = _file.OpenRead())
@@ -105,13 +105,21 @@ namespace Bb
         {
 
             var file = new FileInfo(_path);
-            if (!file.Directory.Exists)
-                file.Directory.Create();
+
+            var directory = file.Directory;
+
+            if (directory == null)
+                throw new NullReferenceException(nameof(file.Directory));
+
+            var exists = directory.Exists;
+
+            if (!exists)
+                directory.Create();
 
             File.WriteAllText(file.FullName, content.ToString());
 
         }
-        
+
     }
 
 
