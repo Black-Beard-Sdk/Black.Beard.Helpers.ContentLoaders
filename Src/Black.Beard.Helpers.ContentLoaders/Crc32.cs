@@ -2,7 +2,7 @@
 
 namespace Bb
 {
-    internal static class Crc32
+    public static class Crc32
     {
 
         // Table for CRC calculation
