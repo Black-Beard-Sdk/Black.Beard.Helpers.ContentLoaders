@@ -141,6 +141,20 @@ namespace Bb
             return json;
         }
 
+        /// <summary>
+        /// Apply a <see cref="JsonConvert.PopulateObject"/> on the specified instance of <see cref="T"/>
+        /// </summary>
+        /// <typeparam name="T">type of the instance</typeparam>
+        /// <param name="self">Instance to populate</param>
+        /// <param name="payload"></param>
+        /// <returns></returns>
+        public static T Map<T>(this T self, string payload)
+        {
+            if (self != null)
+                JsonConvert.PopulateObject(payload, self);
+            return self;
+        }
+
         public static TargetType? Deserialize<TargetType>(this string self)
         {
             var instance = JsonConvert.DeserializeObject<TargetType>(self);
