@@ -2,6 +2,7 @@
 
 namespace Bb
 {
+
     public static class Crc32
     {
 
@@ -68,7 +69,7 @@ namespace Bb
         /// CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
         /// this as the 'crc32' to compute the next chunk.  
         /// </summary>  
-        static public uint Calculate(this StringBuilder buffer)
+        static public uint CalculateCrc32(this StringBuilder buffer)
         {
 
             int offset = 0;
@@ -95,7 +96,7 @@ namespace Bb
         /// CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
         /// this as the 'crc32' to compute the next chunk.  
         /// </summary>  
-        static public uint Calculate(this string buffer)
+        static public uint CalculateCrc32(this string buffer)
         {
 
             int offset = 0;
@@ -114,7 +115,6 @@ namespace Bb
             return crc32;
 
         }
-
 
     }
 
