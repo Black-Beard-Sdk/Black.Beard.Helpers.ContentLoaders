@@ -6,6 +6,7 @@ namespace Bb
     public static partial class ContentHelper
     {       
 
+
         /// <summary>
         /// Loads the content of the file.
         /// </summary>
@@ -17,10 +18,12 @@ namespace Bb
             return LoadFromFile(_path);
         }
 
+
         public static string LoadFromFile(this FileInfo self)
         {
             return LoadFromFile(self.FullName);
         }
+
 
         public static string LoadFromFile(this string path, System.Text.Encoding defaultEncoding = null)
         {
