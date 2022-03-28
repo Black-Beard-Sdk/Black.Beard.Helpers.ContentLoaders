@@ -12,6 +12,20 @@ namespace Bb
     {
 
         /// <summary>
+        /// Execute : Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        /// </summary>
+        public static void RegisterEncoding()
+        {
+            if (_registerd)
+                lock (_lock)
+                    if (_registerd)
+                    {
+                        _registerd = true;
+                        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                    }
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="text"></param>
@@ -160,6 +174,9 @@ namespace Bb
             var instance = JsonConvert.DeserializeObject<TargetType>(self);
             return instance;
         }
+
+        private static bool _registerd = false;
+        private static object _lock = new object();
 
     }
 

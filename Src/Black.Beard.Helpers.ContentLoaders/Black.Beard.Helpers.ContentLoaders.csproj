@@ -1,26 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Description>Helpers for loading documents</Description>
-    <RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</RepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Helpers for loading documents</Description>
+		<RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SharpCompress" Version="0.30.1" />
-    <PackageReference Include="Ude.NetStandard" Version="1.2.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="SharpCompress" Version="0.30.1" />
+		<PackageReference Include="Ude.NetStandard" Version="1.2.0" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+	</ItemGroup>
 
 </Project>
