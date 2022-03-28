@@ -1,8 +1,5 @@
 ﻿using SharpCompress.Common;
 using SharpCompress.Readers;
-using System;
-using System.IO;
-using System.Text;
 
 namespace Bb
 {
