@@ -5,7 +5,7 @@ using System.IO;
 namespace Bb
 {
 
-    public static partial class ContentHelper
+    public static partial class ContentHelperCompress
     {
 
         /// <summary>
