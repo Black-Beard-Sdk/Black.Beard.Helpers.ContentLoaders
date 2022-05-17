@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.ContentLoaders", "Black.Beard.Helpers.ContentLoaders\Black.Beard.Helpers.ContentLoaders.csproj", "{2DFD8617-98D3-4587-AA36-406AD532F481}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Files", "Black.Beard.Helpers.ContentLoaders.Files\Black.Beard.Helpers.ContentLoaders.Files.csproj", "{B9E34E01-E4A2-4480-8452-3C2540ED412C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Compress", "Black.Beard.Helpers.ContentLoaders.Compress\Black.Beard.Helpers.ContentLoaders.Compress.csproj", "{A91E2055-3898-4260-B1B7-A4FD0670166A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Newtonsoft", "Black.Beard.Helpers.ContentLoaders.Newtonsoft\Black.Beard.Helpers.ContentLoaders.Newtonsoft.csproj", "{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{2DFD8617-98D3-4587-AA36-406AD532F481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DFD8617-98D3-4587-AA36-406AD532F481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DFD8617-98D3-4587-AA36-406AD532F481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E34E01-E4A2-4480-8452-3C2540ED412C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E34E01-E4A2-4480-8452-3C2540ED412C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E34E01-E4A2-4480-8452-3C2540ED412C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E34E01-E4A2-4480-8452-3C2540ED412C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91E2055-3898-4260-B1B7-A4FD0670166A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91E2055-3898-4260-B1B7-A4FD0670166A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91E2055-3898-4260-B1B7-A4FD0670166A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91E2055-3898-4260-B1B7-A4FD0670166A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

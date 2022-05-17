@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace Bb
 {
@@ -76,6 +74,16 @@ namespace Bb
         }
 
         /// <summary>
+        /// Read the <see cref="MemoryStream" /> and return the result in <see cref="string"/>
+        /// </summary>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        public static string ConvertToString(this MemoryStream self)
+        {
+            return self.ToArray().LoadContentFromText();
+        }
+
+        /// <summary>
         /// encode the specified <see cref="string"/> in base 64 encoded value
         /// </summary>
         /// <param name="self"></param>
@@ -109,69 +117,18 @@ namespace Bb
 
         }
 
-        /// <summary>
-        /// convert the <see cref="Object"/> in <see cref="JToken" />
-        /// </summary>
-        /// <param name="self"></param>
-        /// <returns></returns>
-        public static JToken ConvertToJson(this object self)
+
+
+        public static string Serialize(this object self, bool indented = true)
         {
-            return JToken.FromObject(self);
+            string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
+            return jsonString;
         }
 
-        /// <summary>
-        /// convert the <see cref="StringBuilder"/> in <see cref="JToken" />
-        /// </summary>
-        /// <param name="self"></param>
-        /// <returns></returns>
-        public static JToken ConvertToJson(this StringBuilder self)
-        {
-            return JToken.Parse(self.ToString());
-        }
-
-        /// <summary>
-        /// convert the <see cref="string"/> in <see cref="JToken" />
-        /// </summary>
-        /// <param name="self"></param>
-        /// <returns></returns>
-        public static JToken ConvertToJson(this string self)
-        {
-            return JToken.Parse(self);
-        }
-
-        /// <summary>
-        /// Read the <see cref="MemoryStream" /> and return the result in <see cref="string"/>
-        /// </summary>
-        /// <param name="self"></param>
-        /// <returns></returns>
-        public static string ConvertToString(this MemoryStream self)
-        {
-            return self.ToArray().LoadContentFromText();
-        }
-
-        public static string Serialize(this object self, Formatting formatting = Formatting.Indented)
-        {
-            string json = JsonConvert.SerializeObject(self, Formatting.Indented, new StringEnumConverter());
-            return json;
-        }
-
-        /// <summary>
-        /// Apply a <see cref="JsonConvert.PopulateObject"/> on the specified instance of <see cref="T"/>
-        /// </summary>
-        /// <typeparam name="T">type of the instance</typeparam>
-        /// <param name="self">Instance to populate</param>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        public static T Map<T>(this T self, string payload)
-        {
-            if (self != null)
-                JsonConvert.PopulateObject(payload, self);
-            return self;
-        }
 
         public static TargetType? Deserialize<TargetType>(this string self)
         {
-            var instance = JsonConvert.DeserializeObject<TargetType>(self);
+            var instance = JsonSerializer.Deserialize<TargetType>(self);
             return instance;
         }
 
