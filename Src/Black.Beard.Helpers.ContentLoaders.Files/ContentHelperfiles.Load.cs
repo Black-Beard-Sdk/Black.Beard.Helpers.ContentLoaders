@@ -4,7 +4,7 @@ using System.Text;
 namespace Bb
 {
 
-    public static partial class ContentHelperFiles
+    public static partial class ContentHelperfiles
     {       
 
         /// <summary>
