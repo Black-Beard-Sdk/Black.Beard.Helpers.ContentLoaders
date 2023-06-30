@@ -32,15 +32,6 @@ namespace Bb
             if (fileOutput.Exists)
                 throw new FileLoadException("local file allready exists");
 
-            //var uriBuilder = new UriBuilder();
-            //uriBuilder.Scheme = url.Scheme;
-            //uriBuilder.Host = url.Host;
-            //_httpClient.BaseAddress = new Uri(uriBuilder.ToString());
-
-            //client.DefaultRequestHeaders.Accept.Clear();
-            ////client.DefaultRequestHeaders.Add("authorization", access_token); //if any
-            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
             if (initializer != null)
                 initializer(client);
 
@@ -50,7 +41,7 @@ namespace Bb
             if (response.IsSuccessStatusCode)
             {
 
-                System.Net.Http.HttpContent content = response.Content;
+                HttpContent content = response.Content;
 
                 using (var fs = new FileStream(fileOutput.FullName, FileMode.CreateNew))
                     content.CopyToAsync(fs);

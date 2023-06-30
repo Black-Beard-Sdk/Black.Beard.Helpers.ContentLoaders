@@ -69,13 +69,15 @@ namespace Bb
         {
             
             if (string.IsNullOrEmpty(filename))
-                throw new ArgumentException($"« {nameof(filename)} » can't be empty or null.", nameof(filename));
+                throw new ArgumentException($"« {nameof(filename)} » can't be null or empty.", nameof(filename));
 
             var file = new FileInfo(filename);
             if (!file.Directory.Exists)
                 file.Directory.Create();
 
             FileInfo backup = new FileInfo(Path.Combine(file.Directory.FullName, Path.GetFileNameWithoutExtension(file.Name) + ".bck"));
+
+            bool saved = false;
 
             if (file.Exists)
             {
@@ -84,8 +86,9 @@ namespace Bb
                     backup.Delete();
 
                 file.MoveTo(backup.FullName);
-
                 backup.Refresh();
+
+                saved = true;
 
                 file = new FileInfo(filename);
                 file.Refresh();
@@ -98,7 +101,7 @@ namespace Bb
             }
             catch (Exception ex)
             {
-                if (backup.Exists)
+                if (saved && backup.Exists)
                     backup.MoveTo(file.FullName);
             }
             finally

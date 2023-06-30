@@ -9,7 +9,7 @@ namespace Bb
     {
 
         /// <summary>
-        /// Uncompress a compressed file in a target folder
+        /// Uncompress a compressed file in the specified target folder.
         /// </summary>
         /// <param name="inputFile"></param>
         /// <param name="outputDir"></param>
