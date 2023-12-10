@@ -116,7 +116,12 @@ namespace Bb
         }
 
 
-
+        /// <summary>
+        /// Serializes with indentation the specified object.
+        /// </summary>
+        /// <param name="self">The self object to serialize.</param>
+        /// <param name="indented">if set to <c>true</c> [indented].</param>
+        /// <returns></returns>
         public static string Serialize(this object self, bool indented = true)
         {
             string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
@@ -124,6 +129,12 @@ namespace Bb
         }
 
 
+        /// <summary>
+        /// Deserializes the specified self payload.
+        /// </summary>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
+        /// <param name="self">The payload.</param>
+        /// <returns></returns>
         public static TargetType? Deserialize<TargetType>(this string self)
         {
             var instance = JsonSerializer.Deserialize<TargetType>(self);

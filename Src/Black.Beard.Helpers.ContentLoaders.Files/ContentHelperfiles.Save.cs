@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace Bb
 {
@@ -111,6 +112,19 @@ namespace Bb
                     backup.Delete();
             }
 
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="path">file path</param>
+        /// <param name="instance">object to serialize</param>
+        /// <param name="indented">if set to <c>true</c> [indented].</param>
+        /// <param name="encoding">encoding for write. if null the datas are written in UTF8</param>
+        public static void SerializesAndSave(this string filename, object instance, bool indented = true, Encoding encoding = null)
+        {
+            filename.Save(() => JsonSerializer.Serialize(instance, new JsonSerializerOptions() { WriteIndented = indented }), encoding);
         }
 
     }

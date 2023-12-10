@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 namespace Bb
 {
@@ -42,7 +43,6 @@ namespace Bb
             FileInfo _file = new FileInfo(path);
             return LoadFromFile(_file, defaultEncoding);
         }
-
 
         /// <summary>
         /// Load the content from file
@@ -107,6 +107,21 @@ namespace Bb
 
         }
 
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserializes<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
+            where TargetType : class
+        {
+            var payload = LoadFromFile(self, defaultEncoding);
+            var instance = JsonSerializer.Deserialize<TargetType>(payload);
+            return instance;
+        }
 
     }
 
