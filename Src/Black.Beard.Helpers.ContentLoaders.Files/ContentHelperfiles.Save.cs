@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Bb
 {
@@ -34,6 +36,9 @@ namespace Bb
             path.FullName.Save(() => content.ToString(), encoding);
         }
 
+
+
+
         /// <summary>
         /// Save the content in the specified file.
         /// If the directory don't exist. it is created.
@@ -59,21 +64,42 @@ namespace Bb
             path.FullName.Save(() => content.ToString(), encoding);
         }
 
+
+
+
         /// <summary>
         /// Save the content in the specified file.
         /// If the directory don't exist. it is created.
         /// </summary>
         /// <param name="path">file path</param>
-        /// <param name="content">function that return the content payload</param>
-        /// <param name="encoding">encoding for write. if null the datas are written in UTF8</param>
+        /// <param name="payload">function that return the content payload</param>
         /// <param name="encoding">encoding for write. if null the datas are written in UTF8</param>
         public static void Save(this string filename, Func<string> payload, Encoding encoding = null)
         {
-            
+
             if (string.IsNullOrEmpty(filename))
                 throw new ArgumentException($"« {nameof(filename)} » can't be null or empty.", nameof(filename));
 
             var file = new FileInfo(filename);
+
+            file.Save(payload, encoding);
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="file">file target</param>
+        /// <param name="content">function that return the content payload</param>
+        /// <param name="encoding">encoding for write. if null the datas are written in UTF8</param>
+        public static void Save(this FileInfo file, Func<string> payload, Encoding encoding = null)
+        {
+
+            file.Refresh();
+
+            string filename = file.FullName;
+
             if (!file.Directory.Exists)
                 file.Directory.Create();
 
@@ -115,6 +141,7 @@ namespace Bb
 
         }
 
+
         /// <summary>
         /// Save the content in the specified file.
         /// If the directory don't exist. it is created.
@@ -126,6 +153,60 @@ namespace Bb
         public static void SerializesAndSave(this string filename, object instance, bool indented = true, Encoding encoding = null)
         {
             filename.Save(() => JsonSerializer.Serialize(instance, new JsonSerializerOptions() { WriteIndented = indented }), encoding);
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="file">file path</param>
+        /// <param name="instance">object to serialize</param>
+        /// <param name="indented">if set to <c>true</c> [indented].</param>
+        /// <param name="encoding">encoding for write. if null the datas are written in UTF8</param>
+        public static void SerializesAndSave(this FileInfo file, object instance, bool indented = true, Encoding encoding = null)
+        {
+            file.Save(() => JsonSerializer.Serialize(instance, new JsonSerializerOptions() { WriteIndented = indented }), encoding);
+        }
+
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="filename">file path</param>
+        /// <param name="instance">object to serialize</param>
+        public static void SerializeAndSaveConfiguration<SourceType>(this string filename, SourceType instance)
+            where SourceType : class
+        {
+
+            if (instance != null)
+            {
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string config = t2.ToJsonString(options);
+                filename.Save(() => config, Encoding.UTF8);
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="filename">file path</param>
+        /// <param name="instance">object to serialize</param>
+        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance)
+            where SourceType : class
+        {
+
+            if (instance != null)
+            {
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string config = t2.ToJsonString(options);
+                file.Save(() => config, Encoding.UTF8);
+            }
+
         }
 
     }

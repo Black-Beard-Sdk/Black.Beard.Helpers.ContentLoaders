@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -16,11 +17,12 @@ namespace Bb
         /// <summary>
         /// Loads the content of the file.
         /// </summary>
-        /// <param name="sourcePath">The source path items.</param>
+        /// <param name="sourcePath">The source path segment. the path is concatenated with Path.Combine</param>
         /// <returns>the content of the text document</returns>
-        /// <exception cref="InvalidDataException"></exception>
+        /// <exception cref="InvalidDataException">if the sourcePath do not contains path</exception>
         public static string LoadFromFile(params string[] sourcePath)
         {
+
             if (sourcePath.Length == 0)
                 throw new InvalidDataException($"{sourcePath} have no item. Please specify the path arguments");
 
@@ -29,7 +31,7 @@ namespace Bb
 
             string path = Path.Combine(sourcePath);
 
-            return LoadFromFile(path, Encoding.UTF8);
+            return path.LoadFromFile(Encoding.UTF8);
 
         }
 
@@ -43,8 +45,15 @@ namespace Bb
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
         public static string LoadFromFile(this string path, Encoding defaultEncoding = null)
         {
-            FileInfo _file = new FileInfo(path);
-            return LoadFromFile(_file, defaultEncoding);
+
+            if (!string.IsNullOrEmpty(path))
+            {
+                FileInfo file = new FileInfo(path);
+                return LoadFromFile(file, defaultEncoding);
+            }
+
+            return default;
+
         }
 
         /// <summary>
@@ -118,14 +127,69 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserializes<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
+        public static TargetType LoadFromFileAndDeserialize<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
             where TargetType : class
         {
-            var payload = LoadFromFile(self, defaultEncoding);
+            var payload = self.LoadFromFile(defaultEncoding);
             var instance = JsonSerializer.Deserialize<TargetType>(payload);
             return instance;
         }
 
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserialize<TargetType>(this string self, Encoding defaultEncoding = null)
+            where TargetType : class
+        {
+            var payload = self.LoadFromFile(defaultEncoding);
+            var instance = JsonSerializer.Deserialize<TargetType>(payload);
+            return instance;
+        }
+
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <param name="self">file path</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this string self, Encoding defaultEncoding = null)
+            where TargetType : class
+        {
+            var payload = self.LoadFromFile(defaultEncoding);
+            using (JsonDocument doc = JsonDocument.Parse(payload))
+            {
+                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var instance = JsonSerializer.Deserialize<TargetType>(element);
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
+        where TargetType : class
+        {
+            var payload = self.LoadFromFile(defaultEncoding);
+            using (JsonDocument doc = JsonDocument.Parse(payload))
+            {
+                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var instance = JsonSerializer.Deserialize<TargetType>(element);
+                return instance;
+            }
+        }
     }
 
 

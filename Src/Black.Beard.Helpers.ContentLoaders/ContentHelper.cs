@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Bb
 {
@@ -29,8 +30,11 @@ namespace Bb
         public static string LoadContentFromText(this byte[] text)
         {
 
+            if (text == null)
+                return default;
+
             string textContents = string.Empty;
-            System.Text.Encoding encoding = System.Text.Encoding.UTF8;
+            Encoding encoding = Encoding.UTF8;
 
             using (MemoryStream fs = new MemoryStream(text))
             {
@@ -39,9 +43,9 @@ namespace Bb
                 cdet.Feed(fs);
                 cdet.DataEnd();
                 if (cdet.Charset != null)
-                    encoding = System.Text.Encoding.GetEncoding(cdet.Charset);
+                    encoding = Encoding.GetEncoding(cdet.Charset);
                 else
-                    encoding = System.Text.Encoding.UTF8;
+                    encoding = Encoding.UTF8;
 
                 fs.Position = 0;
 
@@ -53,10 +57,10 @@ namespace Bb
             if (textContents.StartsWith("ï»¿"))
                 textContents = textContents.Substring(3);
 
-            if (encoding != System.Text.Encoding.UTF8)
+            if (encoding != Encoding.UTF8)
             {
-                var datas = System.Text.Encoding.UTF8.GetBytes(textContents);
-                textContents = System.Text.Encoding.UTF8.GetString(datas);
+                var datas = Encoding.UTF8.GetBytes(textContents);
+                textContents = Encoding.UTF8.GetString(datas);
             }
 
             StringBuilder sb = new StringBuilder(textContents.Length);
@@ -76,9 +80,14 @@ namespace Bb
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
-        public static string ConvertToString(this MemoryStream self)
+        public static string? ConvertToString(this MemoryStream self)
         {
-            return self.ToArray().LoadContentFromText();
+            
+            if (self != null)
+                return self.ToArray().LoadContentFromText();
+
+            return default;
+
         }
 
         /// <summary>
@@ -89,12 +98,20 @@ namespace Bb
         public static string ConvertToBase64(this string self)
         {
 
-            if (string.IsNullOrEmpty(self))
-                return string.Empty;
+            if (self != null)
+            {
 
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(self);
-            var result = Convert.ToBase64String(bytes);
-            return result;
+                if (string.IsNullOrEmpty(self))
+                    return string.Empty;
+
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(self);
+                var result = Convert.ToBase64String(bytes);
+                return result;
+
+            }
+
+            return default;
+
         }
 
         /// <summary>
@@ -102,19 +119,23 @@ namespace Bb
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
-        public static string ConvertFromBase64(this string self)
+        public static string? ConvertFromBase64(this string self)
         {
 
-            if (string.IsNullOrEmpty(self))
-                return string.Empty;
+            if (self != null)
+            {
+                if (string.IsNullOrEmpty(self))
+                    return string.Empty;
 
-            byte[] bytes = Convert.FromBase64String(self); ;
-            string result = System.Text.Encoding.UTF8.GetString(bytes);
+                byte[] bytes = Convert.FromBase64String(self); ;
+                string result = System.Text.Encoding.UTF8.GetString(bytes);
 
-            return result;
+                return result;
+            }
+
+            return default;
 
         }
-
 
         /// <summary>
         /// Serializes with indentation the specified object.
@@ -122,12 +143,18 @@ namespace Bb
         /// <param name="self">The self object to serialize.</param>
         /// <param name="indented">if set to <c>true</c> [indented].</param>
         /// <returns></returns>
-        public static string Serialize(this object self, bool indented = true)
+        public static string? Serialize(this object self, bool indented = true)
         {
-            string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
-            return jsonString;
-        }
+            
+            if (self != null)
+            {
+                string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
+                return jsonString;
+            }
 
+            return default;
+
+        }
 
         /// <summary>
         /// Deserializes the specified self payload.
@@ -137,8 +164,38 @@ namespace Bb
         /// <returns></returns>
         public static TargetType? Deserialize<TargetType>(this string self)
         {
-            var instance = JsonSerializer.Deserialize<TargetType>(self);
-            return instance;
+
+            if (self != null)
+            {
+                var instance = JsonSerializer.Deserialize<TargetType>(self);
+                return instance;
+            }
+
+            return default;
+
+        }
+
+        public static string? SerializeConfiguration<SourceType>(this SourceType self)
+            where SourceType : class
+        {
+
+            if (self != null)
+            {
+
+
+                var t2 = new JsonObject()
+                {
+                    [nameof(SourceType)] = JsonSerializer.SerializeToNode(self)
+                };
+
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string config = t2.ToJsonString(options);
+
+                return config;
+            }
+
+            return default;
+
         }
 
         private static bool _registerd = false;
