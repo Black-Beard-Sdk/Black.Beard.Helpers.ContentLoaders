@@ -207,14 +207,24 @@ namespace Bb
         /// <param name="self">the instance to serialize.</param>
         /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns></returns>
-        public static object? DeserializeConfiguration<TargetType>(this string payload, JsonSerializerOptions? options = null)
+        public static TargetType? DeserializeConfiguration<TargetType>(this string payload, JsonSerializerOptions? options = null)
             where TargetType : class
+        {
+            return payload.DeserializeConfiguration(typeof(TargetType), options) as TargetType;
+        }
+
+        /// <summary>
+        /// Deserializes the specified self payload.
+        /// </summary>
+        /// <param name="self">the instance to serialize.</param>
+        /// <param name="targetType">target Type</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <returns></returns>
+        public static object? DeserializeConfiguration(this string payload, Type targetType, JsonSerializerOptions? options = null)
         {
 
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
-
-                var targetType = typeof(TargetType);
 
                 options ??= new JsonSerializerOptions { WriteIndented = true };
 
