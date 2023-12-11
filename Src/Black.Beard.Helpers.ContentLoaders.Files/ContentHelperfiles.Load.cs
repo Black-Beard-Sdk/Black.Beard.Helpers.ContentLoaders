@@ -7,7 +7,10 @@ using System.Text.Json;
 namespace Bb
 {
 
-    public static partial class ContentHelperfiles
+    /// <summary>
+    /// Content helper for managing files
+    /// </summary>
+    public static partial class ContentHelperFiles
     {
 
         /// <summary>
