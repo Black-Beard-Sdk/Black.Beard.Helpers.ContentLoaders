@@ -82,7 +82,7 @@ namespace Bb
         /// <returns></returns>
         public static string? ConvertToString(this MemoryStream self)
         {
-            
+
             if (self != null)
                 return self.ToArray().LoadContentFromText();
 
@@ -143,9 +143,9 @@ namespace Bb
         /// <param name="self">The self object to serialize.</param>
         /// <param name="indented">if set to <c>true</c> [indented].</param>
         /// <returns></returns>
-        public static string? Serialize(this object self, bool indented = true)
+        public static string? Serialize(this object self, bool indented)
         {
-            
+
             if (self != null)
             {
                 string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
@@ -159,15 +159,16 @@ namespace Bb
         /// <summary>
         /// Deserializes the specified self payload.
         /// </summary>
-        /// <typeparam name="TargetType">The type of the target type.</typeparam>
+        /// <typeparam name="SourceType">The type of the target type.</typeparam>
         /// <param name="self">The payload.</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns></returns>
-        public static TargetType? Deserialize<TargetType>(this string self)
+        public static SourceType? Deserialize<SourceType>(this string self, JsonSerializerOptions? options = null)
         {
 
             if (self != null)
             {
-                var instance = JsonSerializer.Deserialize<TargetType>(self);
+                var instance = JsonSerializer.Deserialize<SourceType>(self);
                 return instance;
             }
 
@@ -175,20 +176,24 @@ namespace Bb
 
         }
 
-        public static string? SerializeConfiguration<SourceType>(this SourceType self)
+        /// <summary>
+        /// Deserializes the specified self payload.
+        /// </summary>
+        /// <typeparam name="SourceType">The type of the target type.</typeparam>
+        /// <param name="self">the instance to serialize.</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <returns></returns>
+        public static string? SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions? options = null)
             where SourceType : class
         {
 
             if (self != null)
             {
 
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(self) };
 
-                var t2 = new JsonObject()
-                {
-                    [nameof(SourceType)] = JsonSerializer.SerializeToNode(self)
-                };
+                options ??= new JsonSerializerOptions { WriteIndented = true };
 
-                var options = new JsonSerializerOptions { WriteIndented = true };
                 string config = t2.ToJsonString(options);
 
                 return config;

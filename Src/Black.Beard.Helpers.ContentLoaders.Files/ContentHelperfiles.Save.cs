@@ -36,9 +36,6 @@ namespace Bb
             path.FullName.Save(() => content.ToString(), encoding);
         }
 
-
-
-
         /// <summary>
         /// Save the content in the specified file.
         /// If the directory don't exist. it is created.
@@ -63,9 +60,6 @@ namespace Bb
         {
             path.FullName.Save(() => content.ToString(), encoding);
         }
-
-
-
 
         /// <summary>
         /// Save the content in the specified file.
@@ -141,7 +135,6 @@ namespace Bb
 
         }
 
-
         /// <summary>
         /// Save the content in the specified file.
         /// If the directory don't exist. it is created.
@@ -168,6 +161,76 @@ namespace Bb
             file.Save(() => JsonSerializer.Serialize(instance, new JsonSerializerOptions() { WriteIndented = indented }), encoding);
         }
 
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <typeparam name="SourceType">The type of the source type.</typeparam>
+        /// <param name="filename">file path</param>
+        /// <param name="instance">object to serialize</param>
+        /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
+        public static void SerializeAndSaveConfiguration<SourceType>(this string filename, SourceType instance, JsonSerializerOptions options = null)
+            where SourceType : class
+        {
+
+            if (instance != null)
+            {
+
+                if (options != null)
+                    options = new JsonSerializerOptions { WriteIndented = true };
+
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                string config = t2.ToJsonString(options);
+                filename.Save(() => config, Encoding.UTF8);
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <typeparam name="SourceType">The type of the source type.</typeparam>
+        /// <param name="file">file path</param>
+        /// <param name="instance">object to serialize</param>
+        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance)
+            where SourceType : class
+        {
+
+            if (instance != null)
+            {
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string config = t2.ToJsonString(options);
+                file.Save(() => config, Encoding.UTF8);
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <typeparam name="SourceType">The type of the source type.</typeparam>
+        /// <param name="file">file path</param>
+        /// <param name="instance">object to serialize</param>
+        /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
+        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance, JsonSerializerOptions options = null)
+            where SourceType : class
+        {
+
+            if (instance != null)
+            {
+
+                if (options != null)
+                    options = new JsonSerializerOptions { WriteIndented = true };
+
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                string config = t2.ToJsonString(options);
+                file.Save(() => config, Encoding.UTF8);
+            }
+
+        }
 
         /// <summary>
         /// Save the content in the specified file.
@@ -175,13 +238,17 @@ namespace Bb
         /// </summary>
         /// <param name="filename">file path</param>
         /// <param name="instance">object to serialize</param>
-        public static void SerializeAndSaveConfiguration<SourceType>(this string filename, SourceType instance)
-            where SourceType : class
+        /// <param name="sourceType">source type</param>
+        public static void SerializeAndSaveConfiguration(this string filename, object instance, Type sourceType = null)
         {
 
             if (instance != null)
             {
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+
+                if (sourceType == null)
+                    sourceType = instance.GetType();
+
+                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string config = t2.ToJsonString(options);
                 filename.Save(() => config, Encoding.UTF8);
@@ -195,14 +262,70 @@ namespace Bb
         /// </summary>
         /// <param name="filename">file path</param>
         /// <param name="instance">object to serialize</param>
-        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance)
-            where SourceType : class
+        /// <param name="sourceType">source type</param>
+        /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
+        public static void SerializeAndSaveConfiguration(this string filename, object instance, Type sourceType = null, JsonSerializerOptions options = null)
         {
 
             if (instance != null)
             {
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+
+                if (sourceType == null)
+                    sourceType = instance.GetType();
+
+                if (options != null)
+                    options = new JsonSerializerOptions { WriteIndented = true };
+
+                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
+                string config = t2.ToJsonString(options);
+                filename.Save(() => config, Encoding.UTF8);
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="filename">file path</param>
+        /// <param name="instance">object to serialize</param>
+        public static void SerializeAndSaveConfiguration(this FileInfo file, object instance, Type sourceType = null)
+        {
+
+            if (instance != null)
+            {
+
+                if (sourceType == null)
+                    sourceType = instance.GetType();
+
+                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
                 var options = new JsonSerializerOptions { WriteIndented = true };
+                string config = t2.ToJsonString(options);
+                file.Save(() => config, Encoding.UTF8);
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="filename">file path</param>
+        /// <param name="instance">object to serialize</param>
+        /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
+        public static void SerializeAndSaveConfiguration(this FileInfo file, object instance, Type sourceType = null, JsonSerializerOptions options = null)
+        {
+
+            if (instance != null)
+            {
+
+                if (sourceType == null)
+                    sourceType = instance.GetType();
+
+                if (options != null)
+                    options = new JsonSerializerOptions { WriteIndented = true };
+
+                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
                 string config = t2.ToJsonString(options);
                 file.Save(() => config, Encoding.UTF8);
             }

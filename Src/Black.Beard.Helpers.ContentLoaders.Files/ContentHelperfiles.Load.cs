@@ -122,51 +122,120 @@ namespace Bb
         /// <summary>
         /// Load the content from file
         /// </summary>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self"><see cref="T:FileInfo"/></param>
         /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserialize<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
+        public static TargetType LoadFromFileAndDeserialize<TargetType>(this FileInfo self, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
             where TargetType : class
         {
+
+            if (options != null)
+                options = new JsonSerializerOptions();
+
             var payload = self.LoadFromFile(defaultEncoding);
-            var instance = JsonSerializer.Deserialize<TargetType>(payload);
+            var instance = JsonSerializer.Deserialize<TargetType>(payload, options);
             return instance;
         }
 
         /// <summary>
         /// Load the content from file
         /// </summary>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self"><see cref="T:FileInfo"/></param>
         /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserialize<TargetType>(this string self, Encoding defaultEncoding = null)
+        public static TargetType LoadFromFileAndDeserialize<TargetType>(this string self, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
+            where TargetType : class
+        {
+
+            if (options != null)
+                options = new JsonSerializerOptions();
+
+            var payload = self.LoadFromFile(defaultEncoding);
+            var instance = JsonSerializer.Deserialize<TargetType>(payload, options);
+            return instance;
+        }
+
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
+        /// <param name="self">file path</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this string self, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
             where TargetType : class
         {
             var payload = self.LoadFromFile(defaultEncoding);
-            var instance = JsonSerializer.Deserialize<TargetType>(payload);
-            return instance;
+            using (JsonDocument doc = JsonDocument.Parse(payload))
+            {
+
+                if (options != null)
+                    options = new JsonSerializerOptions();
+
+                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var instance = JsonSerializer.Deserialize<TargetType>(element, options);
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Load the content from file
+        /// </summary>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this FileInfo self, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
+        where TargetType : class
+        {
+            var payload = self.LoadFromFile(defaultEncoding);
+            using (JsonDocument doc = JsonDocument.Parse(payload))
+            {
+
+                if (options != null)
+                    options = new JsonSerializerOptions();
+
+                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var instance = JsonSerializer.Deserialize<TargetType>(element, options);
+                return instance;
+            }
         }
 
         /// <summary>
         /// Load the content from file
         /// </summary>
         /// <param name="self">file path</param>
+        /// <param name="targetType">type</param>
         /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this string self, Encoding defaultEncoding = null)
-            where TargetType : class
+        public static object LoadFromFileAndDeserializeConfiguration(this string self, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
-                var element = doc.RootElement.GetProperty(nameof(TargetType));
-                var instance = JsonSerializer.Deserialize<TargetType>(element);
+
+                if (options != null)
+                    options = new JsonSerializerOptions();
+
+                var element = doc.RootElement.GetProperty(targetType.Name);
+                var instance = JsonSerializer.Deserialize(element, targetType, options);
                 return instance;
             }
         }
@@ -175,21 +244,29 @@ namespace Bb
         /// Load the content from file
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="targetType">type</param>
         /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this FileInfo self, Encoding defaultEncoding = null)
-        where TargetType : class
+        public static object LoadFromFileAndDeserializeConfiguration(this FileInfo self, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions options = null)
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
-                var element = doc.RootElement.GetProperty(nameof(TargetType));
-                var instance = JsonSerializer.Deserialize<TargetType>(element);
+
+
+                if (options != null)
+                    options = new JsonSerializerOptions();
+
+                var element = doc.RootElement.GetProperty(targetType.Name);
+                var instance = JsonSerializer.Deserialize(element, targetType, options);
                 return instance;
             }
         }
+
+
     }
 
 
