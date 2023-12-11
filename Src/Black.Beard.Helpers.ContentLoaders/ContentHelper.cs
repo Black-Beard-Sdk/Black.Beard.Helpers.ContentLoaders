@@ -168,8 +168,32 @@ namespace Bb
 
             if (self != null)
             {
-                var instance = JsonSerializer.Deserialize<SourceType>(self);
+                options ??= new JsonSerializerOptions { WriteIndented = true };
+                var instance = JsonSerializer.Deserialize<SourceType>(self, options);
                 return instance;
+            }
+
+            return default;
+
+        }
+
+        /// <summary>
+        /// Serializes the specified self instance.
+        /// </summary>
+        /// <typeparam name="SourceType">The type of the target type.</typeparam>
+        /// <param name="self">the instance to serialize.</param>
+        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <returns></returns>
+        public static string? SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions? options = null)
+            where SourceType : class
+        {
+
+            if (self != null)
+            {
+                options ??= new JsonSerializerOptions { WriteIndented = true };
+                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(self, options) };
+                string config = t2.ToJsonString(options);
+                return config;
             }
 
             return default;
@@ -183,23 +207,21 @@ namespace Bb
         /// <param name="self">the instance to serialize.</param>
         /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns></returns>
-        public static string? SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions? options = null)
-            where SourceType : class
+        public static object? DeserializeConfiguration<TargetType>(this string payload, JsonSerializerOptions? options = null)
+            where TargetType : class
         {
 
-            if (self != null)
+            using (JsonDocument doc = JsonDocument.Parse(payload))
             {
 
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(self) };
+                var targetType = typeof(TargetType);
 
                 options ??= new JsonSerializerOptions { WriteIndented = true };
 
-                string config = t2.ToJsonString(options);
-
-                return config;
+                var element = doc.RootElement.GetProperty(targetType.Name);
+                var instance = JsonSerializer.Deserialize(element, targetType, options);
+                return instance;
             }
-
-            return default;
 
         }
 
