@@ -180,12 +180,11 @@ namespace Bb
         /// <summary>
         /// Deserializes the specified self payload.
         /// </summary>
-        /// <typeparam name="SourceType">The type of the target type.</typeparam>
         /// <param name="self">The payload.</param>
         /// <param name="sourceType">Target type.</param>
         /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
         /// <returns></returns>
-        public static object? Deserialize<SourceType>(this string self, Type sourceType, JsonSerializerOptions? options = null)
+        public static object? Deserialize(this string self, Type sourceType, JsonSerializerOptions? options = null)
         {
 
             if (self != null)
