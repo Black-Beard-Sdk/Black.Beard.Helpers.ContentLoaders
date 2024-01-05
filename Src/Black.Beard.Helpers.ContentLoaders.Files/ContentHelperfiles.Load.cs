@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -116,6 +115,54 @@ namespace Bb
             }
 
             return sb.ToString();
+
+        }
+
+        /// <summary>
+        /// evaluate encoding of the file
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static Encoding? EvaluateEncoding(this string self)
+        {
+            return EvaluateEncoding(new FileInfo(self));
+        }
+
+        /// <summary>
+        /// evaluate encoding of the file
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static Encoding? EvaluateEncoding(this FileInfo self)
+        {
+
+            if (self == null)
+                throw new NullReferenceException(nameof(self));
+
+            self.Refresh();
+
+            if (!self.Exists)
+                throw new FileNotFoundException(self.FullName);
+
+            Encoding encoding = default;
+
+            using (FileStream fs = self.OpenRead())
+            {
+
+                Ude.CharsetDetector cdet = new Ude.CharsetDetector();
+                cdet.Feed(fs);
+                cdet.DataEnd();
+                if (cdet.Charset != null)
+                    encoding = Encoding.GetEncoding(cdet.Charset);
+            }
+
+            return encoding;
 
         }
 
