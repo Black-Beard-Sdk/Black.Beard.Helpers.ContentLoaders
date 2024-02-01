@@ -11,11 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.ContentLoaders", "Black.Beard.Helpers.ContentLoaders\Black.Beard.Helpers.ContentLoaders.csproj", "{2DFD8617-98D3-4587-AA36-406AD532F481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Files", "Black.Beard.Helpers.ContentLoaders.Files\Black.Beard.Helpers.ContentLoaders.Files.csproj", "{B9E34E01-E4A2-4480-8452-3C2540ED412C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.ContentLoaders.Files", "Black.Beard.Helpers.ContentLoaders.Files\Black.Beard.Helpers.ContentLoaders.Files.csproj", "{B9E34E01-E4A2-4480-8452-3C2540ED412C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Compress", "Black.Beard.Helpers.ContentLoaders.Compress\Black.Beard.Helpers.ContentLoaders.Compress.csproj", "{A91E2055-3898-4260-B1B7-A4FD0670166A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.ContentLoaders.Compress", "Black.Beard.Helpers.ContentLoaders.Compress\Black.Beard.Helpers.ContentLoaders.Compress.csproj", "{A91E2055-3898-4260-B1B7-A4FD0670166A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.ContentLoaders.Newtonsoft", "Black.Beard.Helpers.ContentLoaders.Newtonsoft\Black.Beard.Helpers.ContentLoaders.Newtonsoft.csproj", "{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.ContentLoaders.Newtonsoft", "Black.Beard.Helpers.ContentLoaders.Newtonsoft\Black.Beard.Helpers.ContentLoaders.Newtonsoft.csproj", "{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileTests", "FileTests\FileTests.csproj", "{CFFDF41C-7965-471E-B7F1-E54287BFEA56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Randoms", "Black.Beard.Helpers.Randoms\Black.Beard.Helpers.Randoms.csproj", "{26FE502E-A023-4104-AFA3-FB8C183E05B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Randoms.UnitTests", "Black.Beard.Helpers.Randoms.UnitTests\Black.Beard.Helpers.Randoms.UnitTests.csproj", "{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84C51BA-0CE9-4408-BDE0-BAEA2B28C774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFDF41C-7965-471E-B7F1-E54287BFEA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFDF41C-7965-471E-B7F1-E54287BFEA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFDF41C-7965-471E-B7F1-E54287BFEA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFDF41C-7965-471E-B7F1-E54287BFEA56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FE502E-A023-4104-AFA3-FB8C183E05B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FE502E-A023-4104-AFA3-FB8C183E05B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FE502E-A023-4104-AFA3-FB8C183E05B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FE502E-A023-4104-AFA3-FB8C183E05B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

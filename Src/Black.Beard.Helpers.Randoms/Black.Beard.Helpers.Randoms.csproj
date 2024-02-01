@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Helpers for loading documents</Description>
+		<RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RootNamespace>Bb</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Randomizers\Data\Text\BBAN.txt" />
+	  <None Remove="Randomizers\Data\Text\CityNames.txt" />
+	  <None Remove="Randomizers\Data\Text\CountryNames.txt" />
+	  <None Remove="Randomizers\Data\Text\FemaleNames.txt" />
+	  <None Remove="Randomizers\Data\Text\IBAN.txt" />
+	  <None Remove="Randomizers\Data\Text\LastNames.txt" />
+	  <None Remove="Randomizers\Data\Text\LoremIpsum.txt" />
+	  <None Remove="Randomizers\Data\Text\LorumIpsumWords.txt" />
+	  <None Remove="Randomizers\Data\Text\MaleNames.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="Randomizers\CreditCardValidator\CreditCardValidator.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <EmbeddedResource Include="Randomizers\Data\Text\BBAN.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\CityNames.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\CountryNames.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\FemaleNames.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\IBAN.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\LastNames.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\LoremIpsum.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\LorumIpsumWords.txt" />
+	  <EmbeddedResource Include="Randomizers\Data\Text\MaleNames.txt" />
+	</ItemGroup>
+
+</Project>

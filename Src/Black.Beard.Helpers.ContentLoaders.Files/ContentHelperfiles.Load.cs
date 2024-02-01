@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
 
 namespace Bb
 {
@@ -86,8 +88,6 @@ namespace Bb
                 cdet.DataEnd();
                 if (cdet.Charset != null)
                     encoding = Encoding.GetEncoding(cdet.Charset);
-                else
-                    encoding = Encoding.UTF8;
 
                 fs.Position = 0;
 
@@ -97,7 +97,7 @@ namespace Bb
 
             }
 
-            if (fileContents.StartsWith("ï»¿"))
+            if (fileContents.StartsWith(Utf8Bom))
                 fileContents = fileContents.Substring(3);
 
             if (encoding != Encoding.UTF8)
@@ -115,6 +115,80 @@ namespace Bb
             }
 
             return sb.ToString();
+
+        }
+
+        /// <summary>
+        /// Load the content from file and return a stream file. the default encoding is Utf8
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static FileStream StreamFromFile(this FileInfo self)
+        {
+            Encoding encoding = Encoding.UTF8;
+            return StreamFromFile(self, ref encoding);
+        }
+
+        /// <summary>
+        /// On a reader on the file stream and return a stream file. the default encoding is Utf8
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="encoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static StreamReader Read(this FileStream self)
+        {
+            return new StreamReader(self);
+        }
+
+        /// <summary>
+        /// Load the content from file and return a stream file. If the encoding is not specified, the default encoding is Utf8
+        /// </summary>
+        /// <param name="self"><see cref="T:FileInfo"/></param>
+        /// <param name="encoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static FileStream StreamFromFile(this FileInfo self, ref Encoding encoding)
+        {
+
+            if (self == null)
+                throw new NullReferenceException(nameof(self));
+
+            self.Refresh();
+
+            if (!self.Exists)
+                throw new FileNotFoundException(self.FullName);
+
+
+            string fileContents = string.Empty;
+            Encoding _encoding = encoding ?? Encoding.UTF8;
+
+            FileStream fs = self.OpenRead();
+            Ude.CharsetDetector cdet = new Ude.CharsetDetector();
+            cdet.Feed(fs);
+            cdet.DataEnd();
+            if (cdet.Charset != null)
+                _encoding = Encoding.GetEncoding(cdet.Charset);
+
+            fs.Position = 0;
+
+            if (self.Length > Utf8Bom.Length) // escape bom if stat with
+            {
+                byte[] ar = new byte[Utf8Bom.Length];
+                fs.Read(ar, 0, ar.Length);
+                var bom = _encoding.GetString(ar);
+                if (bom == Utf8Bom)
+                    _encoding = Encoding.UTF8;
+                else
+                    fs.Position = 0;
+            }
+
+            encoding = _encoding;
+            return fs;
 
         }
 
@@ -294,6 +368,9 @@ namespace Bb
             }
         }
 
+        public const string Utf8Bom = "ï»¿";
+
+        public const int Echoing = 65279;
 
     }
 
