@@ -8,6 +8,7 @@
 		<RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

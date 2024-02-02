@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Black.Beard.Helpers.ContentLoaders.Files.Csv
+namespace Bb.Csv
 {
 
 
@@ -13,6 +14,29 @@ namespace Black.Beard.Helpers.ContentLoaders.Files.Csv
     /// manage csv file
     /// </summary>
     /// <seealso cref="System.IDisposable" />
+    /// <example>
+    /// <code lang="C#">
+    /// <![CDATA[
+    /// 
+    ///    var fileToRead = new FileInfo(Path.Combine("...", "read.csv"));
+    ///    var fileToWrite = new FileInfo(Path.Combine("...", "write.csv"));
+    ///
+    ///    using (var writer = fileToWrite.OpenToWriteCsv())
+    ///    {
+    ///
+    ///        writer.WriteHeaders("Id", "value");
+    ///
+    ///        foreach (var item2 in fileToRead.ReadBigCsvToJson(true))
+    ///        {
+    ///            var id = item2["Id"].GetValue<int>();
+    ///            var id = item2["Value"].GetValue<int>();
+    ///            writer.WriteLine(id, value);
+    ///        }
+    ///
+    ///    }
+    /// ]]>
+    /// </code>
+    /// </example>
     public class CsvWriter : IDisposable
     {
 

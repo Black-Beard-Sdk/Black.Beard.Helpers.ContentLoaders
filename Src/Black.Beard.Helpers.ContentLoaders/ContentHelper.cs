@@ -13,19 +13,20 @@ namespace Bb
         /// </summary>
         public static void RegisterEncoding()
         {
-            if (_registerd)
+            if (_registered)
                 lock (_lock)
-                    if (_registerd)
+                    if (_registered)
                     {
-                        _registerd = true;
+                        _registered = true;
                         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                     }
         }
 
+
         /// <summary>
-        /// 
+        /// Loads the content from text.
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="text">The text.</param>
         /// <returns></returns>
         public static string LoadContentFromText(this byte[] text)
         {
@@ -256,7 +257,7 @@ namespace Bb
 
         }
 
-        private static bool _registerd = false;
+        private static bool _registered = false;
         private static object _lock = new object();
 
     }

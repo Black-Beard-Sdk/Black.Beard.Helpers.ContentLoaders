@@ -1,10 +1,9 @@
 using Bb;
-using Newtonsoft.Json.Linq;
 using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
 using System.Text.RegularExpressions;
 
-namespace Black.Beard.Helpers.Randoms.UnitTests
+namespace Randoms.UnitTests
 {
 
     [TestClass]
@@ -14,49 +13,49 @@ namespace Black.Beard.Helpers.Randoms.UnitTests
         [TestMethod]
         public void TestRandomInteger()
         {
-            var randomizer = Bb.Randoms.GenerateInteger();
+            var randomizer = Randomizer.GenerateInteger();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomBytes()
         {
-            var randomizer = Bb.Randoms.GenerateByte();
+            var randomizer = Randomizer.GenerateByte();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomDouble()
         {
-            var randomizer = Bb.Randoms.GenerateDouble();
+            var randomizer = Randomizer.GenerateDouble();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomfloat()
         {
-            var randomizer = Bb.Randoms.GenerateFloat();
+            var randomizer = Randomizer.GenerateFloat();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomLong()
         {
-            var randomizer = Bb.Randoms.GenerateLong();
+            var randomizer = Randomizer.GenerateLong();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomShort()
         {
-            var randomizer = Bb.Randoms.GenerateShort();
+            var randomizer = Randomizer.GenerateShort();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomstring()
         {
-            var randomizer2 = Bb.Randoms.GenerateText();
+            var randomizer2 = Randomizer.GenerateText();
             var result2 = randomizer2.Generate(false);
         }
 
@@ -64,7 +63,7 @@ namespace Black.Beard.Helpers.Randoms.UnitTests
         public void TestRandomstringRegEx()
         {
             string pattern = @"\d{5}\w{4}";
-            var randomizer = Bb.Randoms.GenerateTextByRegex(pattern);
+            var randomizer = Randomizer.GenerateTextByRegex(pattern);
             var result = randomizer.Generate(false);
             Assert.IsTrue(Regex.Match(result, pattern).Success);
         }
@@ -72,84 +71,84 @@ namespace Black.Beard.Helpers.Randoms.UnitTests
         [TestMethod]
         public void TestRandomDatetime()
         {
-            var randomizer = Bb.Randoms.GenerateDateTime();
+            var randomizer = Randomizer.GenerateDateTime();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomTimespan()
         {
-            var randomizer = Bb.Randoms.GenerateTimeSpan(true);
+            var randomizer = Randomizer.GenerateTimeSpan(true);
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomEmail()
         {
-            var randomizer = Bb.Randoms.GenerateEmailAddress();
+            var randomizer = Randomizer.GenerateEmailAddress();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomIpv4()
         {
-            var randomizer = Bb.Randoms.GenerateIpV4();
+            var randomizer = Randomizer.GenerateIpV4();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomIpv6()
         {
-            var randomizer = Bb.Randoms.GenerateIpV6();
+            var randomizer = Randomizer.GenerateIpV6();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomBinary()
         {
-            var randomizer = Bb.Randoms.GenerateBinary();
+            var randomizer = Randomizer.GenerateBinary();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomCity()
         {
-            var randomizer = Bb.Randoms.GenerateCity();
+            var randomizer = Randomizer.GenerateCity();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomLastname()
         {
-            var randomizer = Bb.Randoms.GenerateLastName();
+            var randomizer = Randomizer.GenerateLastName();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomCountry()
         {
-            var randomizer = Bb.Randoms.GenerateCountry();
+            var randomizer = Randomizer.GenerateCountry();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomFirstname()
         {
-            var randomizer = Bb.Randoms.GenerateFirstName();
+            var randomizer = Randomizer.GenerateFirstName();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomFullname()
         {
-            var randomizer = Bb.Randoms.GenerateFullName();
+            var randomizer = Randomizer.GenerateFullName();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
         public void TestRandomIban()
         {
-            var randomizer = Bb.Randoms.GenerateIbanBban("FR");
+            var randomizer = Randomizer.GenerateIbanBban("FR");
             var result = randomizer.Generate();
         }
 
@@ -172,7 +171,7 @@ namespace Black.Beard.Helpers.Randoms.UnitTests
         [TestMethod]
         public void TestRandomLipsum()
         {
-            var randomizer = Bb.Randoms.GenerateLipsum(2);
+            var randomizer = Randomizer.GenerateLipsum(2);
             var result = randomizer.Generate();
         }
 
@@ -195,7 +194,7 @@ namespace Black.Beard.Helpers.Randoms.UnitTests
         [TestMethod]
         public void TestRandomPassword()
         {
-            var txt = Bb.Randoms.GeneratePassword(18);
+            var txt = Randomizer.GeneratePassword(18);
             Assert.IsTrue(txt.Length == 18);
         }
 

@@ -11,7 +11,11 @@ using System.Threading.Tasks;
 
 namespace Bb
 {
-    public class Randoms
+
+    /// <summary>
+    /// Randoms helper
+    /// </summary>
+    public static class Randomizer
     {
 
 
