@@ -32,7 +32,7 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomfloat()
+        public void TestRandomFloat()
         {
             var randomizer = Randomizer.GenerateFloat();
             var result = randomizer.Generate();
@@ -53,14 +53,14 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomstring()
+        public void TestRandomString()
         {
             var randomizer2 = Randomizer.GenerateText();
             var result2 = randomizer2.Generate(false);
         }
 
         [TestMethod]
-        public void TestRandomstringRegEx()
+        public void TestRandomStringRegEx()
         {
             string pattern = @"\d{5}\w{4}";
             var randomizer = Randomizer.GenerateTextByRegex(pattern);
@@ -69,7 +69,7 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomDatetime()
+        public void TestRandomDateTime()
         {
             var randomizer = Randomizer.GenerateDateTime();
             var result = randomizer.Generate();
@@ -90,14 +90,14 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomIpv4()
+        public void TestRandomIPV4()
         {
             var randomizer = Randomizer.GenerateIpV4();
             var result = randomizer.Generate();
         }
 
         [TestMethod]
-        public void TestRandomIpv6()
+        public void TestRandomIPV6()
         {
             var randomizer = Randomizer.GenerateIpV6();
             var result = randomizer.Generate();
@@ -118,7 +118,7 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomLastname()
+        public void TestRandomLastName()
         {
             var randomizer = Randomizer.GenerateLastName();
             var result = randomizer.Generate();
@@ -132,7 +132,7 @@ namespace Randoms.UnitTests
         }
 
         [TestMethod]
-        public void TestRandomFirstname()
+        public void TestRandomFirstName()
         {
             var randomizer = Randomizer.GenerateFirstName();
             var result = randomizer.Generate();

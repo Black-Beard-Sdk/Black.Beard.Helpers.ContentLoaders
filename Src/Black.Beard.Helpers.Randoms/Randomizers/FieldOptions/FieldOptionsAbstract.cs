@@ -4,6 +4,10 @@ using System.Xml.Serialization;
 
 namespace RandomDataGenerator.FieldOptions
 {
+
+    /// <summary>
+    /// Abstract class for field options
+    /// </summary>
 #if !NETSTANDARD1_3
     [XmlInclude(typeof(FieldOptionsBytes))]
     [XmlInclude(typeof(FieldOptionsCCN))]
@@ -26,7 +30,6 @@ namespace RandomDataGenerator.FieldOptions
     [XmlInclude(typeof(FieldOptionsIPv6Address))]
     [XmlInclude(typeof(FieldOptionsLastName))]
     [XmlInclude(typeof(FieldOptionsMACAddress))]
-    [XmlInclude(typeof(FieldOptionsTextPattern))]
     [XmlInclude(typeof(FieldOptionsTextRegex))]
     [XmlInclude(typeof(FieldOptionsTextNaughtyStrings))]
     [XmlInclude(typeof(FieldOptionsText))]
@@ -35,12 +38,34 @@ namespace RandomDataGenerator.FieldOptions
 #endif
     public abstract class FieldOptionsAbstract
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether [use null values].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use null values]; otherwise, <c>false</c>.
+        /// </value>
         public bool UseNullValues { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [value as string].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [value as string]; otherwise, <c>false</c>.
+        /// </value>
         public bool ValueAsString { get; set; }
 
+        /// <summary>
+        /// Gets or sets the seed.
+        /// </summary>
+        /// <value>
+        /// The seed.
+        /// </value>
         public int? Seed { get; set; }
 
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns></returns>
         public FieldOptionsAbstract Clone()
         {
             return (FieldOptionsAbstract)MemberwiseClone();

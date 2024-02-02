@@ -5,6 +5,11 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// IP v4 address randomizer
+/// </summary>
+/// <seealso cref="RandomDataGenerator.Randomizers.RandomizerAbstract&lt;RandomDataGenerator.FieldOptions.FieldOptionsIPv4Address&gt;" />
+/// <seealso cref="RandomDataGenerator.Randomizers.IRandomizerString" />
 public class RandomizerIPv4Address : RandomizerAbstract<FieldOptionsIPv4Address>, IRandomizerString
 {
     private readonly RandomThingsGenerator<byte>[] _octetsGenerator = new RandomThingsGenerator<byte>[4];
@@ -20,11 +25,20 @@ public class RandomizerIPv4Address : RandomizerAbstract<FieldOptionsIPv4Address>
         }
     }
 
+    /// <summary>
+    /// Generates IP v4 address as string.
+    /// </summary>
+    /// <returns></returns>
     public string? Generate()
     {
         return IsNull() ? null : string.Join(".", _octetsGenerator.Select(gen => $"{gen.Generate()}").ToArray());
     }
 
+    /// <summary>
+    /// Generates IP v4 address as strings.
+    /// </summary>
+    /// <param name="upperCase">if set to <c>true</c> [upper case].</param>
+    /// <returns></returns>
     public string? Generate(bool upperCase)
     {
         return Generate().ToCasedInvariant(upperCase);

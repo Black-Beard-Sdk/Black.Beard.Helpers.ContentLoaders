@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace RandomDataGenerator.Data
 {
+
+    /// <summary>
+    /// Naughty strings.
+    /// </summary>
     public static class TheNaughtyStrings
     {
         /// <summary>

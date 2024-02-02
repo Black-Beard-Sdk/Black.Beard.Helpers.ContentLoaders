@@ -9,10 +9,19 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// Naughty strings randomizer
+/// </summary>
+/// <seealso cref="RandomDataGenerator.Randomizers.RandomizerAbstract&lt;RandomDataGenerator.FieldOptions.FieldOptionsTextNaughtyStrings&gt;" />
+/// <seealso cref="RandomDataGenerator.Randomizers.IRandomizerString" />
 public class RandomizerTextNaughtyStrings : RandomizerAbstract<FieldOptionsTextNaughtyStrings>, IRandomizerString
 {
     private readonly RandomStringFromListGenerator _naughtyStringCategoryGenerator;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RandomizerTextNaughtyStrings"/> class.
+    /// </summary>
+    /// <param name="options">The options.</param>
     public RandomizerTextNaughtyStrings(FieldOptionsTextNaughtyStrings options) : base(options)
     {
         Type type = typeof(TheNaughtyStrings);
@@ -34,11 +43,20 @@ public class RandomizerTextNaughtyStrings : RandomizerAbstract<FieldOptionsTextN
         _naughtyStringCategoryGenerator = new RandomStringFromListGenerator(allStrings);
     }
 
+    /// <summary>
+    /// Generates the value string.
+    /// </summary>
+    /// <returns></returns>
     public string? Generate()
     {
         return IsNull() ? null : _naughtyStringCategoryGenerator.Generate();
     }
 
+    /// <summary>
+    /// Generates the value string.
+    /// </summary>
+    /// <param name="upperCase">if set to <c>true</c> [upper case].</param>
+    /// <returns></returns>
     public string? Generate(bool upperCase)
     {
         return Generate().ToCasedInvariant(upperCase);

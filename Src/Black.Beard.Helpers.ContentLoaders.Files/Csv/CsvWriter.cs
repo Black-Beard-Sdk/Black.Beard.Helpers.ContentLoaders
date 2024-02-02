@@ -77,6 +77,12 @@ namespace Bb.Csv
 
         }
 
+        /// <summary>
+        /// Writes the line.
+        /// </summary>
+        /// <param name="datas">The datas.</param>
+        /// <returns></returns>
+        /// <exception cref="System.IO.InvalidDataException">Invalid data length</exception>
         public CsvWriter WriteLine(params object[] datas)
         {
 
@@ -144,6 +150,12 @@ namespace Bb.Csv
 
         #region file
 
+        /// <summary>
+        /// Opens the specified file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="encoding">The encoding.</param>
+        /// <returns></returns>
         public CsvWriter Open(string file, Encoding encoding = null)
         {
             var e = encoding ?? Encoding.UTF8;
@@ -154,6 +166,12 @@ namespace Bb.Csv
 
         }
 
+        /// <summary>
+        /// Opens the specified file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="encoding">The encoding.</param>
+        /// <returns></returns>
         public CsvWriter Open(FileInfo file, Encoding encoding = null)
         {
             var e = encoding ?? Encoding.UTF8;
@@ -164,19 +182,28 @@ namespace Bb.Csv
 
         }
 
-
+        /// <summary>
+        /// Closes this instance.
+        /// </summary>
         public void Close()
         {
             _writer?.Close();
             _stream?.Close();
         }
 
+        /// <summary>
+        /// Flushes this instance.
+        /// </summary>
         public void Flush()
         {
             _writer?.Flush();
             _stream?.Flush();
         }
 
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

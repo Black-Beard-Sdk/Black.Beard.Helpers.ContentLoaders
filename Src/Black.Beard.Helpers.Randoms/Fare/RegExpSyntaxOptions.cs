@@ -2,6 +2,11 @@
 
 namespace Fare
 {
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     [Flags]
     public enum RegExpSyntaxOptions
     {
@@ -21,12 +26,12 @@ namespace Fare
         Empty = 0x0004,
 
         /// <summary>
-        /// Enables anystring.
+        /// Enables any string.
         /// </summary>
         Anystring = 0x0008,
 
         /// <summary>
-        /// Enables named automata.
+        /// Enables named automaton.
         /// </summary>
         Automaton = 0x0010,
 

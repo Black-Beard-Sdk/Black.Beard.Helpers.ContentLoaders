@@ -238,6 +238,11 @@ namespace Fare
             }
         }
 
+        /// <summary>
+        /// Gets the sorted transitions.
+        /// </summary>
+        /// <param name="states">The states.</param>
+        /// <returns></returns>
         public static Transition[][] GetSortedTransitions(HashSet<State> states)
         {
             Automaton.SetStateNumbers(states);
@@ -250,21 +255,41 @@ namespace Fare
             return transitions;
         }
 
+        /// <summary>
+        /// Makes the character.
+        /// </summary>
+        /// <param name="c">The c.</param>
+        /// <returns></returns>
         public static Automaton MakeChar(char c)
         {
             return BasicAutomata.MakeChar(c);
         }
 
+        /// <summary>
+        /// Makes the character set.
+        /// </summary>
+        /// <param name="set">The set.</param>
+        /// <returns></returns>
         public static Automaton MakeCharSet(string set)
         {
             return BasicAutomata.MakeCharSet(set);
         }
 
+        /// <summary>
+        /// Makes the string.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns></returns>
         public static Automaton MakeString(string s)
         {
             return BasicAutomata.MakeString(s);
         }
 
+        /// <summary>
+        /// Minimizes the specified a.
+        /// </summary>
+        /// <param name="a">a.</param>
+        /// <returns></returns>
         public static Automaton Minimize(Automaton a)
         {
             a.Minimize();
@@ -322,6 +347,10 @@ namespace Fare
             return this.hashCode;
         }
 
+        /// <summary>
+        /// Adds the epsilons.
+        /// </summary>
+        /// <param name="pairs">The pairs.</param>
         public void AddEpsilons(ICollection<StatePair> pairs)
         {
             BasicOperations.AddEpsilons(this, pairs);
@@ -440,16 +469,28 @@ namespace Fare
             return this.Clone();
         }
 
+        /// <summary>
+        /// Complements this instance.
+        /// </summary>
+        /// <returns></returns>
         public Automaton Complement()
         {
             return BasicOperations.Complement(this);
         }
 
+        /// <summary>
+        /// Concatenates the specified a.
+        /// </summary>
+        /// <param name="a">a.</param>
+        /// <returns></returns>
         public Automaton Concatenate(Automaton a)
         {
             return BasicOperations.Concatenate(this, a);
         }
 
+        /// <summary>
+        /// Determinizes this instance.
+        /// </summary>
         public void Determinize()
         {
             BasicOperations.Determinize(this);
@@ -611,11 +652,22 @@ namespace Fare
             return visited;
         }
 
+        /// <summary>
+        /// Intersections the specified a.
+        /// </summary>
+        /// <param name="a">a.</param>
+        /// <returns></returns>
         public Automaton Intersection(Automaton a)
         {
             return BasicOperations.Intersection(this, a);
         }
 
+        /// <summary>
+        /// Determines whether [is empty string].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is empty string]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsEmptyString()
         {
             return BasicOperations.IsEmptyString(this);
@@ -629,6 +681,10 @@ namespace Fare
             MinimizationOperations.Minimize(this);
         }
 
+        /// <summary>
+        /// Optionals this instance.
+        /// </summary>
+        /// <returns></returns>
         public Automaton Optional()
         {
             return BasicOperations.Optional(this);
@@ -748,21 +804,41 @@ namespace Fare
             this.Reduce();
         }
 
+        /// <summary>
+        /// Repeats the specified minimum.
+        /// </summary>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <returns></returns>
         public Automaton Repeat(int min, int max)
         {
             return BasicOperations.Repeat(this, min, max);
         }
 
+        /// <summary>
+        /// Repeats this instance.
+        /// </summary>
+        /// <returns></returns>
         public Automaton Repeat()
         {
             return BasicOperations.Repeat(this);
         }
 
+        /// <summary>
+        /// Repeats the specified minimum.
+        /// </summary>
+        /// <param name="min">The minimum.</param>
+        /// <returns></returns>
         public Automaton Repeat(int min)
         {
             return BasicOperations.Repeat(this, min);
         }
 
+        /// <summary>
+        /// Runs the specified s.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns></returns>
         public bool Run(string s)
         {
             return BasicOperations.Run(this, s);

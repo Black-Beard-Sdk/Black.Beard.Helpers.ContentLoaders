@@ -1,8 +1,19 @@
 ﻿
 namespace RandomDataGenerator.FieldOptions
 {
+    /// <summary>
+    /// Ibans are used to identify individual bank accounts for both incoming and outgoing international money transfer.
+    /// </summary>
+    /// <seealso cref="RandomDataGenerator.FieldOptions.FieldOptionsAbstract" />
+    /// <seealso cref="RandomDataGenerator.FieldOptions.IFieldOptionsString" />
     public class FieldOptionsIBAN : FieldOptionsAbstract, IFieldOptionsString
     {
+        /// <summary>
+        /// Gets or sets the country code.
+        /// </summary>
+        /// <value>
+        /// The country code.
+        /// </value>
         public string? CountryCode { get; set; }
 
         /// <summary>

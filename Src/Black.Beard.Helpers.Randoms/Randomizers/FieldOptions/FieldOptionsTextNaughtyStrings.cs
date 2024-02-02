@@ -1,5 +1,11 @@
 ﻿namespace RandomDataGenerator.FieldOptions
 {
+
+    /// <summary>
+    /// Text naughty strings options
+    /// </summary>
+    /// <seealso cref="RandomDataGenerator.FieldOptions.FieldOptionsAbstract" />
+    /// <seealso cref="RandomDataGenerator.FieldOptions.IFieldOptionsString" />
     public class FieldOptionsTextNaughtyStrings : FieldOptionsAbstract, IFieldOptionsString
     {
         internal static string All = "All";

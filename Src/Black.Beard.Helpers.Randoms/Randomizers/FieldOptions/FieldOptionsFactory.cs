@@ -5,10 +5,18 @@ using RandomDataGenerator.Enums;
 
 namespace RandomDataGenerator.FieldOptions;
 
+/// <summary>
+/// Factory for creating field options
+/// </summary>
 public static class FieldOptionsFactory
 {
     private const string Namespace = "RandomDataGenerator.FieldOptions";
 
+    /// <summary>
+    /// Gets the field options.
+    /// </summary>
+    /// <param name="subFieldType">Type of the sub field.</param>
+    /// <returns></returns>
     public static FieldOptionsAbstract GetFieldOptions(SubFieldType subFieldType)
     {
         var type = Type.GetType($"{Namespace}.FieldOptions{subFieldType}", true)!;
@@ -16,6 +24,12 @@ public static class FieldOptionsFactory
         return (FieldOptionsAbstract)Activator.CreateInstance(type);
     }
 
+    /// <summary>
+    /// Gets the field options.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="properties">The properties.</param>
+    /// <returns></returns>
     public static FieldOptionsAbstract GetFieldOptions(string name, Dictionary<string, object> properties)
     {
         //Guard.NotNullOrEmpty(name, nameof(name));

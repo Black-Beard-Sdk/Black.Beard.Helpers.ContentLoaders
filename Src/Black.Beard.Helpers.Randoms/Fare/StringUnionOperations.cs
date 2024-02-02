@@ -18,6 +18,10 @@ using System.Text;
 
 namespace Fare
 {
+
+    /// <summary>
+    /// string union operations
+    /// </summary>
     public sealed class StringUnionOperations
     {
         private static readonly IComparer<char[]> lexicographicOrder = new LexicographicOrder();
@@ -27,11 +31,22 @@ namespace Fare
         private StringBuilder previous;
         private IDictionary<State, State> register = new Dictionary<State, State>();
 
+        /// <summary>
+        /// Gets the lexicographic order comparer.
+        /// </summary>
+        /// <value>
+        /// The lexicographic order comparer.
+        /// </value>
         public static IComparer<char[]> LexicographicOrderComparer
         {
             get { return lexicographicOrder; }
         }
 
+        /// <summary>
+        /// Builds the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
         public static Fare.State Build(IEnumerable<char[]> input)
         {
             var builder = new StringUnionOperations();
@@ -44,6 +59,10 @@ namespace Fare
             return StringUnionOperations.Convert(builder.Complete(), new Dictionary<State, Fare.State>());
         }
 
+        /// <summary>
+        /// Adds the specified current.
+        /// </summary>
+        /// <param name="current">The current.</param>
         public void Add(char[] current)
         {
             Debug.Assert(this.register != null, "Automaton already built.");

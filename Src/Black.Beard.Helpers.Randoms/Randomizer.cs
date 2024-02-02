@@ -178,19 +178,18 @@ namespace Bb
         /// <param name="max">The maximum.</param>
         /// <param name="context">The context.</param>
         /// <returns></returns>
-        public static RandomizerText GenerateText(int min = 0, int max = int.MaxValue, TextTandomizeContextEnum context = TextTandomizeContextEnum.All)
+        public static RandomizerText GenerateText(int min = 0, int max = int.MaxValue, TextRandomizeContextEnum context = TextRandomizeContextEnum.All)
         {
             return new RandomizerText(new FieldOptionsText()
             {
                 Min = min,
                 Max = max,
-                Seed = 2,
-                UseLetter = (context & TextTandomizeContextEnum.UseLetter) == TextTandomizeContextEnum.UseLetter,
-                UseNumber = (context & TextTandomizeContextEnum.UseNumber) == TextTandomizeContextEnum.UseNumber,
-                UseSpace = (context & TextTandomizeContextEnum.UseSpace) == TextTandomizeContextEnum.UseSpace,
-                UseLowercase = (context & TextTandomizeContextEnum.UseLowercase) == TextTandomizeContextEnum.UseLowercase,
-                UseUppercase = (context & TextTandomizeContextEnum.UseUppercase) == TextTandomizeContextEnum.UseUppercase,
-                UseSpecial = (context & TextTandomizeContextEnum.UseSpecial) == TextTandomizeContextEnum.UseSpecial,
+                UseLetter = (context & TextRandomizeContextEnum.UseLetter) == TextRandomizeContextEnum.UseLetter,
+                UseNumber = (context & TextRandomizeContextEnum.UseNumber) == TextRandomizeContextEnum.UseNumber,
+                UseSpace = (context & TextRandomizeContextEnum.UseSpace) == TextRandomizeContextEnum.UseSpace,
+                UseLowercase = (context & TextRandomizeContextEnum.UseLowercase) == TextRandomizeContextEnum.UseLowercase,
+                UseUppercase = (context & TextRandomizeContextEnum.UseUppercase) == TextRandomizeContextEnum.UseUppercase,
+                UseSpecial = (context & TextRandomizeContextEnum.UseSpecial) == TextRandomizeContextEnum.UseSpecial,
             });
         }
 
@@ -203,25 +202,6 @@ namespace Bb
         {
             return new RandomizerTextRegex(new FieldOptionsTextRegex()
             {
-                Seed = 2,
-                Pattern = pattern,
-            });
-        }
-
-
-
-        // 
-
-        /// <summary>
-        /// Generates the text by pattern.
-        /// </summary>
-        /// <param name="pattern">The pattern.</param>
-        /// <returns></returns>
-        public static RandomizerTextPattern GenerateTextPattern(string pattern)
-        {
-            return new RandomizerTextPattern(new FieldOptionsTextPattern()
-            {
-                Seed = 2,
                 Pattern = pattern,
             });
         }
@@ -237,7 +217,6 @@ namespace Bb
         {
             return new RandomizerTextWords(new FieldOptionsTextWords()
             {
-                Seed = 2, 
                 Min = min, 
                 Max = max,                
             });
@@ -254,7 +233,6 @@ namespace Bb
         {
             return new RandomizerDateTime(new FieldOptionsDateTime()
             {
-                Seed = 2,
                 //Format = format,
                 IncludeTime = includeTime,
                 From = from.HasValue ? (includeTime ? from.Value : from.Value.Date) : (includeTime ? DateTime.UtcNow : DateTime.UtcNow.Date),
@@ -269,17 +247,16 @@ namespace Bb
         /// <param name="from">From.</param>
         /// <param name="to">To.</param>
         /// <returns></returns>
-        public static RandomizerTimeSpan GenerateTimeSpan(bool includeMilliseconds = true, TimeSpan? from = null, TimeSpan? to = null)
+        public static RandomizerTimeSpan GenerateTimeSpan(bool includeMilliseconds = true, TimeSpan? from = null, TimeSpan? to = null, string format = null)
         {
             return new RandomizerTimeSpan(new FieldOptionsTimeSpan()
             {
                 UseNullValues = false,
                 ValueAsString = true,
-                Seed = 2,
                 IncludeMilliseconds = includeMilliseconds,
                 From = from.HasValue ? from.Value : new TimeSpan(0, 0, 0),
                 To = to.HasValue ? to.Value : new TimeSpan(23, 59, 59),
-                Format = "",
+                Format = format,
             });
         }
 
@@ -373,7 +350,6 @@ namespace Bb
             {
                 Female = true,
                 Male = true,
-                Seed = 2,
             });
         }
 
@@ -400,7 +376,7 @@ namespace Bb
         /// <returns></returns>
         public static RandomizerIBAN GenerateIbanBban(string countryCode)
         {
-            return new RandomizerIBAN(new FieldOptionsIBAN() { CountryCode = countryCode, Seed = 2, Type = "BBAN" });
+            return new RandomizerIBAN(new FieldOptionsIBAN() { CountryCode = countryCode, Type = "BBAN" });
         }
 
         /// <summary>
@@ -410,7 +386,7 @@ namespace Bb
         /// <returns></returns>
         public static RandomizerIBAN GenerateIbanBoth(string countryCode)
         {
-            return new RandomizerIBAN(new FieldOptionsIBAN() { CountryCode = countryCode, Seed = 2, Type = "BOTH" });
+            return new RandomizerIBAN(new FieldOptionsIBAN() { CountryCode = countryCode, Type = "BOTH" });
         }
 
 
@@ -470,7 +446,6 @@ namespace Bb
             {
                 UseNullValues = false,
                 ValueAsString = true,
-                Seed = 2,
                 Categories = categories
             });
         }

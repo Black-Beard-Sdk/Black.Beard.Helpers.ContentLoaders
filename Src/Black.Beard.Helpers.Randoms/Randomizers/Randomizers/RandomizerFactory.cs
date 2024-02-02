@@ -7,46 +7,86 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// Randomizer factory
+/// </summary>
 public static class RandomizerFactory
 {
     private static readonly ConcurrentDictionary<string, object> Cache = new();
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerBytes GetRandomizer(IFieldOptionsBytes fieldOptions)
     {
         return Create<IRandomizerBytes>(fieldOptions);
     }
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerString GetRandomizer(IFieldOptionsString fieldOptions)
     {
         return Create<IRandomizerString>(fieldOptions);
     }
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerGuid GetRandomizer(IFieldOptionsGuid fieldOptions)
     {
         return Create<IRandomizerGuid>(fieldOptions);
     }
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerNumber<T> GetRandomizer<T>(IFieldOptionsNumber<T> fieldOptions) where T : struct
     {
         return Create<IRandomizerNumber<T>>(fieldOptions);
     }
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerDateTime GetRandomizer(IFieldOptionsDateTime fieldOptions)
     {
         return Create<IRandomizerDateTime>(fieldOptions);
     }
 
+    /// <summary>
+    /// Gets the randomizer.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static IRandomizerTimeSpan GetRandomizer(IFieldOptionsTimeSpan fieldOptions)
     {
         return Create<IRandomizerTimeSpan>(fieldOptions);
     }
+
 
 #if NET20 || NET35
         public static object GetRandomizerAsDynamic(FieldOptionsAbstract fieldOptions)
         {
             return Create<object>(fieldOptions);
         }
-#else
+#else    
+    /// <summary>
+    /// Gets the randomizer as dynamic.
+    /// </summary>
+    /// <param name="fieldOptions">The field options.</param>
+    /// <returns></returns>
     public static dynamic GetRandomizerAsDynamic(object fieldOptions)
     {
         return Create<object>(fieldOptions);

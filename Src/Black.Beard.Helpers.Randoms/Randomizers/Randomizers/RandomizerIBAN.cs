@@ -8,10 +8,19 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// Ibans randomizer
+/// </summary>
+/// <seealso cref="RandomDataGenerator.Randomizers.RandomizerAbstract&lt;RandomDataGenerator.FieldOptions.FieldOptionsIBAN&gt;" />
+/// <seealso cref="RandomDataGenerator.Randomizers.IRandomizerString" />
 public class RandomizerIBAN : RandomizerAbstract<FieldOptionsIBAN>, IRandomizerString
 {
     private readonly RandomItemFromListGenerator<IBAN> _itemGenerator;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RandomizerIBAN"/> class.
+    /// </summary>
+    /// <param name="options">The options.</param>
     public RandomizerIBAN(FieldOptionsIBAN options) : base(options)
     {
         Func<IBAN, bool>? predicate = null;
@@ -37,6 +46,10 @@ public class RandomizerIBAN : RandomizerAbstract<FieldOptionsIBAN>, IRandomizerS
         _itemGenerator = new RandomItemFromListGenerator<IBAN>(options.Seed, list, predicate);
     }
 
+    /// <summary>
+    /// Generates strings.
+    /// </summary>
+    /// <returns></returns>
     public string? Generate()
     {
         if (IsNull())
@@ -48,8 +61,14 @@ public class RandomizerIBAN : RandomizerAbstract<FieldOptionsIBAN>, IRandomizerS
         return iban.Generator.Generate();
     }
 
+    /// <summary>
+    /// Generates the specified upper case.
+    /// </summary>
+    /// <param name="upperCase">if set to <c>true</c> [upper case].</param>
+    /// <returns></returns>
     public string? Generate(bool upperCase)
     {
         return Generate().ToCasedInvariant(upperCase);
     }
+
 }

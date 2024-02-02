@@ -35,6 +35,10 @@ using System.Linq;
 
 namespace Fare
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public static class MinimizationOperations
     {
         /// <summary>
@@ -77,6 +81,10 @@ namespace Fare
             BasicOperations.Determinize(a, SpecialOperations.Reverse(a).ToList());
         }
 
+        /// <summary>
+        /// Minimizes the hopcroft.
+        /// </summary>
+        /// <param name="a">a.</param>
         public static void MinimizeHopcroft(Automaton a)
         {
             a.Determinize();

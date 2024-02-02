@@ -40,7 +40,7 @@ namespace Bb
         /// Load the content from file
         /// </summary>
         /// <param name="path">file path</param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding" />if null Utf8 is used by default </param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -61,7 +61,7 @@ namespace Bb
         /// Load the content from file
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding" />if null Utf8 is used by default</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -135,7 +135,6 @@ namespace Bb
         /// On a reader on the file stream and return a stream file. the default encoding is Utf8
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="encoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -148,7 +147,7 @@ namespace Bb
         /// Load the content from file and return a stream file. If the encoding is not specified, the default encoding is Utf8
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="encoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
+        /// <param name="encoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -196,7 +195,6 @@ namespace Bb
         /// evaluate encoding of the file
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -209,7 +207,6 @@ namespace Bb
         /// evaluate encoding of the file
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -245,8 +242,8 @@ namespace Bb
         /// </summary>
         /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -264,8 +261,8 @@ namespace Bb
         /// </summary>
         /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -283,8 +280,8 @@ namespace Bb
         /// </summary>
         /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self">file path</param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -306,8 +303,8 @@ namespace Bb
         /// </summary>
         /// <typeparam name="TargetType">The type of the target type.</typeparam>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -329,8 +326,8 @@ namespace Bb
         /// </summary>
         /// <param name="self">file path</param>
         /// <param name="targetType">type</param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
@@ -351,8 +348,8 @@ namespace Bb
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
         /// <param name="targetType">type</param>
-        /// <param name="defaultEncoding"><see cref="T:Encoding">if null Utf8 is used by default</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>

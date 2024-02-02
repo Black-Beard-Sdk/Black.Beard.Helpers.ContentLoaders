@@ -62,6 +62,12 @@ namespace Fare
         {
         }
 
+        /// <summary>
+        /// Gets or sets the s.
+        /// </summary>
+        /// <value>
+        /// The s.
+        /// </value>
         public State S { get; set; }
 
         /// <summary>

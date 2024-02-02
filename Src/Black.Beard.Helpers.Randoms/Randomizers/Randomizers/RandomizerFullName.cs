@@ -6,12 +6,21 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// Full name randomizer
+/// </summary>
+/// <seealso cref="RandomDataGenerator.Randomizers.RandomizerAbstract&lt;RandomDataGenerator.FieldOptions.FieldOptionsFullName&gt;" />
+/// <seealso cref="RandomDataGenerator.Randomizers.IRandomizerString" />
 public class RandomizerFullName : RandomizerAbstract<FieldOptionsFullName>, IRandomizerString
 {
     private readonly RandomThingsGenerator<int> _numberGenerator;
     private readonly RandomStringFromListGenerator _lastNamesGenerator;
     private readonly List<RandomStringFromListGenerator> _genderSetGenerators = new();
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RandomizerFullName"/> class.
+    /// </summary>
+    /// <param name="options">The options.</param>
     public RandomizerFullName(FieldOptionsFullName options) : base(options)
     {
         _lastNamesGenerator = new RandomStringFromListGenerator(ListData.Instance.LastNames);
@@ -29,6 +38,10 @@ public class RandomizerFullName : RandomizerAbstract<FieldOptionsFullName>, IRan
         _numberGenerator = new RandomThingsGenerator<int>(0, _genderSetGenerators.Count, options.Seed);
     }
 
+    /// <summary>
+    /// Generates strings.
+    /// </summary>
+    /// <returns></returns>
     public string? Generate()
     {
         if (IsNull())
@@ -45,6 +58,11 @@ public class RandomizerFullName : RandomizerAbstract<FieldOptionsFullName>, IRan
         return $"{firstName} {lastname}";
     }
 
+    /// <summary>
+    /// Generates the strings
+    /// </summary>
+    /// <param name="upperCase">if set to <c>true</c> [upper case].</param>
+    /// <returns></returns>
     public string? Generate(bool upperCase)
     {
         return Generate().ToCasedInvariant(upperCase);

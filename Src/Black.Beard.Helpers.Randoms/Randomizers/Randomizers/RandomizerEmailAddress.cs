@@ -7,6 +7,11 @@ using RandomDataGenerator.Generators;
 
 namespace RandomDataGenerator.Randomizers;
 
+/// <summary>
+/// Email address randomizer
+/// </summary>
+/// <seealso cref="RandomDataGenerator.Randomizers.RandomizerAbstract&lt;RandomDataGenerator.FieldOptions.FieldOptionsEmailAddress&gt;" />
+/// <seealso cref="RandomDataGenerator.Randomizers.IRandomizerString" />
 public class RandomizerEmailAddress : RandomizerAbstract<FieldOptionsEmailAddress>, IRandomizerString
 {
     private readonly RandomizerTextWords _wordGenerator;
@@ -15,6 +20,10 @@ public class RandomizerEmailAddress : RandomizerAbstract<FieldOptionsEmailAddres
     private readonly RandomStringFromListGenerator _lastNamesGenerator;
     private readonly List<RandomStringFromListGenerator> _genderSetGenerators = new List<RandomStringFromListGenerator>();
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RandomizerEmailAddress"/> class.
+    /// </summary>
+    /// <param name="options">The options.</param>
     public RandomizerEmailAddress(FieldOptionsEmailAddress options) : base(options)
     {
         _lastNamesGenerator = new RandomStringFromListGenerator(ListData.Instance.LastNames.Select(l => l.ToLower()));
@@ -34,6 +43,10 @@ public class RandomizerEmailAddress : RandomizerAbstract<FieldOptionsEmailAddres
         _wordGenerator = new RandomizerTextWords(new FieldOptionsTextWords { Min = 1, Max = 1});
     }
 
+    /// <summary>
+    /// Generates string
+    /// </summary>
+    /// <returns></returns>
     public string? Generate()
     {
         if (IsNull())
@@ -52,6 +65,11 @@ public class RandomizerEmailAddress : RandomizerAbstract<FieldOptionsEmailAddres
         return $"{firstName}.{lastname}@{company}.{domain}";
     }
 
+    /// <summary>
+    /// Generates the string.
+    /// </summary>
+    /// <param name="upperCase">if set to <c>true</c> [upper case].</param>
+    /// <returns></returns>
     public string? Generate(bool upperCase)
     {
         return Generate().ToCasedInvariant(upperCase);

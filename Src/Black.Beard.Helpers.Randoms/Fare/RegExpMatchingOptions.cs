@@ -2,6 +2,10 @@
 
 namespace Fare
 {
+
+    /// <summary>
+    /// regex matching options
+    /// </summary>
     public static class RegExpMatchingOptions
     {
         /// <summary>
@@ -16,7 +20,7 @@ namespace Fare
         public const char Singleline = 's';
 
         /// <summary>
-        /// Use multiline mode, where <code>^</code> and <code>$</code> match
+        /// Use multi line mode, where <code>^</code> and <code>$</code> match
         /// the beginning and end of each line, instead of the beginning and end of the input string.
         /// </summary>
         public const char Multiline = 'm';
@@ -27,11 +31,15 @@ namespace Fare
         public const char ExplicitCapture = 'n';
 
         /// <summary>
-        /// Exclude unescaped white space from the pattern
+        /// Exclude escaped white space from the pattern
         /// and enable comments after a hash sign <code>#</code>.
         /// </summary>
         public const char IgnorePatternWhitespace = 'x';
 
+        /// <summary>
+        /// Alls this instance.
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<char> All()
         {
             yield return IgnoreCase;

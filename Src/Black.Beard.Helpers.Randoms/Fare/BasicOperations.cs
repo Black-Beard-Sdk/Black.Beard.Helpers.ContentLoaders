@@ -185,6 +185,12 @@ namespace Fare
             return a;
         }
 
+        /// <summary>
+        /// Concatenates the specified a1.
+        /// </summary>
+        /// <param name="a1">The a1.</param>
+        /// <param name="a2">The a2.</param>
+        /// <returns></returns>
         public static Automaton Concatenate(Automaton a1, Automaton a2)
         {
             if (a1.IsSingleton && a2.IsSingleton)
@@ -221,6 +227,11 @@ namespace Fare
             return a1;
         }
 
+        /// <summary>
+        /// Concatenates the specified l.
+        /// </summary>
+        /// <param name="l">The l.</param>
+        /// <returns></returns>
         public static Automaton Concatenate(IList<Automaton> l)
         {
             if (l.Count == 0)
