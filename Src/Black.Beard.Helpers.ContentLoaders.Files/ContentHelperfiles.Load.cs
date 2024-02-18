@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 
@@ -14,6 +15,7 @@ namespace Bb
     /// </summary>
     public static partial class ContentHelperFiles
     {
+
 
         /// <summary>
         /// Loads the content of the file.
@@ -36,6 +38,37 @@ namespace Bb
 
         }
 
+
+        /// <summary>
+        /// Loads the content of the file and return XmlDocument.
+        /// </summary>
+        /// <param name="sourcePath">The source path segment. the path is concatenated with Path.Combine</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding" />if null Utf8 is used by default </param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="InvalidDataException">if the sourcePath do not contains path</exception>
+        public static XDocument LoadXmlFromFile(this string sourcePath, Encoding defaultEncoding = null)
+        {
+            var payload = sourcePath.LoadFromFile(defaultEncoding);
+            var doc = XDocument.Parse(payload);
+            return doc;
+        }
+
+
+        /// <summary>
+        /// Loads the content of the file and return XmlDocument.
+        /// </summary>
+        /// <param name="sourcePath">The source path segment. the path is concatenated with Path.Combine</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding" />if null Utf8 is used by default </param>
+        /// <returns>the content of the text document</returns>
+        /// <exception cref="InvalidDataException">if the sourcePath do not contains path</exception>
+        public static XDocument LoadXmlFromFile(this FileInfo sourcePath, Encoding defaultEncoding = null)
+        {
+            var payload = sourcePath.LoadFromFile(defaultEncoding);
+            var doc = XDocument.Parse(payload);
+            return doc;
+        }
+
+
         /// <summary>
         /// Load the content from file
         /// </summary>
@@ -56,6 +89,7 @@ namespace Bb
             return default;
 
         }
+
 
         /// <summary>
         /// Load the content from file
@@ -118,6 +152,7 @@ namespace Bb
 
         }
 
+
         /// <summary>
         /// Load the content from file and return a stream file. the default encoding is Utf8
         /// </summary>
@@ -130,6 +165,7 @@ namespace Bb
             Encoding encoding = Encoding.UTF8;
             return StreamFromFile(self, ref encoding);
         }
+
 
         /// <summary>
         /// On a reader on the file stream and return a stream file. the default encoding is Utf8

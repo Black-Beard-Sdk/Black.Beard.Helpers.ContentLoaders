@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Content
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileTests", "FileTests\FileTests.csproj", "{CFFDF41C-7965-471E-B7F1-E54287BFEA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Randoms", "Black.Beard.Helpers.Randoms\Black.Beard.Helpers.Randoms.csproj", "{26FE502E-A023-4104-AFA3-FB8C183E05B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Randoms", "Black.Beard.Helpers.Randoms\Black.Beard.Helpers.Randoms.csproj", "{26FE502E-A023-4104-AFA3-FB8C183E05B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Randoms.UnitTests", "Black.Beard.Helpers.Randoms.UnitTests\Black.Beard.Helpers.Randoms.UnitTests.csproj", "{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Randoms.UnitTests", "Black.Beard.Helpers.Randoms.UnitTests\Black.Beard.Helpers.Randoms.UnitTests.csproj", "{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Http", "Black.Beard.Helpers.Http\Black.Beard.Helpers.Http.csproj", "{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

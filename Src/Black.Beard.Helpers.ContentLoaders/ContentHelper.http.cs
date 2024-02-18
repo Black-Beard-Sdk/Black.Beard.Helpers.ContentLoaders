@@ -28,9 +28,9 @@ namespace Bb
         /// <param name="url">The URL.</param>
         /// <param name="fileOutput">The file output.</param>
         /// <param name="initializer">The initializer.</param>
-        /// <exception cref="System.IO.FileLoadException">local file allready exists</exception>
+        /// <exception cref="System.IO.FileLoadException">local file already exists</exception>
         /// <exception cref="System.IO.FileNotFoundException"></exception>
-        public static void Download(this Uri url, FileInfo fileOutput, Action<HttpClient> initializer)
+        public static void Download(this Uri url, FileInfo fileOutput, Action<HttpClient>? initializer = null)
         {
 
             HttpClient client = new HttpClient();
