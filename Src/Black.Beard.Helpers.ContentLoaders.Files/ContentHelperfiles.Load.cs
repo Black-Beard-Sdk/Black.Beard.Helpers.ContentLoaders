@@ -361,7 +361,7 @@ namespace Bb
         /// Load the content from file
         /// </summary>
         /// <param name="self">file path</param>
-        /// <param name="targetType">type</param>
+        /// <param name="targetType">target type</param>
         /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
         /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
@@ -383,7 +383,7 @@ namespace Bb
         /// Load the content from file
         /// </summary>
         /// <param name="self"><see cref="T:FileInfo"/></param>
-        /// <param name="targetType">type</param>
+        /// <param name="targetType">target type</param>
         /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
         /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns>the content of the text document</returns>
@@ -401,8 +401,22 @@ namespace Bb
             }
         }
 
-        public const string Utf8Bom = "ï»¿";
+        /// <summary>
+        /// Load the content json from file
+        /// </summary>
+        /// <param name="self">file path</param>
+        /// <param name="defaultEncoding"><see cref="T:Encoding"/>if null Utf8 is used by default</param>
+        /// <returns>the json document <see cref="JsonDocument"/> of the text document</returns>
+        /// <exception cref="NullReferenceException">If self is null</exception>
+        /// <exception cref="FileNotFoundException">If the file is not found</exception>
+        public static System.Text.Json.JsonDocument LoadJsonFromFile(this string self, Encoding defaultEncoding = null)
+        {
+            var payload = self.LoadFromFile(defaultEncoding);
+            var doc = JsonDocument.Parse(payload);
+            return doc;
+        }
 
+        public const string Utf8Bom = "ï»¿";
         public const int Echoing = 65279;
 
     }
