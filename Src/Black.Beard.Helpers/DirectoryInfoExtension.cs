@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Black.Beard.Helpers
+namespace Bb
 {
 
     public static class DirectoryInfoExtension

@@ -1,10 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Black.Beard.Helpers</Title>
-    <Description>provide helpers Crc32 and extension for Path.Combine</Description>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Black.Beard.Helpers</Title>
+		<Description>provide helpers Crc32 and extension for Path.Combine</Description>
+		<PackageId>Black.Beard.Helpers</PackageId>
+		<Authors>Black.Beard</Authors>
+		<Company>Black.Beard</Company>
+		<Product>Black.Beard.Helpers</Product>
+		<PackageProjectUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</PackageProjectUrl>
+		<RootNamespace>Bb</RootNamespace>
+		
+	</PropertyGroup>
 
 </Project>
