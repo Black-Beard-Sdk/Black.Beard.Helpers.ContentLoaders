@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Black.Beard.Helpers.ContentLoaders.Files\Black.Beard.Helpers.ContentLoaders.Files.csproj" />
     <ProjectReference Include="..\Black.Beard.Helpers.ContentLoaders\Black.Beard.Helpers.ContentLoaders.csproj" />
     <ProjectReference Include="..\Black.Beard.Helpers.Randoms\Black.Beard.Helpers.Randoms.csproj" />
+    <ProjectReference Include="..\Black.Beard.Helpers\Black.Beard.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>

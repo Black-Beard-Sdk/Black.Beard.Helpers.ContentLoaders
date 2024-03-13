@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Randoms
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Randoms.UnitTests", "Black.Beard.Helpers.Randoms.UnitTests\Black.Beard.Helpers.Randoms.UnitTests.csproj", "{834569A0-835C-4BA1-B25A-AD1D3A3B62F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers.Http", "Black.Beard.Helpers.Http\Black.Beard.Helpers.Http.csproj", "{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Http", "Black.Beard.Helpers.Http\Black.Beard.Helpers.Http.csproj", "{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers", "Black.Beard.Helpers\Black.Beard.Helpers.csproj", "{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

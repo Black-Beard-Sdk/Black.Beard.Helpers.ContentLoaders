@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Black.Beard.Helpers</Title>
+    <Description>provide helpers Crc32 and extension for Path.Combine</Description>
+  </PropertyGroup>
+
+</Project>
