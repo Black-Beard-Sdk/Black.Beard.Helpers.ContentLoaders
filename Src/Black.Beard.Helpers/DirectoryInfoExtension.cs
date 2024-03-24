@@ -90,7 +90,54 @@ namespace Bb
         }
 
 
+        /// <summary>
+        /// Create the directory if not exists
+        /// </summary>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DirectoryInfo CreateFolderIfNotExists(this string self)
+        {
+            return self.AsDirectory().CreateFolderIfNotExists();
+        }
 
+        /// <summary>
+        /// Delete the directory if exists
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="recursive"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DirectoryInfo DeleteFolderIfExists(this string self, bool recursive = false)
+        {
+            return self.AsDirectory().DeleteFolderIfExists(recursive);
+        }
+
+        /// <summary>
+        /// Create the directory if not exists
+        /// </summary>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DirectoryInfo CreateFolderIfNotExists(this DirectoryInfo self)
+        {
+            if (!self.Exists)
+                self.Create();
+            return self;
+        }
+
+        /// <summary>
+        /// Delete the directory if not exists
+        /// </summary>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DirectoryInfo DeleteFolderIfExists(this DirectoryInfo self, bool recursive = false)
+        {
+            if (!self.Exists)
+                self.Delete(recursive);
+            return self;
+        }
 
         /// <summary>
         /// Copy the specified file to a directory
