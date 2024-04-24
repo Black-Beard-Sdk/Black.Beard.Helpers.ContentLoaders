@@ -17,7 +17,7 @@ namespace FileTests
         public void TestMethod1()
         {
 
-            var file = new FileInfo(Path.Combine(Environment.CurrentDirectory, "test1.csv"));
+            var file = Path.Combine(Environment.CurrentDirectory, "test1.csv").AsFile();
             foreach (var item2 in file.ReadBigCsvToJson(true, ";"))
             {
 

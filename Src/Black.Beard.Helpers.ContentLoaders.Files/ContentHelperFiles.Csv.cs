@@ -260,6 +260,15 @@ namespace Bb
         /// <param name="quoteCharset">The quote charset. By default the value is '"'</param>
         /// <param name="escapeCharset">The escape charset.  By default the value is '/'</param>
         /// <returns>IEnumerable of Json object</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var file = Path.Combine(Environment.CurrentDirectory, "test1.csv").AsFile();
+        /// foreach (var item2 in file.ReadBigCsvToJson(true, ";"))
+        /// {
+        ///
+        /// }
+        /// </code>
+        /// </example>
         public static IEnumerable<JsonObject> ReadBigCsvToJson(this FileInfo file, bool hasHeader = true, string charsetSeparator = ";", string quoteCharset = @"""", string escapeCharset = @"/")
         {
 

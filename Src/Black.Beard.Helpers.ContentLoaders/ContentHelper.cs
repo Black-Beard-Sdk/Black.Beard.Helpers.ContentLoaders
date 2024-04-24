@@ -10,7 +10,13 @@ namespace Bb
 
         /// <summary>
         /// Execute : Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        /// Register exotic encoding provider.
         /// </summary>
+        /// <example>
+        /// <code lang="csharp">
+        /// ContentHelper.RegisterEncoding();
+        /// </code>
+        /// </example>
         public static void RegisterEncoding()
         {
             if (_registered)
@@ -27,7 +33,7 @@ namespace Bb
         /// Loads the content from text.
         /// </summary>
         /// <param name="text">The text.</param>
-        /// <returns></returns>
+        /// <returns></returns>        
         public static string LoadContentFromText(this byte[] text)
         {
 

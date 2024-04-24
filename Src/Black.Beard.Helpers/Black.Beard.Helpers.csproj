@@ -11,7 +11,23 @@
 		<Product>Black.Beard.Helpers</Product>
 		<PackageProjectUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</PackageProjectUrl>
 		<RootNamespace>Bb</RootNamespace>
-		
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+
 	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationMarkdown>$(MSBuildProjectDirectory)\..\..\Docs\$(MSBuildProjectName).md</DocumentationMarkdown>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Vsxmd" Version="1.4.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>

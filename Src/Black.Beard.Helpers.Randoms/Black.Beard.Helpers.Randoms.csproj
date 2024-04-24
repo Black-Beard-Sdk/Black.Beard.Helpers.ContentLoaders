@@ -46,5 +46,20 @@
 	  <EmbeddedResource Include="Randomizers\Data\Text\LorumIpsumWords.txt" />
 	  <EmbeddedResource Include="Randomizers\Data\Text\MaleNames.txt" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Vsxmd" Version="1.4.5">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
 
+	<PropertyGroup>
+		<DocumentationMarkdown>$(MSBuildProjectDirectory)\..\..\Docs\$(MSBuildProjectName).md</DocumentationMarkdown>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
+	</PropertyGroup>
+	
 </Project>

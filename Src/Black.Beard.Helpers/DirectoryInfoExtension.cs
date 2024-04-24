@@ -15,6 +15,11 @@ namespace Bb
         /// <param name="self"></param>
         /// <param name="segments"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// new DirectoryInfo("c:\\temp").Combine("subfolder1", "subfolder2", "subfolder3");
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string Combine(this DirectoryInfo self, params string[] segments)
         {
@@ -30,6 +35,11 @@ namespace Bb
         /// <param name="self">first segment</param>
         /// <param name="segments"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var path = "c:\\temp".Combine("subfolder1", "subfolder2", "subfolder3");
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string Combine(this string self, params string[] segments)
         {
@@ -46,6 +56,11 @@ namespace Bb
         /// </summary>
         /// <param name="self">full path filename</param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var file = "c:\\temp\\file.cs".AsFile();
+        /// </code>
+        /// </example>  
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FileInfo AsFile(this string self)
         {
@@ -58,6 +73,11 @@ namespace Bb
         /// <param name="sourceFilePath">file to copy in the target folder</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var file = "c:\\temp\\".AsDirectory().AsFile("filename.cs");
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FileInfo AsFile(this DirectoryInfo sourceFilePath, string filename)
         {
@@ -70,6 +90,11 @@ namespace Bb
         /// <param name="sourceFilePath">file to copy in the target folder</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var file = "c:\\temp\\".AsFile("filename.cs");
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FileInfo AsFile(this string sourceFilePath, string filename)
         {
@@ -83,6 +108,11 @@ namespace Bb
         /// </summary>
         /// <param name="self">full path directory name</param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var directory = "c:\\temp\\".AsDirectory();
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo AsDirectory(this string self)
         {
@@ -95,6 +125,11 @@ namespace Bb
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\".CreateFolderIfNotExists();
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo CreateFolderIfNotExists(this string self)
         {
@@ -107,6 +142,11 @@ namespace Bb
         /// <param name="self"></param>
         /// <param name="recursive"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\".DeleteFolderIfExists();
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo DeleteFolderIfExists(this string self, bool recursive = false)
         {
@@ -118,6 +158,11 @@ namespace Bb
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\".AsDirectory().CreateFolderIfNotExists();
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo CreateFolderIfNotExists(this DirectoryInfo self)
         {
@@ -131,10 +176,15 @@ namespace Bb
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\".AsDirectory().DeleteFolderIfExists();
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo DeleteFolderIfExists(this DirectoryInfo self, bool recursive = false)
         {
-            if (!self.Exists)
+            if (self.Exists)
                 self.Delete(recursive);
             return self;
         }
@@ -146,6 +196,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\filename.cs".AsFile().CopyToDirectory("target path", true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool CopyToDirectory(this FileInfo sourceFilePath, string directoryTargetPath, bool overwrite = false)
         {
@@ -170,6 +225,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp\\filename.cs".AsFile().CopyToDirectory("target path".AsDirectory(), true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool CopyToDirectory(this FileInfo sourceFilePath, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
@@ -195,6 +255,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp".Copy("target path".AsDirectory(), true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Copy(this string sourceDirectoryPath, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
@@ -220,6 +285,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp".AsDirectory().Copy("filename", "target path".AsDirectory(), true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Copy(this DirectoryInfo sourceDirectoryPath, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
@@ -244,6 +314,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp".AsDirectory().Copy("filename", "target path", true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Copy(this DirectoryInfo sourceDirectoryPath, string filename, string directoryTargetPath, bool overwrite = false)
         {
@@ -268,6 +343,11 @@ namespace Bb
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// "c:\\temp".Copy("filename", "target path", true);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Copy(this string sourceDirectoryPath, string filename, string directoryTargetPath, bool overwrite = false)
         {

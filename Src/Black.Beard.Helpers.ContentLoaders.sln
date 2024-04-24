@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Randoms
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers.Http", "Black.Beard.Helpers.Http\Black.Beard.Helpers.Http.csproj", "{F639EF3C-DBB9-4E91-A0E1-78BFDAB4AF66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black.Beard.Helpers", "Black.Beard.Helpers\Black.Beard.Helpers.csproj", "{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Black.Beard.Helpers", "Black.Beard.Helpers\Black.Beard.Helpers.csproj", "{D8CB4D8E-DD3F-432D-8600-8F2C684D62E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

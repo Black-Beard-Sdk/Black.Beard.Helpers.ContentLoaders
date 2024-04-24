@@ -3,6 +3,16 @@
 namespace Bb
 {
 
+
+
+    /// <summary>
+    /// Generate Crc32 checksums for strings and byte arrays.
+    /// </summary>
+    /// <example>
+    /// <code lang="csharp">
+    ///     var crc = Crc32.CalculateCrc32("Hello World");
+    /// </code>
+    /// </example>
     public static class Crc32
     {
 
@@ -69,6 +79,9 @@ namespace Bb
         /// CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
         /// this as the 'crc32' to compute the next chunk.  
         /// </summary>  
+        /// <code lang="csharp">
+        ///     var crc = Crc32.CalculateCrc32(new StringBuilder("Hello World"));
+        /// </code>
         static public uint CalculateCrc32(this StringBuilder buffer)
         {
 
@@ -96,6 +109,9 @@ namespace Bb
         /// CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
         /// this as the 'crc32' to compute the next chunk.  
         /// </summary>  
+        /// <code lang="csharp">
+        ///     var crc = Crc32.CalculateCrc32("Hello World");
+        /// </code>
         static public uint CalculateCrc32(this string buffer)
         {
 
