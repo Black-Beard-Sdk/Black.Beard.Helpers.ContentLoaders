@@ -15,12 +15,10 @@
 dotnet add package Black.Beard.Helpers.ContentLoaders --version 2.0.22
 ```
 
-see documentation [here](Docs/ContentLoader.md)
+see documentation [here](Docs/Black.Beard.Helpers.ContentLoaders.md)
 
 
 ## Helpers
-
-# Black.Beard.Helpers
 
 ### install
 ```bash
