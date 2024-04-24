@@ -8,60 +8,7 @@ namespace Bb
 {
 
     public static partial class UriExtensions
-    {
-
-
-
-        /// <summary>
-        /// return a <see cref="StringBuilder"/> with Concatenated url separated by ';'.
-        /// </summary>
-        /// <param name="urls"><see cref="Url"/></param>
-        /// <returns></returns>
-        /// <example>
-        /// <code lang="csharp">
-        /// var list = new List&lt;Uri&gt;();
-        /// list.Add(new Uri("http://localhost:8080"));
-        /// list.Add(new Uri("http1://localhost:8081"));
-        /// StringBuilder paths = list.ConcatUrl();
-        /// </code>
-        /// </example>
-        public static StringBuilder ConcatUrl(this IEnumerable<Uri> urls)
-        {
-            return urls.ConcatUrl(new StringBuilder());
-        }
-
-
-        /// <summary>
-        /// return a <see cref="StringBuilder"/> with Concatenated url separated by ';'.
-        /// </summary>
-        /// <param name="sb"><see cref="StringBuilder"/></param>
-        /// <param name="urls"><see cref="Url"/></param>
-        /// <returns></returns>
-        /// <example>
-        /// <code lang="csharp">
-        /// var list = new List&lt;Uri&gt;();
-        /// list.Add(new Uri("http://localhost:8080"));
-        /// list.Add(new Uri("http1://localhost:8081"));
-        /// list.ConcatUrl(new StringBuilder(200));
-        /// </code>
-        /// </example>
-        public static StringBuilder ConcatUrl(this IEnumerable<Uri> urls, StringBuilder sb)
-        {
-            if (sb == null)
-                sb = new StringBuilder(200);
-
-            string comma = string.Empty;
-            foreach (var url in urls)
-            {
-                sb.Append(comma);
-                sb.Append(url.ToString().ToLower());
-                comma = ";";
-            }
-
-            return sb;
-
-        }
-
+    {   
 
 
         #region Manage starting urls and ports
@@ -74,7 +21,7 @@ namespace Bb
         /// <param name="startPorts">The starting range port</param>
         /// <param name="count">The count range port</param>
         /// <returns></returns>
-        public static List<Uri> AddLocalhostUrl(this List<Uri> self, string scheme, ref int startPorts, int count = 1)
+        public static ICollection<string> AddLocalhostUrl(this ICollection<string> self, string scheme, ref int startPorts, int count = 1)
         {
 
             int _first = startPorts;
@@ -98,10 +45,10 @@ namespace Bb
         /// <param name="port">The port to listen.</param>
         /// <param name="segments">The segments to add to the url</param>
         /// <returns></returns>
-        public static List<Uri> AddUrl(this List<Uri> self, string scheme, string hostName, int port, params string[] segments)
+        public static ICollection<string> AddUrl(this ICollection<string> self, string scheme, string hostName, int port, params string[] segments)
         {
 
-            self.Add(scheme.ToUri(hostName, port, segments));
+            self.Add(scheme.ToUri(hostName, port, segments).ToString());
 
             return self;
         }
@@ -114,7 +61,7 @@ namespace Bb
         /// <param name="port">The port to listen</param>
         /// <param name="segments">The segments to add to the url</param>
         /// <returns></returns>
-        public static List<Uri> AddLocalhostUrl(this List<Uri> self, string scheme, int port, params string[] segments)
+        public static ICollection<string> AddLocalhostUrl(this ICollection<string> self, string scheme, int port, params string[] segments)
         {
             self.AddUrl(scheme, "localhost", port, segments);
             return self;
@@ -128,7 +75,7 @@ namespace Bb
         /// <param name="startingPort">starting port to search.</param>
         /// <param name="segments">The segments to add to the url</param>
         /// <returns></returns>
-        public static List<Uri> AddLocalhostSecureUrlWithDynamicPort(this List<Uri> self, string host, ref int startingPort, params string[] segments)
+        public static ICollection<string> AddLocalhostSecureUrlWithDynamicPort(this ICollection<string> self, string host, ref int startingPort, params string[] segments)
         {
             return self.AddLocalhostUrlWithDynamicPort("https", host, ref startingPort, segments);
         }
@@ -141,7 +88,7 @@ namespace Bb
         /// <param name="startingPort">starting port to search.</param>
         /// <param name="segments">The segments to add to the url</param>
         /// <returns></returns>
-        public static List<Uri> AddLocalhostUrlWithDynamicPort(this List<Uri> self, string host, ref int startingPort, params string[] segments)
+        public static ICollection<string> AddLocalhostUrlWithDynamicPort(this ICollection<string> self, string host, ref int startingPort, params string[] segments)
         {
             return self.AddLocalhostUrlWithDynamicPort("http", host, ref startingPort, segments);
         }
@@ -155,10 +102,10 @@ namespace Bb
         /// <param name="startingPort">starting port to search.</param>
         /// <param name="segments">The segments to add to the url</param>
         /// <returns></returns>
-        public static List<Uri> AddLocalhostUrlWithDynamicPort(this List<Uri> self, string scheme, string host, ref int startingPort, params string[] segments)
+        public static ICollection<string> AddLocalhostUrlWithDynamicPort(this ICollection<string> self, string scheme, string host, ref int startingPort, params string[] segments)
         {
 
-            var ports = self.Select(c => c.Port).OrderBy(c => c).ToList();
+            var ports = self.Select(c => new Uri(c).Port).OrderBy(c => c).ToList();
 
             startingPort = HttpHelper.GetAvailablePort(startingPort);
 

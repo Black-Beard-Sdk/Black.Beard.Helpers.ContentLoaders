@@ -47,7 +47,35 @@ namespace Bb
         public static Uri ToUri(this string scheme, string host, int port, params string[] segments)
         {
 
+
             var uri = new Uri($"{scheme}://{host}:{port}");
+
+            foreach (var item in segments)
+                uri = new Uri(uri, item);
+
+            return uri;
+
+        }
+
+        /// <summary>
+        /// Create uri from string and segments
+        /// </summary>
+        /// <param name="scheme"></param>
+        /// <param name="host">the first port available</param>
+        /// <param name="port"></param>
+        /// <param name="segments"></param>
+        /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// int port = 80;
+        /// Uri uri = @"http".ToUri("localhost", ref int port, "segment1", , "segment2");
+        /// </code>
+        /// </example>
+        public static Uri ToUri(this string scheme, string host, ref int port, params string[] segments)
+        {
+
+            var first = HttpHelper.GetAvailablePort(port);
+            var uri = new Uri($"{scheme}://{host}:{first}");
 
             foreach (var item in segments)
                 uri = new Uri(uri, item);

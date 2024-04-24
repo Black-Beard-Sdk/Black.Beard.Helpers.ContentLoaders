@@ -28,18 +28,25 @@
   - [GetLocalUri(securised,port)](#M-Bb-HttpHelper-GetLocalUri-System-Boolean,System-Int32- 'Bb.HttpHelper.GetLocalUri(System.Boolean,System.Int32)')
   - [GetUri(securised,host,port)](#M-Bb-HttpHelper-GetUri-System-Boolean,System-String,System-Int32- 'Bb.HttpHelper.GetUri(System.Boolean,System.String,System.Int32)')
 - [UriExtensions](#T-Bb-UriExtensions 'Bb.UriExtensions')
-  - [AddLocalhostSecureUrlWithDynamicPort(host,startingPort)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@)')
+  - [AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@,System.String[])')
+  - [AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.ICollection{System.String},System.String,System.Int32@,System.String[])')
   - [AddLocalhostUrl(scheme,startPorts,count)](#M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-Int32- 'Bb.UriExtensions.AddLocalhostUrl(System.Collections.Generic.List{System.Uri},System.String,System.Int32@,System.Int32)')
-  - [AddLocalhostUrl(scheme,port)](#M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32- 'Bb.UriExtensions.AddLocalhostUrl(System.Collections.Generic.List{System.Uri},System.String,System.Int32)')
-  - [AddLocalhostUrlWithDynamicPort(host,startingPort)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@)')
-  - [AddLocalhostUrlWithDynamicPort(scheme,host,startingPort)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32@- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.String,System.Int32@)')
-  - [AddUrl(scheme,hostName,port)](#M-Bb-UriExtensions-AddUrl-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32- 'Bb.UriExtensions.AddUrl(System.Collections.Generic.List{System.Uri},System.String,System.String,System.Int32)')
+  - [AddLocalhostUrl(scheme,port,segments)](#M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32,System-String[]- 'Bb.UriExtensions.AddLocalhostUrl(System.Collections.Generic.List{System.Uri},System.String,System.Int32,System.String[])')
+  - [AddLocalhostUrl(scheme,startPorts,count)](#M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-Int32- 'Bb.UriExtensions.AddLocalhostUrl(System.Collections.Generic.ICollection{System.String},System.String,System.Int32@,System.Int32)')
+  - [AddLocalhostUrl(scheme,port,segments)](#M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-ICollection{System-String},System-String,System-Int32,System-String[]- 'Bb.UriExtensions.AddLocalhostUrl(System.Collections.Generic.ICollection{System.String},System.String,System.Int32,System.String[])')
+  - [AddLocalhostUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@,System.String[])')
+  - [AddLocalhostUrlWithDynamicPort(scheme,host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.String,System.Int32@,System.String[])')
+  - [AddLocalhostUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.ICollection{System.String},System.String,System.Int32@,System.String[])')
+  - [AddLocalhostUrlWithDynamicPort(scheme,host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostUrlWithDynamicPort(System.Collections.Generic.ICollection{System.String},System.String,System.String,System.Int32@,System.String[])')
+  - [AddUrl(scheme,hostName,port,segments)](#M-Bb-UriExtensions-AddUrl-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32,System-String[]- 'Bb.UriExtensions.AddUrl(System.Collections.Generic.List{System.Uri},System.String,System.String,System.Int32,System.String[])')
+  - [AddUrl(scheme,hostName,port,segments)](#M-Bb-UriExtensions-AddUrl-System-Collections-Generic-ICollection{System-String},System-String,System-String,System-Int32,System-String[]- 'Bb.UriExtensions.AddUrl(System.Collections.Generic.ICollection{System.String},System.String,System.String,System.Int32,System.String[])')
   - [Combine(parts)](#M-Bb-UriExtensions-Combine-System-String[]- 'Bb.UriExtensions.Combine(System.String[])')
   - [ConcatUrl(urls)](#M-Bb-UriExtensions-ConcatUrl-System-Collections-Generic-IEnumerable{System-Uri}- 'Bb.UriExtensions.ConcatUrl(System.Collections.Generic.IEnumerable{System.Uri})')
   - [ConcatUrl(sb,urls)](#M-Bb-UriExtensions-ConcatUrl-System-Collections-Generic-IEnumerable{System-Uri},System-Text-StringBuilder- 'Bb.UriExtensions.ConcatUrl(System.Collections.Generic.IEnumerable{System.Uri},System.Text.StringBuilder)')
   - [EncodeIllegalCharacters(s,encodeSpaceAsPlus)](#M-Bb-UriExtensions-EncodeIllegalCharacters-System-String,System-Boolean- 'Bb.UriExtensions.EncodeIllegalCharacters(System.String,System.Boolean)')
   - [ToUri(url,segments)](#M-Bb-UriExtensions-ToUri-System-String,System-String[]- 'Bb.UriExtensions.ToUri(System.String,System.String[])')
   - [ToUri(scheme,host,port,segments)](#M-Bb-UriExtensions-ToUri-System-String,System-String,System-Int32,System-String[]- 'Bb.UriExtensions.ToUri(System.String,System.String,System.Int32,System.String[])')
+  - [ToUri(scheme,host,port,segments)](#M-Bb-UriExtensions-ToUri-System-String,System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.ToUri(System.String,System.String,System.Int32@,System.String[])')
 
 <a name='T-Bb-Crc32'></a>
 ## Crc32 `type`
@@ -574,8 +581,8 @@ Uri uri = HttpHelper.GetLocalUri(true, "localhost", 8080);
 
 Bb
 
-<a name='M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@-'></a>
-### AddLocalhostSecureUrlWithDynamicPort(host,startingPort) `method`
+<a name='M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments) `method`
 
 ##### Summary
 
@@ -591,6 +598,26 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | ---- | ---- | ----------- |
 | host | [System.Collections.Generic.List{System.Uri}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Uri}') | The host name. if null localhost is used by default |
 | startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
+
+<a name='M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| host | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The host name. if null localhost is used by default |
+| startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
 
 <a name='M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-Int32-'></a>
 ### AddLocalhostUrl(scheme,startPorts,count) `method`
@@ -611,8 +638,8 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | startPorts | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The starting range port |
 | count | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The count range port |
 
-<a name='M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32-'></a>
-### AddLocalhostUrl(scheme,port) `method`
+<a name='M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-List{System-Uri},System-String,System-Int32,System-String[]-'></a>
+### AddLocalhostUrl(scheme,port,segments) `method`
 
 ##### Summary
 
@@ -628,9 +655,48 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | ---- | ---- | ----------- |
 | scheme | [System.Collections.Generic.List{System.Uri}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Uri}') | The scheme protocol. |
 | port | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The port to listen |
+| segments | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The segments to add to the url |
 
-<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@-'></a>
-### AddLocalhostUrlWithDynamicPort(host,startingPort) `method`
+<a name='M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-Int32-'></a>
+### AddLocalhostUrl(scheme,startPorts,count) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| scheme | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The scheme protocol. |
+| startPorts | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The starting range port |
+| count | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The count range port |
+
+<a name='M-Bb-UriExtensions-AddLocalhostUrl-System-Collections-Generic-ICollection{System-String},System-String,System-Int32,System-String[]-'></a>
+### AddLocalhostUrl(scheme,port,segments) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| scheme | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The scheme protocol. |
+| port | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The port to listen |
+| segments | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The segments to add to the url |
+
+<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostUrlWithDynamicPort(host,startingPort,segments) `method`
 
 ##### Summary
 
@@ -646,9 +712,10 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | ---- | ---- | ----------- |
 | host | [System.Collections.Generic.List{System.Uri}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Uri}') | The host name. if null localhost is used by default |
 | startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
 
-<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32@-'></a>
-### AddLocalhostUrlWithDynamicPort(scheme,host,startingPort) `method`
+<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostUrlWithDynamicPort(scheme,host,startingPort,segments) `method`
 
 ##### Summary
 
@@ -665,9 +732,49 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | scheme | [System.Collections.Generic.List{System.Uri}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Uri}') | The scheme protocol. |
 | host | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The host name. if null localhost is used by default |
 | startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
 
-<a name='M-Bb-UriExtensions-AddUrl-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32-'></a>
-### AddUrl(scheme,hostName,port) `method`
+<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostUrlWithDynamicPort(host,startingPort,segments) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| host | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The host name. if null localhost is used by default |
+| startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
+
+<a name='M-Bb-UriExtensions-AddLocalhostUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-String,System-Int32@,System-String[]-'></a>
+### AddLocalhostUrlWithDynamicPort(scheme,host,startingPort,segments) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| scheme | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The scheme protocol. |
+| host | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The host name. if null localhost is used by default |
+| startingPort | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | starting port to search. |
+| segments | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') | The segments to add to the url |
+
+<a name='M-Bb-UriExtensions-AddUrl-System-Collections-Generic-List{System-Uri},System-String,System-String,System-Int32,System-String[]-'></a>
+### AddUrl(scheme,hostName,port,segments) `method`
 
 ##### Summary
 
@@ -684,6 +791,27 @@ Adds an [](#!-Url 'Url') on the list of listeners.
 | scheme | [System.Collections.Generic.List{System.Uri}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Uri}') | The scheme protocol. |
 | hostName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The host name to listen |
 | port | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The port to listen. |
+| segments | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The segments to add to the url |
+
+<a name='M-Bb-UriExtensions-AddUrl-System-Collections-Generic-ICollection{System-String},System-String,System-String,System-Int32,System-String[]-'></a>
+### AddUrl(scheme,hostName,port,segments) `method`
+
+##### Summary
+
+Adds an [](#!-Url 'Url') on the list of listeners.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| scheme | [System.Collections.Generic.ICollection{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{System.String}') | The scheme protocol. |
+| hostName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The host name to listen |
+| port | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The port to listen. |
+| segments | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The segments to add to the url |
 
 <a name='M-Bb-UriExtensions-Combine-System-String[]-'></a>
 ### Combine(parts) `method`
@@ -825,4 +953,31 @@ Create uri from string and segments
 
 ```csharp
 Uri uri = @"http".ToUri("localhost", 80, "segment1", , "segment2");
+```
+
+<a name='M-Bb-UriExtensions-ToUri-System-String,System-String,System-Int32@,System-String[]-'></a>
+### ToUri(scheme,host,port,segments) `method`
+
+##### Summary
+
+Create uri from string and segments
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| scheme | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| host | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the first port available |
+| port | [System.Int32@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32@ 'System.Int32@') |  |
+| segments | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') |  |
+
+##### Example
+
+```csharp
+int port = 80;
+Uri uri = @"http".ToUri("localhost", ref int port, "segment1", , "segment2");
 ```
