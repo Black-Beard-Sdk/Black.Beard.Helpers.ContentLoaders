@@ -9,6 +9,59 @@ namespace Bb
     {
 
 
+
+        /// <summary>
+        /// return true if the file path is absolute
+        /// </summary>
+        /// <param name="path">path to evaluate</param>
+        /// <example>
+        /// <code lang="csharp">
+        ///     if("file".FilePathIsAbsolute())
+        ///     {
+        ///     }
+        /// </code>
+        /// </example>
+        /// <returns></returns>
+        public static bool FilePathIsAbsolute(this string path)
+        {
+
+            if (!string.IsNullOrEmpty(path))
+            {
+                var f = path.AsFile();
+                if (f.FullName == path)
+                    return true;
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// return true if the directory path is absolute
+        /// </summary>
+        /// <param name="path">path to evaluate</param>
+        /// <returns></returns>
+        /// <example>
+        /// <code lang="csharp">
+        ///     if("directory".DirectoryPathIsAbsolute())
+        ///     {
+        ///     }
+        /// </code>
+        /// </example>
+        public static bool DirectoryPathIsAbsolute(this string path)
+        {
+
+            if (!string.IsNullOrEmpty(path))
+            {
+                var f = path.AsDirectory();
+                if (f.FullName == path)
+                    return true;
+            }
+
+            return false;
+
+        }
+
         /// <summary>
         /// Concatenate the directory with the segments
         /// </summary>

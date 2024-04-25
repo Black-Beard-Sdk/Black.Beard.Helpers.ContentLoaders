@@ -23,6 +23,8 @@
   - [CreateFolderIfNotExists(self)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.IO.DirectoryInfo)')
   - [DeleteFolderIfExists(self,recursive)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.String,System.Boolean)')
   - [DeleteFolderIfExists(self)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.IO.DirectoryInfo,System.Boolean)')
+  - [DirectoryPathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-DirectoryPathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.DirectoryPathIsAbsolute(System.String)')
+  - [FilePathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-FilePathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.FilePathIsAbsolute(System.String)')
 - [HttpHelper](#T-Bb-HttpHelper 'Bb.HttpHelper')
   - [GetAvailablePort(startingPort)](#M-Bb-HttpHelper-GetAvailablePort-System-Int32- 'Bb.HttpHelper.GetAvailablePort(System.Int32)')
   - [GetLocalUri(securised,port)](#M-Bb-HttpHelper-GetLocalUri-System-Boolean,System-Int32- 'Bb.HttpHelper.GetLocalUri(System.Boolean,System.Int32)')
@@ -489,6 +491,56 @@ Delete the directory if not exists
 
 ```csharp
 "c:\\temp\\".AsDirectory().DeleteFolderIfExists();
+```
+
+<a name='M-Bb-DirectoryInfoExtension-DirectoryPathIsAbsolute-System-String-'></a>
+### DirectoryPathIsAbsolute(path) `method`
+
+##### Summary
+
+return true if the directory path is absolute
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | path to evaluate |
+
+##### Example
+
+```csharp
+    if("directory".DirectoryPathIsAbsolute())
+    {
+    }
+```
+
+<a name='M-Bb-DirectoryInfoExtension-FilePathIsAbsolute-System-String-'></a>
+### FilePathIsAbsolute(path) `method`
+
+##### Summary
+
+return true if the file path is absolute
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | path to evaluate |
+
+##### Example
+
+```csharp
+    if("file".FilePathIsAbsolute())
+    {
+    }
 ```
 
 <a name='T-Bb-HttpHelper'></a>
