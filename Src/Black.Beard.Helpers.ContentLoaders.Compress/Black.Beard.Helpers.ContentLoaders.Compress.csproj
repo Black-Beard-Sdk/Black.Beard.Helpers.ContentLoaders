@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SharpCompress" Version="0.33.0" />
+		<PackageReference Include="SharpCompress" Version="0.37.2" />
 		<PackageReference Include="Vsxmd" Version="1.4.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
