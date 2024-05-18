@@ -148,19 +148,24 @@ namespace Bb
         /// Serializes with indentation the specified object.
         /// </summary>
         /// <param name="self">The self object to serialize.</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/></param>
+        /// <returns></returns>
+        public static string? Serialize(this object self, JsonSerializerOptions options)
+        {
+            if (self != null)
+                return JsonSerializer.Serialize(self, options);
+            return default;
+        }
+
+        /// <summary>
+        /// Serializes with indentation the specified object.
+        /// </summary>
+        /// <param name="self">The self object to serialize.</param>
         /// <param name="indented">if set to <c>true</c> [indented].</param>
         /// <returns></returns>
         public static string? Serialize(this object self, bool indented)
         {
-
-            if (self != null)
-            {
-                string jsonString = JsonSerializer.Serialize(self, new JsonSerializerOptions() { WriteIndented = indented });
-                return jsonString;
-            }
-
-            return default;
-
+            return self.Serialize(new JsonSerializerOptions() { WriteIndented = indented });
         }
 
         /// <summary>
