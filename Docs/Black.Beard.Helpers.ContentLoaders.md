@@ -10,6 +10,7 @@
   - [Download(url,fileOutput,initializer)](#M-Bb-ContentHelper-Download-System-Uri,System-IO-FileInfo,System-Action{System-Net-Http-HttpClient}- 'Bb.ContentHelper.Download(System.Uri,System.IO.FileInfo,System.Action{System.Net.Http.HttpClient})')
   - [LoadContentFromText(text)](#M-Bb-ContentHelper-LoadContentFromText-System-Byte[]- 'Bb.ContentHelper.LoadContentFromText(System.Byte[])')
   - [RegisterEncoding()](#M-Bb-ContentHelper-RegisterEncoding 'Bb.ContentHelper.RegisterEncoding')
+  - [Serialize(self,options)](#M-Bb-ContentHelper-Serialize-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Serialize(System.Object,System.Text.Json.JsonSerializerOptions)')
   - [Serialize(self,indented)](#M-Bb-ContentHelper-Serialize-System-Object,System-Boolean- 'Bb.ContentHelper.Serialize(System.Object,System.Boolean)')
 
 <a name='T-Bb-ContentHelper'></a>
@@ -126,6 +127,24 @@ This method has no parameters.
 ```csharp
 ContentHelper.RegisterEncoding();
 ```
+
+<a name='M-Bb-ContentHelper-Serialize-System-Object,System-Text-Json-JsonSerializerOptions-'></a>
+### Serialize(self,options) `method`
+
+##### Summary
+
+Serializes with indentation the specified object.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The self object to serialize. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |
 
 <a name='M-Bb-ContentHelper-Serialize-System-Object,System-Boolean-'></a>
 ### Serialize(self,indented) `method`
