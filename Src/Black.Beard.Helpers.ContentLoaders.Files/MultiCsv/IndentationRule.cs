@@ -3,9 +3,17 @@ using System.Collections.Generic;
 
 namespace Bb.MultiCsv
 {
+
+    /// <summary>
+    /// Indentation rule
+    /// </summary>
     public class IndentationRule
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IndentationRule"/> class.
+        /// </summary>
+        /// <param name="rule"></param>
         public IndentationRule(string rule)
         {
             var items = rule.Trim().Split(':');
@@ -17,8 +25,14 @@ namespace Bb.MultiCsv
         
         }
 
+        /// <summary>
+        /// Key of the rule
+        /// </summary>
         public string Key { get; }
 
+        /// <summary>
+        /// Items of the rule
+        /// </summary>
         public HashSet<string> Children { get; }
 
         internal void Merge(IndentationRule rule)

@@ -1,4 +1,5 @@
 using Bb;
+using System.Diagnostics;
 
 namespace FileTests
 {
@@ -14,7 +15,7 @@ namespace FileTests
 
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestLoadCsv()
         {
 
             var file = Path.Combine(Environment.CurrentDirectory, "test1.csv").AsFile();
@@ -24,6 +25,17 @@ namespace FileTests
             }
 
         }
-           
+
+        public class Box
+        {
+
+            public int Total { get; set; }
+
+            public int Value { get; set; }
+            public bool IsLocker { get; internal set; }
+        }
+
+    
     }
+
 }

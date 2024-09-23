@@ -71,7 +71,7 @@ namespace Bb.MultiCsv
                 else
                 {
                     var k = s[0];
-                    _Informations.Metadatas.Add(k[1..], string.Join(";", s.Skip(1).ToArray()));
+                    _Informations.Metadatas.Add(k[1..], string.Join(";", s.Skip(1).ToArray()).Trim(';'));
                 }
                 _Index++;
             }

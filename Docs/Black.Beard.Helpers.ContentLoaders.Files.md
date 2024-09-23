@@ -47,10 +47,13 @@
   - [LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserialize``1(System.IO.FileInfo,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
   - [LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserialize``1(System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
   - [LoadJsonFromFile(self,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadJsonFromFile-System-String,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadJsonFromFile(System.String,System.Text.Encoding)')
+  - [LoadMultiCsv(file)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String)')
+  - [LoadMultiCsv(file,rulePayload,initializer)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String,System.String,System.Action{Bb.MultiCsv.FileReader})')
   - [LoadMultiCsv(file,rules)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,Bb-MultiCsv-IndentationRules- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String,Bb.MultiCsv.IndentationRules)')
-  - [LoadMultiCsv(file,rules)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,Bb-MultiCsv-IndentationRules- 'Bb.ContentHelperFiles.LoadMultiCsv(System.IO.FileInfo,Bb.MultiCsv.IndentationRules)')
-  - [LoadMultiCsv(file,rulePayload)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,System-String- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String,System.String)')
   - [LoadMultiCsv(file,rulePayload)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,System-String- 'Bb.ContentHelperFiles.LoadMultiCsv(System.IO.FileInfo,System.String)')
+  - [LoadMultiCsv(file,rulePayload,initializer)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,System-String,System-Action{Bb-MultiCsv-FileReader}- 'Bb.ContentHelperFiles.LoadMultiCsv(System.IO.FileInfo,System.String,System.Action{Bb.MultiCsv.FileReader})')
+  - [LoadMultiCsv(file)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo- 'Bb.ContentHelperFiles.LoadMultiCsv(System.IO.FileInfo)')
+  - [LoadMultiCsv(file,rules,initializer)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,Bb-MultiCsv-IndentationRules,System-Action{Bb-MultiCsv-FileReader}- 'Bb.ContentHelperFiles.LoadMultiCsv(System.IO.FileInfo,Bb.MultiCsv.IndentationRules,System.Action{Bb.MultiCsv.FileReader})')
   - [LoadXmlFromFile(sourcePath,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadXmlFromFile-System-String,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadXmlFromFile(System.String,System.Text.Encoding)')
   - [LoadXmlFromFile(sourcePath,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadXmlFromFile-System-IO-FileInfo,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadXmlFromFile(System.IO.FileInfo,System.Text.Encoding)')
   - [Md5(filePath)](#M-Bb-ContentHelperFiles-Md5-System-String- 'Bb.ContentHelperFiles.Md5(System.String)')
@@ -241,10 +244,24 @@
   - [FileInfo](#P-Bb-MultiCsv-FileInformations-FileInfo 'Bb.MultiCsv.FileInformations.FileInfo')
   - [Headers](#P-Bb-MultiCsv-FileInformations-Headers 'Bb.MultiCsv.FileInformations.Headers')
   - [GetHeader(e)](#M-Bb-MultiCsv-FileInformations-GetHeader-System-String,System-String- 'Bb.MultiCsv.FileInformations.GetHeader(System.String,System.String)')
+- [FileReader](#T-Bb-MultiCsv-FileReader 'Bb.MultiCsv.FileReader')
+  - [FileInformations](#P-Bb-MultiCsv-FileReader-FileInformations 'Bb.MultiCsv.FileReader.FileInformations')
+  - [FileReadFile(filePath,rulePayload,initializer)](#M-Bb-MultiCsv-FileReader-FileReadFile-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}- 'Bb.MultiCsv.FileReader.FileReadFile(System.String,System.String,System.Action{Bb.MultiCsv.FileReader})')
+  - [FileReadFile(filePath,rulePayload,initializer)](#M-Bb-MultiCsv-FileReader-FileReadFile-System-String,Bb-MultiCsv-IndentationRules,System-Action{Bb-MultiCsv-FileReader}- 'Bb.MultiCsv.FileReader.FileReadFile(System.String,Bb.MultiCsv.IndentationRules,System.Action{Bb.MultiCsv.FileReader})')
+  - [See(see,filter)](#M-Bb-MultiCsv-FileReader-See-System-String,System-Func{Bb-MultiCsv-Block,System-Boolean}- 'Bb.MultiCsv.FileReader.See(System.String,System.Func{Bb.MultiCsv.Block,System.Boolean})')
 - [HeaderReference](#T-Bb-MultiCsv-HeaderReference 'Bb.MultiCsv.HeaderReference')
   - [#ctor(headerName)](#M-Bb-MultiCsv-HeaderReference-#ctor-System-String,System-String- 'Bb.MultiCsv.HeaderReference.#ctor(System.String,System.String)')
   - [LabelLine](#P-Bb-MultiCsv-HeaderReference-LabelLine 'Bb.MultiCsv.HeaderReference.LabelLine')
   - [Schema](#P-Bb-MultiCsv-HeaderReference-Schema 'Bb.MultiCsv.HeaderReference.Schema')
+- [IndentationRule](#T-Bb-MultiCsv-IndentationRule 'Bb.MultiCsv.IndentationRule')
+  - [#ctor(rule)](#M-Bb-MultiCsv-IndentationRule-#ctor-System-String- 'Bb.MultiCsv.IndentationRule.#ctor(System.String)')
+  - [Children](#P-Bb-MultiCsv-IndentationRule-Children 'Bb.MultiCsv.IndentationRule.Children')
+  - [Key](#P-Bb-MultiCsv-IndentationRule-Key 'Bb.MultiCsv.IndentationRule.Key')
+- [IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules')
+  - [#ctor(payload)](#M-Bb-MultiCsv-IndentationRules-#ctor-System-String- 'Bb.MultiCsv.IndentationRules.#ctor(System.String)')
+  - [HasRule](#P-Bb-MultiCsv-IndentationRules-HasRule 'Bb.MultiCsv.IndentationRules.HasRule')
+  - [Equals(obj)](#M-Bb-MultiCsv-IndentationRules-Equals-System-Object- 'Bb.MultiCsv.IndentationRules.Equals(System.Object)')
+  - [EvaluateIfEmbeddedInParent(parent,child)](#M-Bb-MultiCsv-IndentationRules-EvaluateIfEmbeddedInParent-Bb-MultiCsv-Block,Bb-MultiCsv-Block- 'Bb.MultiCsv.IndentationRules.EvaluateIfEmbeddedInParent(Bb.MultiCsv.Block,Bb.MultiCsv.Block)')
 - [Lexer](#T-Bb-MultiCsv-Lexer 'Bb.MultiCsv.Lexer')
   - [#ctor(file,encoding)](#M-Bb-MultiCsv-Lexer-#ctor-System-String,System-Text-Encoding- 'Bb.MultiCsv.Lexer.#ctor(System.String,System.Text.Encoding)')
   - [Current](#P-Bb-MultiCsv-Lexer-Current 'Bb.MultiCsv.Lexer.Current')
@@ -1075,6 +1092,42 @@ the json document [JsonDocument](http://msdn.microsoft.com/query/dev14.query?app
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
+<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-String-'></a>
+### LoadMultiCsv(file) `method`
+
+##### Summary
+
+Loads the multi CSV.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The file. |
+
+<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}-'></a>
+### LoadMultiCsv(file,rulePayload,initializer) `method`
+
+##### Summary
+
+Loads the multi CSV.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The file. |
+| rulePayload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The rule payload. |
+| initializer | [System.Action{Bb.MultiCsv.FileReader}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.MultiCsv.FileReader}') | customize the reader. |
+
 <a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,Bb-MultiCsv-IndentationRules-'></a>
 ### LoadMultiCsv(file,rules) `method`
 
@@ -1093,42 +1146,6 @@ Loads the multi CSV.
 | file | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The file. |
 | rules | [Bb.MultiCsv.IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules') | The rules. |
 
-<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,Bb-MultiCsv-IndentationRules-'></a>
-### LoadMultiCsv(file,rules) `method`
-
-##### Summary
-
-Loads the multi CSV.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The file. |
-| rules | [Bb.MultiCsv.IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules') | The rules. |
-
-<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,System-String-'></a>
-### LoadMultiCsv(file,rulePayload) `method`
-
-##### Summary
-
-Loads the multi CSV.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| file | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The file. |
-| rulePayload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The rule payload. |
-
 <a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,System-String-'></a>
 ### LoadMultiCsv(file,rulePayload) `method`
 
@@ -1146,6 +1163,76 @@ Loads the multi CSV.
 | ---- | ---- | ----------- |
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The file. |
 | rulePayload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The rule payload. |
+
+<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,System-String,System-Action{Bb-MultiCsv-FileReader}-'></a>
+### LoadMultiCsv(file,rulePayload,initializer) `method`
+
+##### Summary
+
+Loads the multi CSV.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The file. |
+| rulePayload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The rule payload. |
+| initializer | [System.Action{Bb.MultiCsv.FileReader}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.MultiCsv.FileReader}') | customize the reader. |
+
+##### Example
+
+```Csharp
+   var file = @"C:\Users\...\file.ext".AsFile();
+   var f = file.LoadMultiCsv("BlockName1:SubBlock1|SubBlock2; SubBlock2|SubBlock3",
+       c =&gt;
+       {
+           c.See("BlockName1", (c) =&gt;
+           {
+               return true;
+           });
+       }
+       );
+```
+
+<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo-'></a>
+### LoadMultiCsv(file) `method`
+
+##### Summary
+
+Loads the multi CSV.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The file. |
+
+<a name='M-Bb-ContentHelperFiles-LoadMultiCsv-System-IO-FileInfo,Bb-MultiCsv-IndentationRules,System-Action{Bb-MultiCsv-FileReader}-'></a>
+### LoadMultiCsv(file,rules,initializer) `method`
+
+##### Summary
+
+Loads the multi CSV.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The file to read. |
+| rules | [Bb.MultiCsv.IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules') | The rules. |
+| initializer | [System.Action{Bb.MultiCsv.FileReader}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.MultiCsv.FileReader}') | customize the reader. |
 
 <a name='M-Bb-ContentHelperFiles-LoadXmlFromFile-System-String,System-Text-Encoding-'></a>
 ### LoadXmlFromFile(sourcePath,defaultEncoding) `method`
@@ -3727,6 +3814,86 @@ Gets the header.
 | ---- | ---- | ----------- |
 | e | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The e. |
 
+<a name='T-Bb-MultiCsv-FileReader'></a>
+## FileReader `type`
+
+##### Namespace
+
+Bb.MultiCsv
+
+##### Summary
+
+File reader
+
+<a name='P-Bb-MultiCsv-FileReader-FileInformations'></a>
+### FileInformations `property`
+
+##### Summary
+
+File informations
+
+<a name='M-Bb-MultiCsv-FileReader-FileReadFile-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}-'></a>
+### FileReadFile(filePath,rulePayload,initializer) `method`
+
+##### Summary
+
+Initializes a new instance of the [FileReader](#T-Bb-MultiCsv-FileReader 'Bb.MultiCsv.FileReader') class.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| filePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| rulePayload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| initializer | [System.Action{Bb.MultiCsv.FileReader}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.MultiCsv.FileReader}') |  |
+
+<a name='M-Bb-MultiCsv-FileReader-FileReadFile-System-String,Bb-MultiCsv-IndentationRules,System-Action{Bb-MultiCsv-FileReader}-'></a>
+### FileReadFile(filePath,rulePayload,initializer) `method`
+
+##### Summary
+
+Initializes a new instance of the [FileReader](#T-Bb-MultiCsv-FileReader 'Bb.MultiCsv.FileReader') class.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| filePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| rulePayload | [Bb.MultiCsv.IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules') |  |
+| initializer | [System.Action{Bb.MultiCsv.FileReader}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.MultiCsv.FileReader}') |  |
+
+<a name='M-Bb-MultiCsv-FileReader-See-System-String,System-Func{Bb-MultiCsv-Block,System-Boolean}-'></a>
+### See(see,filter) `method`
+
+##### Summary
+
+Intercepts the block to see.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| see | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| filter | [System.Func{Bb.MultiCsv.Block,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{Bb.MultiCsv.Block,System.Boolean}') |  |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') |  |
+
 <a name='T-Bb-MultiCsv-HeaderReference'></a>
 ## HeaderReference `type`
 
@@ -3764,6 +3931,110 @@ Gets the title of the line.
 ##### Summary
 
 Gets the schema of the line.
+
+<a name='T-Bb-MultiCsv-IndentationRule'></a>
+## IndentationRule `type`
+
+##### Namespace
+
+Bb.MultiCsv
+
+##### Summary
+
+Indentation rule
+
+<a name='M-Bb-MultiCsv-IndentationRule-#ctor-System-String-'></a>
+### #ctor(rule) `constructor`
+
+##### Summary
+
+Initializes a new instance of the [IndentationRule](#T-Bb-MultiCsv-IndentationRule 'Bb.MultiCsv.IndentationRule') class.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| rule | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='P-Bb-MultiCsv-IndentationRule-Children'></a>
+### Children `property`
+
+##### Summary
+
+Items of the rule
+
+<a name='P-Bb-MultiCsv-IndentationRule-Key'></a>
+### Key `property`
+
+##### Summary
+
+Key of the rule
+
+<a name='T-Bb-MultiCsv-IndentationRules'></a>
+## IndentationRules `type`
+
+##### Namespace
+
+Bb.MultiCsv
+
+##### Summary
+
+List of rules
+
+<a name='M-Bb-MultiCsv-IndentationRules-#ctor-System-String-'></a>
+### #ctor(payload) `constructor`
+
+##### Summary
+
+Initializes a new instance of the [IndentationRules](#T-Bb-MultiCsv-IndentationRules 'Bb.MultiCsv.IndentationRules') class.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='P-Bb-MultiCsv-IndentationRules-HasRule'></a>
+### HasRule `property`
+
+##### Summary
+
+contains rules
+
+<a name='M-Bb-MultiCsv-IndentationRules-Equals-System-Object-'></a>
+### Equals(obj) `method`
+
+##### Summary
+
+Determines whether the specified object is equal to the current object.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+<a name='M-Bb-MultiCsv-IndentationRules-EvaluateIfEmbeddedInParent-Bb-MultiCsv-Block,Bb-MultiCsv-Block-'></a>
+### EvaluateIfEmbeddedInParent(parent,child) `method`
+
+##### Summary
+
+Return true if the child is embedded in the parent otherwise false if the items have same parent.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| parent | [Bb.MultiCsv.Block](#T-Bb-MultiCsv-Block 'Bb.MultiCsv.Block') | parent |
+| child | [Bb.MultiCsv.Block](#T-Bb-MultiCsv-Block 'Bb.MultiCsv.Block') | item that is maybe a child |
 
 <a name='T-Bb-MultiCsv-Lexer'></a>
 ## Lexer `type`

@@ -22,7 +22,7 @@ namespace Bb.MultiCsv
 
         }
 
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Block"/> class.
         /// </summary>
@@ -90,22 +90,20 @@ namespace Bb.MultiCsv
 
         public IEnumerable<Block> Subs { get => _subs; }
 
-        public void Add(Block block)
+        internal void Add(Block block)
         {
-            if (!_subs.Contains(block))
-                _subs.Add(block);
-            else
-            {
-
-            }
+            _subs.Add(block);
         }
 
+        internal void Remove(Block block)
+        {
+            if (_subs.Contains(block))
+                _subs.Remove(block);
+        }
 
         public T Accept<T>(IVisitor<T> visitor)
         {
-
             return visitor.Visit(this);
-
         }
 
 
@@ -113,5 +111,5 @@ namespace Bb.MultiCsv
 
 
     }
-     
+
 }

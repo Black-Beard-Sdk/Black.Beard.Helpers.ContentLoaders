@@ -4,9 +4,16 @@ using System.Collections.Generic;
 namespace Bb.MultiCsv
 {
 
+    /// <summary>
+    /// List of rules
+    /// </summary>
     public class IndentationRules
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IndentationRules"/> class.
+        /// </summary>
+        /// <param name="payload"></param>
         public IndentationRules(string payload)
         {
 
@@ -25,24 +32,44 @@ namespace Bb.MultiCsv
                     this._rules.Add(rule.Key.Trim(), rule);
             }
 
+            _isNotEmpty = this._rules.Count > 0;
+
         }
 
-        public bool EvaluateIfEmbeddedInParent(Block parent, Block child)
+        /// <summary>
+        /// contains rules
+        /// </summary>
+        public bool HasRule => _isNotEmpty;
+
+        /// <summary>
+        /// Return true if the child is embedded in the parent otherwise false if the items have same parent.
+        /// </summary>
+        /// <param name="parent">parent</param>
+        /// <param name="child">item that is maybe a child</param>
+        /// <returns></returns>
+        internal bool EvaluateIfEmbeddedInParent(Block parent, Block child)
         {
 
-            if (parent == null)
-                throw new NullReferenceException(nameof(parent));
-
-            if (this._rules.TryGetValue(parent.Name, out IndentationRule r))
+            if (_isNotEmpty && this._rules.TryGetValue(parent.Name, out IndentationRule r))
                 return r.Children.Contains(child.Name);
 
             return false;
-            //throw new Exception($"Missing rule for parent {parent.Name}");
 
         }
 
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return obj is IndentationRules rules
+                && _isNotEmpty == rules._isNotEmpty;
+        }
 
         private readonly Dictionary<string, IndentationRule> _rules;
+        private readonly bool _isNotEmpty;
 
     }
 
