@@ -75,6 +75,8 @@
   - [Save(path,content,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-Text-StringBuilder,System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.Text.StringBuilder,System.Text.Encoding)')
   - [Save(filename,payload,encoding)](#M-Bb-ContentHelperFiles-Save-System-String,System-Func{System-String},System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.String,System.Func{System.String},System.Text.Encoding)')
   - [Save(file,payload,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-Func{System-String},System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.Func{System.String},System.Text.Encoding)')
+  - [Save(file,sourceStream,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-IO-Stream,System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.IO.Stream,System.Text.Encoding)')
+  - [Save(file,saveMethod,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-Action{System-IO-FileStream},System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.Action{System.IO.FileStream},System.Text.Encoding)')
   - [Save(filename,document,indented,encoding)](#M-Bb-ContentHelperFiles-Save-System-String,System-Text-Json-JsonDocument,System-Boolean,System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.String,System.Text.Json.JsonDocument,System.Boolean,System.Text.Encoding)')
   - [SerializeAndSaveConfiguration(filename,instance,sourceType)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.Object,System.Type)')
   - [SerializeAndSaveConfiguration(filename,instance,sourceType,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.Object,System.Type,System.Text.Json.JsonSerializerOptions)')
@@ -1659,6 +1661,43 @@ If the directory don't exist. it is created.
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file target |
 | payload | [System.Func{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{System.String}') | function that return the content payload |
 | encoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | encoding for write. if null the data are written in UTF8 |
+
+<a name='M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-IO-Stream,System-Text-Encoding-'></a>
+### Save(file,sourceStream,encoding) `method`
+
+##### Summary
+
+Save the content in the specified file.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') |  |
+| sourceStream | [System.IO.Stream](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.Stream 'System.IO.Stream') |  |
+| encoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') |  |
+
+<a name='M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-Action{System-IO-FileStream},System-Text-Encoding-'></a>
+### Save(file,saveMethod,encoding) `method`
+
+##### Summary
+
+Save the content in the specified file.
+If the directory don't exist. it is created.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file target |
+| saveMethod | [System.Action{System.IO.FileStream}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{System.IO.FileStream}') | method for push data in the stream |
+| encoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | encoding for write. if null the data are written in UTF8 |
+
+##### Example
+
+```SCHARP
+filename.Save(c =&gt; data.SerializeToStream(c));
+```
 
 <a name='M-Bb-ContentHelperFiles-Save-System-String,System-Text-Json-JsonDocument,System-Boolean,System-Text-Encoding-'></a>
 ### Save(filename,document,indented,encoding) `method`

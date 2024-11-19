@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -58,7 +59,7 @@ namespace Bb
         public static void Save(this FileInfo path, StringBuilder content, Encoding encoding = null)
         {
             path.FullName.Save(() => content.ToString(), encoding);
-        }            
+        }
 
         /// <summary>
         /// Save the content in the specified file.
@@ -119,6 +120,7 @@ namespace Bb
             try
             {
                 File.WriteAllText(file.FullName, payload(), encoding ?? Encoding.UTF8);
+                file.Refresh();
             }
             catch (Exception ex)
             {
@@ -128,6 +130,92 @@ namespace Bb
             }
             finally
             {
+                backup.Refresh();
+                if (backup.Exists)
+                    backup.Delete();
+            }
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="sourceStream"></param>
+        /// <param name="encoding"></param>
+        public static void Save(this FileInfo file, Stream sourceStream, Encoding encoding = null)
+        {
+
+            Save(file, fileStream =>
+            {
+                sourceStream.Position = 0;
+                sourceStream.CopyTo(fileStream); 
+            }, encoding);
+
+        }
+
+        /// <summary>
+        /// Save the content in the specified file.
+        /// If the directory don't exist. it is created.
+        /// </summary>
+        /// <param name="file">file target</param>
+        /// <param name="saveMethod">method for push data in the stream</param>
+        /// <param name="encoding">encoding for write. if null the data are written in UTF8</param>
+        /// <example>
+        /// <code lang="SCHARP">
+        /// filename.Save(c => data.SerializeToStream(c));</code>
+        /// </example>
+        public static void Save(this FileInfo file, Action<FileStream> saveMethod, Encoding encoding = null)
+        {
+
+            file.Refresh();
+
+            string filename = file.FullName;
+
+            if (!file.Directory.Exists)
+                file.Directory.Create();
+
+            FileInfo backup = new FileInfo(Path.Combine(file.Directory.FullName, Path.GetFileNameWithoutExtension(file.Name) + ".bck"));
+
+            bool saved = false;
+
+            if (file.Exists)
+            {
+
+                if (backup.Exists)
+                    backup.Delete();
+
+                file.MoveTo(backup.FullName);
+                backup.Refresh();
+
+                saved = true;
+
+                file = new FileInfo(filename);
+                file.Refresh();
+
+            }
+
+            try
+            {
+
+                using (var fileStream = file.OpenWrite())
+                {
+                    saveMethod(fileStream);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(ex.Message);
+                if (saved && backup.Exists)
+                    backup.MoveTo(file.FullName);
+            }
+            finally
+            {
+
+                file.Refresh();
+
                 backup.Refresh();
                 if (backup.Exists)
                     backup.Delete();
@@ -160,7 +248,7 @@ namespace Bb
         {
             filename.Save(() => JsonSerializer.Serialize(document, new JsonSerializerOptions() { WriteIndented = indented }), encoding);
         }
-              
+
 
         /// <summary>
         /// Save the content in the specified file.

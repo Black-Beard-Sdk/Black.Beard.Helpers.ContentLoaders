@@ -157,6 +157,55 @@ namespace Bb
             return default;
         }
 
+
+        /// <summary>
+        /// Serializes the specified self instance in a memory.
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static MemoryStream SerializeToMemory(this object self, JsonSerializerOptions options = null)
+        {
+            var stream = new MemoryStream();
+            self.SerializeToStream(stream, options);
+            if (stream.Position > 0)
+                stream.Position = 0;
+
+            return stream;
+        }
+
+        /// <summary>
+        /// Serializes the specified self instance in the stream.
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="stream"></param>
+        /// <param name="options"></param>
+        public static void SerializeToStream(this object self, Stream stream, JsonSerializerOptions options = null)
+        {
+
+            if (options == null)
+                options = new JsonSerializerOptions() { WriteIndented = true };
+
+            if (self != null)
+            {
+
+                var o = new JsonWriterOptions()
+                {
+                    Indented = options.WriteIndented
+                };
+
+                using (var wrt = new Utf8JsonWriter(stream, o))
+                {
+
+                    JsonSerializer.Serialize(wrt, self, options);
+                    wrt.Flush();
+                }
+
+            }
+
+        }
+
+
         /// <summary>
         /// Serializes with indentation the specified object.
         /// </summary>

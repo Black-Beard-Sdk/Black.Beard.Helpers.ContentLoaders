@@ -1,0 +1,1 @@
+xcopy .\..\Docs\*.md ..\..\Black.Beard.Helpers.ContentLoaders.wiki\Docs\

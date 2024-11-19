@@ -12,6 +12,8 @@
   - [RegisterEncoding()](#M-Bb-ContentHelper-RegisterEncoding 'Bb.ContentHelper.RegisterEncoding')
   - [Serialize(self,options)](#M-Bb-ContentHelper-Serialize-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Serialize(System.Object,System.Text.Json.JsonSerializerOptions)')
   - [Serialize(self,indented)](#M-Bb-ContentHelper-Serialize-System-Object,System-Boolean- 'Bb.ContentHelper.Serialize(System.Object,System.Boolean)')
+  - [SerializeToMemory(self,options)](#M-Bb-ContentHelper-SerializeToMemory-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToMemory(System.Object,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeToStream(self,stream,options)](#M-Bb-ContentHelper-SerializeToStream-System-Object,System-IO-Stream,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToStream(System.Object,System.IO.Stream,System.Text.Json.JsonSerializerOptions)')
 
 <a name='T-Bb-ContentHelper'></a>
 ## ContentHelper `type`
@@ -163,3 +165,36 @@ Serializes with indentation the specified object.
 | ---- | ---- | ----------- |
 | self | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The self object to serialize. |
 | indented | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | if set to `true` [indented]. |
+
+<a name='M-Bb-ContentHelper-SerializeToMemory-System-Object,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeToMemory(self,options) `method`
+
+##### Summary
+
+Serializes the specified self instance in a memory.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |  |
+
+<a name='M-Bb-ContentHelper-SerializeToStream-System-Object,System-IO-Stream,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeToStream(self,stream,options) `method`
+
+##### Summary
+
+Serializes the specified self instance in the stream.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| stream | [System.IO.Stream](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.Stream 'System.IO.Stream') |  |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |  |
