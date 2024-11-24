@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -163,7 +162,7 @@ namespace Bb
         /// <param name="encoding">encoding for write. if null the data are written in UTF8</param>
         /// <example>
         /// <code lang="SCHARP">
-        /// filename.Save(c => data.SerializeToStream(c));</code>
+        /// filename.Save(c =&gt; data.SerializeToStream(c));</code>
         /// </example>
         public static void Save(this FileInfo file, Action<FileStream> saveMethod, Encoding encoding = null)
         {

@@ -218,11 +218,48 @@ namespace Bb
         }
 
         /// <summary>
+        /// Deserializes from the specified stream.
+        /// </summary>
+        /// <param name="stream">source stream</param>
+        /// <param name="targetType">type to generate</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <returns></returns>
+        public static object Deserialize(this Stream stream, Type targetType, JsonSerializerOptions options = null)
+        {
+            return JsonSerializer.Deserialize(stream, targetType, options ?? new JsonSerializerOptions());
+        }
+
+        /// <summary>
+        /// Deserializes from the specified stream.
+        /// </summary>
+        /// <typeparam name="T">type to cast to return</typeparam>
+        /// <param name="stream">source stream</param>
+        /// <param name="targetType">type to generate</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <returns></returns>
+        public static T Deserialize<T>(this Stream stream, Type targetType, JsonSerializerOptions options = null)
+        {
+            return (T)JsonSerializer.Deserialize(stream, targetType, options ?? new JsonSerializerOptions());
+        }
+
+        /// <summary>
+        /// Deserializes from the specified stream.
+        /// </summary>
+        /// <typeparam name="T">type to generate</typeparam>
+        /// <param name="stream">source stream</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <returns></returns>
+        public static T Deserialize<T>(this Stream stream, JsonSerializerOptions options = null)
+        {
+            return JsonSerializer.Deserialize<T>(stream, options ?? new JsonSerializerOptions());
+        }
+
+        /// <summary>
         /// Deserializes the specified self payload.
         /// </summary>
         /// <typeparam name="SourceType">The type of the target type.</typeparam>
         /// <param name="self">The payload.</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
         /// <returns></returns>
         public static SourceType? Deserialize<SourceType>(this string self, JsonSerializerOptions? options = null)
         {
