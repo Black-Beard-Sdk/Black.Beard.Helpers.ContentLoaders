@@ -222,7 +222,7 @@ namespace Bb
         /// </summary>
         /// <param name="stream">source stream</param>
         /// <param name="targetType">type to generate</param>
-        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"/> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
         /// <returns></returns>
         public static object Deserialize(this Stream stream, Type targetType, JsonSerializerOptions options = null)
         {
@@ -235,7 +235,7 @@ namespace Bb
         /// <typeparam name="T">type to cast to return</typeparam>
         /// <param name="stream">source stream</param>
         /// <param name="targetType">type to generate</param>
-        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"/> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
         /// <returns></returns>
         public static T Deserialize<T>(this Stream stream, Type targetType, JsonSerializerOptions options = null)
         {
@@ -247,7 +247,7 @@ namespace Bb
         /// </summary>
         /// <typeparam name="T">type to generate</typeparam>
         /// <param name="stream">source stream</param>
-        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"/> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
         /// <returns></returns>
         public static T Deserialize<T>(this Stream stream, JsonSerializerOptions options = null)
         {
@@ -259,7 +259,7 @@ namespace Bb
         /// </summary>
         /// <typeparam name="SourceType">The type of the target type.</typeparam>
         /// <param name="self">The payload.</param>
-        /// <param name="options">As <see cref="JsonSerializerOptions"> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
+        /// <param name="options">As <see cref="JsonSerializerOptions"/> provides options to be used with <see cref="System.Text.Json.JsonSerializer"/>.</param>
         /// <returns></returns>
         public static SourceType? Deserialize<SourceType>(this string self, JsonSerializerOptions? options = null)
         {
@@ -280,7 +280,7 @@ namespace Bb
         /// </summary>
         /// <param name="self">The payload.</param>
         /// <param name="sourceType">Target type.</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns></returns>
         public static object? Deserialize(this string self, Type sourceType, JsonSerializerOptions? options = null)
         {
@@ -301,7 +301,7 @@ namespace Bb
         /// </summary>
         /// <typeparam name="SourceType">The type of the target type.</typeparam>
         /// <param name="self">the instance to serialize.</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="options"><see cref="JsonSerializerOptions" />options of serialization</param>
         /// <returns></returns>
         public static string? SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions? options = null)
             where SourceType : class
@@ -322,9 +322,9 @@ namespace Bb
         /// <summary>
         /// Deserializes the specified self payload.
         /// </summary>
-        /// <typeparam name="SourceType">The type of the target type.</typeparam>
-        /// <param name="self">the instance to serialize.</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <typeparam name="TargetType">The type of the target type.</typeparam>
+        /// <param name="payload">the instance to serialize.</param>
+        /// <param name="options"><see cref="JsonSerializerOptions" />options of serialization</param>
         /// <returns></returns>
         public static TargetType? DeserializeConfiguration<TargetType>(this string payload, JsonSerializerOptions? options = null)
             where TargetType : class
@@ -335,9 +335,9 @@ namespace Bb
         /// <summary>
         /// Deserializes the specified self payload.
         /// </summary>
-        /// <param name="self">the instance to serialize.</param>
+        /// <param name="payload">the instance to serialize.</param>
         /// <param name="targetType">target Type</param>
-        /// <param name="options"><see cref="JsonSerializerOptions">options of serialization</param>
+        /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns></returns>
         public static object? DeserializeConfiguration(this string payload, Type targetType, JsonSerializerOptions? options = null)
         {
