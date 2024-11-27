@@ -15,10 +15,20 @@ namespace FileTests
 
 
         [TestMethod]
-        public void GenerateSchema()
+        public void GenerateSchema1()
         {
 
             var id = new Uri("http://example.com/schema/TestGeneratedSchema");
+            var schema = typeof(TestGeneratedSchema)
+                .GenerateSchemaForConfiguration(id);
+
+        }
+
+        [TestMethod]
+        public void GenerateSchema2()
+        {
+
+            Uri id = null;
             var schema = typeof(TestGeneratedSchema)
                 .GenerateSchemaForConfiguration(id);
 

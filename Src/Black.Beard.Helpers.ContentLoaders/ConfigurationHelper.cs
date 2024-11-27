@@ -9,16 +9,18 @@ namespace Bb
 
     public static partial class ConfigurationHelper
     {
-      
+
         /// <summary>
         /// Generates a JSON schema from a Type.
         /// </summary>
         /// <param name="type">type to generate.</param>
         /// <returns><see cref="JsonSchemaBuilder"/></returns>
+        /// <remarks>see the documentation : https://docs.json-everything.net/schema/schemagen/data-annotations/</remarks>
         public static string GenerateSchemaForConfiguration(this Type type, Uri? id = null, SchemaGeneratorConfiguration? configuration = null)
         {
 
-            string name = id.ToString() ?? $"http://example.com/schema/{type.Name.Replace("`", "")}";
+            string name = type.Name.Replace("`", "");
+            string _id = id?.ToString() ?? $"http://Black.Beard.com/schemas/{name}";
 
             if (configuration == null)
                 configuration = new SchemaGeneratorConfiguration()
@@ -30,13 +32,13 @@ namespace Bb
 
             var builder = new JsonSchemaBuilder()
                 .Schema("https://json-schema.org/draft/2020-12/schema")
-                .Id($"http://example.com/schema/{name}")
+                .Id(_id)
                 ;
 
             builder = builder
                 .FromType(typeof(ConfigurationSerializer<>)
                     .MakeGenericType(type), configuration);
-          
+
             var result = builder.Serialize(null);
 
             var n = JsonObject.Parse(result).AsObject();

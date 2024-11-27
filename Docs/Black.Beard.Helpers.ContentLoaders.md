@@ -94,6 +94,10 @@ Generates a JSON schema from a Type.
 | ---- | ---- | ----------- |
 | type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | type to generate. |
 
+##### Remarks
+
+see the documentation : https://docs.json-everything.net/schema/schemagen/data-annotations/
+
 <a name='M-Bb-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions-'></a>
 ### Serialize(schemaBuilder,options) `method`
 
