@@ -3,14 +3,19 @@
 
 ## Contents
 
+- [ConfigurationHelper](#T-Bb-ConfigurationHelper 'Bb.ConfigurationHelper')
+  - [DeserializeConfiguration(payload,targetType,options)](#M-Bb-ConfigurationHelper-DeserializeConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ConfigurationHelper.DeserializeConfiguration(System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
+  - [DeserializeConfiguration\`\`1(payload,options)](#M-Bb-ConfigurationHelper-DeserializeConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions- 'Bb.ConfigurationHelper.DeserializeConfiguration``1(System.String,System.Text.Json.JsonSerializerOptions)')
+  - [GenerateSchemaForConfiguration(type)](#M-Bb-ConfigurationHelper-GenerateSchemaForConfiguration-System-Type,System-Uri,Json-Schema-Generation-SchemaGeneratorConfiguration- 'Bb.ConfigurationHelper.GenerateSchemaForConfiguration(System.Type,System.Uri,Json.Schema.Generation.SchemaGeneratorConfiguration)')
+  - [Serialize(schemaBuilder,options)](#M-Bb-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions- 'Bb.ConfigurationHelper.Serialize(Json.Schema.JsonSchemaBuilder,System.Text.Json.JsonSerializerOptions)')
+  - [Serialize(schemaBuilder,options)](#M-Bb-ConfigurationHelper-Serialize-Json-Schema-JsonSchema,System-Text-Json-JsonSerializerOptions- 'Bb.ConfigurationHelper.Serialize(Json.Schema.JsonSchema,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeConfiguration\`\`1(self,options)](#M-Bb-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions- 'Bb.ConfigurationHelper.SerializeConfiguration``1(``0,System.Text.Json.JsonSerializerOptions)')
 - [ContentHelper](#T-Bb-ContentHelper 'Bb.ContentHelper')
   - [ConvertFromBase64(self)](#M-Bb-ContentHelper-ConvertFromBase64-System-String- 'Bb.ContentHelper.ConvertFromBase64(System.String)')
   - [ConvertToBase64(self)](#M-Bb-ContentHelper-ConvertToBase64-System-String- 'Bb.ContentHelper.ConvertToBase64(System.String)')
   - [ConvertToString(self)](#M-Bb-ContentHelper-ConvertToString-System-IO-MemoryStream- 'Bb.ContentHelper.ConvertToString(System.IO.MemoryStream)')
   - [Deserialize(stream,targetType,options)](#M-Bb-ContentHelper-Deserialize-System-IO-Stream,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Deserialize(System.IO.Stream,System.Type,System.Text.Json.JsonSerializerOptions)')
   - [Deserialize(self,sourceType,options)](#M-Bb-ContentHelper-Deserialize-System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Deserialize(System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
-  - [DeserializeConfiguration(payload,targetType,options)](#M-Bb-ContentHelper-DeserializeConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.DeserializeConfiguration(System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
-  - [DeserializeConfiguration\`\`1(payload,options)](#M-Bb-ContentHelper-DeserializeConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.DeserializeConfiguration``1(System.String,System.Text.Json.JsonSerializerOptions)')
   - [Deserialize\`\`1(stream,targetType,options)](#M-Bb-ContentHelper-Deserialize``1-System-IO-Stream,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Deserialize``1(System.IO.Stream,System.Type,System.Text.Json.JsonSerializerOptions)')
   - [Deserialize\`\`1(stream,options)](#M-Bb-ContentHelper-Deserialize``1-System-IO-Stream,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Deserialize``1(System.IO.Stream,System.Text.Json.JsonSerializerOptions)')
   - [Deserialize\`\`1(self,options)](#M-Bb-ContentHelper-Deserialize``1-System-String,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Deserialize``1(System.String,System.Text.Json.JsonSerializerOptions)')
@@ -19,9 +24,135 @@
   - [RegisterEncoding()](#M-Bb-ContentHelper-RegisterEncoding 'Bb.ContentHelper.RegisterEncoding')
   - [Serialize(self,options)](#M-Bb-ContentHelper-Serialize-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.Serialize(System.Object,System.Text.Json.JsonSerializerOptions)')
   - [Serialize(self,indented)](#M-Bb-ContentHelper-Serialize-System-Object,System-Boolean- 'Bb.ContentHelper.Serialize(System.Object,System.Boolean)')
-  - [SerializeConfiguration\`\`1(self,options)](#M-Bb-ContentHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeConfiguration``1(``0,System.Text.Json.JsonSerializerOptions)')
   - [SerializeToMemory(self,options)](#M-Bb-ContentHelper-SerializeToMemory-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToMemory(System.Object,System.Text.Json.JsonSerializerOptions)')
   - [SerializeToStream(self,stream,options)](#M-Bb-ContentHelper-SerializeToStream-System-Object,System-IO-Stream,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToStream(System.Object,System.IO.Stream,System.Text.Json.JsonSerializerOptions)')
+
+<a name='T-Bb-ConfigurationHelper'></a>
+## ConfigurationHelper `type`
+
+##### Namespace
+
+Bb
+
+<a name='M-Bb-ConfigurationHelper-DeserializeConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
+### DeserializeConfiguration(payload,targetType,options) `method`
+
+##### Summary
+
+Deserializes the specified self payload.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
+| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target Type |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+
+<a name='M-Bb-ConfigurationHelper-DeserializeConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions-'></a>
+### DeserializeConfiguration\`\`1(payload,options) `method`
+
+##### Summary
+
+Deserializes the specified self payload.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TargetType | The type of the target type. |
+
+<a name='M-Bb-ConfigurationHelper-GenerateSchemaForConfiguration-System-Type,System-Uri,Json-Schema-Generation-SchemaGeneratorConfiguration-'></a>
+### GenerateSchemaForConfiguration(type) `method`
+
+##### Summary
+
+Generates a JSON schema from a Type.
+
+##### Returns
+
+[JsonSchemaBuilder](#T-Json-Schema-JsonSchemaBuilder 'Json.Schema.JsonSchemaBuilder')
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | type to generate. |
+
+<a name='M-Bb-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions-'></a>
+### Serialize(schemaBuilder,options) `method`
+
+##### Summary
+
+Serialize to string the specified schema.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| schemaBuilder | [Json.Schema.JsonSchemaBuilder](#T-Json-Schema-JsonSchemaBuilder 'Json.Schema.JsonSchemaBuilder') | schema builder |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options for serialization |
+
+<a name='M-Bb-ConfigurationHelper-Serialize-Json-Schema-JsonSchema,System-Text-Json-JsonSerializerOptions-'></a>
+### Serialize(schemaBuilder,options) `method`
+
+##### Summary
+
+Serialize to string the specified schema.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| schemaBuilder | [Json.Schema.JsonSchema](#T-Json-Schema-JsonSchema 'Json.Schema.JsonSchema') | schema builder |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options for serialization |
+
+<a name='M-Bb-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeConfiguration\`\`1(self,options) `method`
+
+##### Summary
+
+Serializes the specified self instance.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [\`\`0](#T-``0 '``0') | the instance to serialize. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| SourceType | The type of the target type. |
 
 <a name='T-Bb-ContentHelper'></a>
 ## ContentHelper `type`
@@ -118,49 +249,6 @@ Deserializes the specified self payload.
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The payload. |
 | sourceType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | Target type. |
 | options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
-
-<a name='M-Bb-ContentHelper-DeserializeConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
-### DeserializeConfiguration(payload,targetType,options) `method`
-
-##### Summary
-
-Deserializes the specified self payload.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
-| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target Type |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
-
-<a name='M-Bb-ContentHelper-DeserializeConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions-'></a>
-### DeserializeConfiguration\`\`1(payload,options) `method`
-
-##### Summary
-
-Deserializes the specified self payload.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TargetType | The type of the target type. |
 
 <a name='M-Bb-ContentHelper-Deserialize``1-System-IO-Stream,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
 ### Deserialize\`\`1(stream,targetType,options) `method`
@@ -327,30 +415,6 @@ Serializes with indentation the specified object.
 | ---- | ---- | ----------- |
 | self | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The self object to serialize. |
 | indented | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | if set to `true` [indented]. |
-
-<a name='M-Bb-ContentHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions-'></a>
-### SerializeConfiguration\`\`1(self,options) `method`
-
-##### Summary
-
-Serializes the specified self instance.
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| self | [\`\`0](#T-``0 '``0') | the instance to serialize. |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| SourceType | The type of the target type. |
 
 <a name='M-Bb-ContentHelper-SerializeToMemory-System-Object,System-Text-Json-JsonSerializerOptions-'></a>
 ### SerializeToMemory(self,options) `method`
