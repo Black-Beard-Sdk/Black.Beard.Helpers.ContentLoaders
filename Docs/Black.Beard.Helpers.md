@@ -6,6 +6,7 @@
 - [Crc32](#T-Bb-Crc32 'Bb.Crc32')
   - [CalculateCrc32()](#M-Bb-Crc32-CalculateCrc32-System-Text-StringBuilder- 'Bb.Crc32.CalculateCrc32(System.Text.StringBuilder)')
   - [CalculateCrc32()](#M-Bb-Crc32-CalculateCrc32-System-String- 'Bb.Crc32.CalculateCrc32(System.String)')
+  - [CalculateCrc32()](#M-Bb-Crc32-CalculateCrc32-System-Byte[]- 'Bb.Crc32.CalculateCrc32(System.Byte[])')
 - [DirectoryInfoExtension](#T-Bb-DirectoryInfoExtension 'Bb.DirectoryInfoExtension')
   - [AsDirectory(self)](#M-Bb-DirectoryInfoExtension-AsDirectory-System-String- 'Bb.DirectoryInfoExtension.AsDirectory(System.String)')
   - [AsFile(self)](#M-Bb-DirectoryInfoExtension-AsFile-System-String- 'Bb.DirectoryInfoExtension.AsFile(System.String)')
@@ -83,6 +84,21 @@ this as the 'crc32' to compute the next chunk.
 This method has no parameters.
 
 <a name='M-Bb-Crc32-CalculateCrc32-System-String-'></a>
+### CalculateCrc32() `method`
+
+##### Summary
+
+Calculate the CRC (Cyclic Redundancy Check) for a range of bytes 
+See RFC1952 for details.
+
+CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
+this as the 'crc32' to compute the next chunk.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Bb-Crc32-CalculateCrc32-System-Byte[]-'></a>
 ### CalculateCrc32() `method`
 
 ##### Summary

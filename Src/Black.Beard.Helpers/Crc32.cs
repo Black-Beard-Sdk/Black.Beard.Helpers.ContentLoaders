@@ -132,6 +132,37 @@ namespace Bb
 
         }
 
+        /// <summary>
+        /// Calculate the CRC (Cyclic Redundancy Check) for a range of bytes 
+        /// See RFC1952 for details.
+        /// 
+        /// CRCs can be computed in chunks, where you take the CRC of the preceding block of data and use
+        /// this as the 'crc32' to compute the next chunk.  
+        /// </summary>  
+        /// <code lang="csharp">
+        ///     var bytes = Encoding.UTF8.GetBytes("Hello World");
+        ///     var crc = Crc32.CalculateCrc32(bytes);
+        /// </code>
+        static public uint CalculateCrc32(this byte[] buffer)
+        {            
+
+            int offset = 0;
+            int length = buffer.Length;
+
+            uint crc32 = 0xffffffffU;
+
+            while (--length >= 0)
+            {
+                var value = (crc32 ^ buffer[offset++]);
+                crc32 = crcTable[value & 0xFF] ^ (crc32 >> 8);
+            }
+
+            crc32 ^= 0xffffffffU;
+
+            return crc32;
+
+        }
+
     }
 
 }

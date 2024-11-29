@@ -81,6 +81,9 @@ namespace Bb
 
         }
 
+
+
+
         /// <summary>
         /// Read the <see cref="MemoryStream" /> and return the result in <see cref="string"/>
         /// </summary>
@@ -292,6 +295,25 @@ namespace Bb
             }
 
             return default;
+
+        }
+        
+        /// <summary>
+        /// Extracts a byte array from a Stream.
+        /// </summary>
+        /// <param name="stream">The Stream.</param>
+        /// <returns>The byte array.</returns>
+        public static byte[] ToBytes(this Stream stream)
+        {
+
+            if (stream == null)
+                return null;
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
 
         }
 
