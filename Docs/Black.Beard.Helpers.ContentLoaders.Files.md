@@ -239,6 +239,10 @@
   - [ReaderClosed](#P-Bb-Csv-ExceptionMessage-ReaderClosed 'Bb.Csv.ExceptionMessage.ReaderClosed')
   - [RecordIndexLessThanZero](#P-Bb-Csv-ExceptionMessage-RecordIndexLessThanZero 'Bb.Csv.ExceptionMessage.RecordIndexLessThanZero')
   - [ResourceManager](#P-Bb-Csv-ExceptionMessage-ResourceManager 'Bb.Csv.ExceptionMessage.ResourceManager')
+- [FileContentTypeDetector](#T-Bb-FileContentTypeDetector 'Bb.FileContentTypeDetector')
+  - [AddDetector(name,detector)](#M-Bb-FileContentTypeDetector-AddDetector-System-String,System-Func{System-String,System-Boolean}- 'Bb.FileContentTypeDetector.AddDetector(System.String,System.Func{System.String,System.Boolean})')
+  - [DetectFileType(filePath)](#M-Bb-FileContentTypeDetector-DetectFileType-System-String- 'Bb.FileContentTypeDetector.DetectFileType(System.String)')
+  - [DetectFileType(filePath)](#M-Bb-FileContentTypeDetector-DetectFileType-System-IO-FileInfo- 'Bb.FileContentTypeDetector.DetectFileType(System.IO.FileInfo)')
 - [FileInformations](#T-Bb-MultiCsv-FileInformations 'Bb.MultiCsv.FileInformations')
   - [#ctor()](#M-Bb-MultiCsv-FileInformations-#ctor 'Bb.MultiCsv.FileInformations.#ctor')
   - [_headers](#F-Bb-MultiCsv-FileInformations-_headers 'Bb.MultiCsv.FileInformations._headers')
@@ -3785,6 +3789,81 @@ Recherche une chaîne localisée semblable à Record index must be 0 or more.
 ##### Summary
 
 Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+
+<a name='T-Bb-FileContentTypeDetector'></a>
+## FileContentTypeDetector `type`
+
+##### Namespace
+
+Bb
+
+##### Summary
+
+Detect the type of document by its content
+
+<a name='M-Bb-FileContentTypeDetector-AddDetector-System-String,System-Func{System-String,System-Boolean}-'></a>
+### AddDetector(name,detector) `method`
+
+##### Summary
+
+Add a new detector to the list of detectors
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | key to return if match |
+| detector | [System.Func{System.String,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{System.String,System.Boolean}') |  |
+
+<a name='M-Bb-FileContentTypeDetector-DetectFileType-System-String-'></a>
+### DetectFileType(filePath) `method`
+
+##### Summary
+
+Detect the type of a file based on its content
+
+##### Returns
+
+a key for identify the content of file ("Unknown", "JSON", "XML", "INI", "PerKey", 
+and more if you add new detector with the method AddDetector)
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| filePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | return an exception if the file is null |
+| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | return an exception if the file is missing |
+
+<a name='M-Bb-FileContentTypeDetector-DetectFileType-System-IO-FileInfo-'></a>
+### DetectFileType(filePath) `method`
+
+##### Summary
+
+Detect the type of a file based on its content
+
+##### Returns
+
+a key for identify the content of file ("Unknown", "JSON", "XML", "INI", "PerKey", 
+and more if you add new detector with the method AddDetector)
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| filePath | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file path of type [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | return an exception if the file is null |
+| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | return an exception if the file is missing |
 
 <a name='T-Bb-MultiCsv-FileInformations'></a>
 ## FileInformations `type`
