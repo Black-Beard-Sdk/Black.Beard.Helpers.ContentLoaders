@@ -10,6 +10,21 @@ namespace FileTests
     {
 
 
+        //[Theory]
+        //[InlineData("file:///C:/path/to/file", "c:\\path\\to\\file")]
+        //[InlineData("C:/path/to/%66ile", "c:\\path\\to\\file")]
+        //[InlineData("C:/path/to/FILE", "c:\\path\\to\\file")]
+        //[InlineData("C:/path/to/%20file", "c:\\path\\to\\ file")]
+        //public void Format_ShouldReturnExpectedResult(string input, string expected)
+        //{
+        //    // Act
+        //    var result = PathHelper.FormatPath(input);
+
+        //    // Assert
+        //    Assert.Equal(expected, result);
+        //}
+
+
         public UnitTest1()
         {
 

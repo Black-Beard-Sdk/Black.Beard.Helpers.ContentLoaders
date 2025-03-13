@@ -8,10 +8,10 @@
   - [CalculateCrc32()](#M-Bb-Crc32-CalculateCrc32-System-String- 'Bb.Crc32.CalculateCrc32(System.String)')
   - [CalculateCrc32()](#M-Bb-Crc32-CalculateCrc32-System-Byte[]- 'Bb.Crc32.CalculateCrc32(System.Byte[])')
 - [DirectoryInfoExtension](#T-Bb-DirectoryInfoExtension 'Bb.DirectoryInfoExtension')
-  - [AsDirectory(self)](#M-Bb-DirectoryInfoExtension-AsDirectory-System-String- 'Bb.DirectoryInfoExtension.AsDirectory(System.String)')
-  - [AsFile(self)](#M-Bb-DirectoryInfoExtension-AsFile-System-String- 'Bb.DirectoryInfoExtension.AsFile(System.String)')
-  - [AsFile(sourceFilePath,filename)](#M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String- 'Bb.DirectoryInfoExtension.AsFile(System.IO.DirectoryInfo,System.String)')
-  - [AsFile(sourceFilePath,filename)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.String)')
+  - [AsDirectory(self,format)](#M-Bb-DirectoryInfoExtension-AsDirectory-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsDirectory(System.String,System.Boolean)')
+  - [AsFile(self,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.Boolean)')
+  - [AsFile(sourceFilePath,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.IO.DirectoryInfo,System.String,System.Boolean)')
+  - [AsFile(sourceFilePath,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.String,System.Boolean)')
   - [Combine(self,segments)](#M-Bb-DirectoryInfoExtension-Combine-System-IO-DirectoryInfo,System-String[]- 'Bb.DirectoryInfoExtension.Combine(System.IO.DirectoryInfo,System.String[])')
   - [Combine(self,segments)](#M-Bb-DirectoryInfoExtension-Combine-System-String,System-String[]- 'Bb.DirectoryInfoExtension.Combine(System.String,System.String[])')
   - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.IO.DirectoryInfo,System.Boolean)')
@@ -20,16 +20,23 @@
   - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.String,System.Boolean)')
   - [CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.String,System.Boolean)')
   - [CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.IO.DirectoryInfo,System.Boolean)')
-  - [CreateFolderIfNotExists(self)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-String- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.String)')
+  - [CreateFolderIfNotExists(self,format)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.String,System.Boolean)')
   - [CreateFolderIfNotExists(self)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.IO.DirectoryInfo)')
   - [DeleteFolderIfExists(self,recursive)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.String,System.Boolean)')
-  - [DeleteFolderIfExists(self)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.IO.DirectoryInfo,System.Boolean)')
+  - [DeleteFolderIfExists(self,recursive)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.IO.DirectoryInfo,System.Boolean)')
   - [DirectoryPathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-DirectoryPathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.DirectoryPathIsAbsolute(System.String)')
   - [FilePathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-FilePathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.FilePathIsAbsolute(System.String)')
+  - [FormatPath(path)](#M-Bb-DirectoryInfoExtension-FormatPath-System-String- 'Bb.DirectoryInfoExtension.FormatPath(System.String)')
+  - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-DirectoryInfo,System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.DirectoryInfo,System.IO.DirectoryInfo)')
+  - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-FileInfo,System-IO-FileInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.FileInfo,System.IO.FileInfo)')
+  - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-String,System-String- 'Bb.DirectoryInfoExtension.IsPathEquals(System.String,System.String)')
 - [HttpHelper](#T-Bb-HttpHelper 'Bb.HttpHelper')
   - [GetAvailablePort(startingPort)](#M-Bb-HttpHelper-GetAvailablePort-System-Int32- 'Bb.HttpHelper.GetAvailablePort(System.Int32)')
   - [GetLocalUri(securised,port)](#M-Bb-HttpHelper-GetLocalUri-System-Boolean,System-Int32- 'Bb.HttpHelper.GetLocalUri(System.Boolean,System.Int32)')
   - [GetUri(securised,host,port)](#M-Bb-HttpHelper-GetUri-System-Boolean,System-String,System-Int32- 'Bb.HttpHelper.GetUri(System.Boolean,System.String,System.Int32)')
+- [PathComparer](#T-Bb-PathComparer 'Bb.PathComparer')
+  - [Equals(x,y)](#M-Bb-PathComparer-Equals-System-String,System-String- 'Bb.PathComparer.Equals(System.String,System.String)')
+  - [GetHashCode(obj)](#M-Bb-PathComparer-GetHashCode-System-String- 'Bb.PathComparer.GetHashCode(System.String)')
 - [UriExtensions](#T-Bb-UriExtensions 'Bb.UriExtensions')
   - [AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@,System.String[])')
   - [AddLocalhostSecureUrlWithDynamicPort(host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.ICollection{System.String},System.String,System.Int32@,System.String[])')
@@ -120,8 +127,8 @@ This method has no parameters.
 
 Bb
 
-<a name='M-Bb-DirectoryInfoExtension-AsDirectory-System-String-'></a>
-### AsDirectory(self) `method`
+<a name='M-Bb-DirectoryInfoExtension-AsDirectory-System-String,System-Boolean-'></a>
+### AsDirectory(self,format) `method`
 
 ##### Summary
 
@@ -129,13 +136,14 @@ Convert text to directory
 
 ##### Returns
 
-
+the [DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo')
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | full path directory name |
+| format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
 ##### Example
 
@@ -143,8 +151,8 @@ Convert text to directory
 var directory = "c:\\temp\\".AsDirectory();
 ```
 
-<a name='M-Bb-DirectoryInfoExtension-AsFile-System-String-'></a>
-### AsFile(self) `method`
+<a name='M-Bb-DirectoryInfoExtension-AsFile-System-String,System-Boolean-'></a>
+### AsFile(self,format) `method`
 
 ##### Summary
 
@@ -152,13 +160,14 @@ Convert text to file info
 
 ##### Returns
 
-
+the [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo')
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | full path filename |
+| format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
 ##### Example
 
@@ -166,8 +175,8 @@ Convert text to file info
 var file = "c:\\temp\\file.cs".AsFile();
 ```
 
-<a name='M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String-'></a>
-### AsFile(sourceFilePath,filename) `method`
+<a name='M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String,System-Boolean-'></a>
+### AsFile(sourceFilePath,filename,format) `method`
 
 ##### Summary
 
@@ -175,7 +184,7 @@ Return a file from a directory and specified filename
 
 ##### Returns
 
-
+the [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo')
 
 ##### Parameters
 
@@ -183,6 +192,7 @@ Return a file from a directory and specified filename
 | ---- | ---- | ----------- |
 | sourceFilePath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | file to copy in the target folder |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
+| format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
 ##### Example
 
@@ -190,8 +200,8 @@ Return a file from a directory and specified filename
 var file = "c:\\temp\\".AsDirectory().AsFile("filename.cs");
 ```
 
-<a name='M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String-'></a>
-### AsFile(sourceFilePath,filename) `method`
+<a name='M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String,System-Boolean-'></a>
+### AsFile(sourceFilePath,filename,format) `method`
 
 ##### Summary
 
@@ -199,7 +209,7 @@ Return a file from a directory and specified filename
 
 ##### Returns
 
-
+the [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo')
 
 ##### Parameters
 
@@ -207,6 +217,7 @@ Return a file from a directory and specified filename
 | ---- | ---- | ----------- |
 | sourceFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file to copy in the target folder |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
+| format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
 ##### Example
 
@@ -223,14 +234,14 @@ Concatenate the directory with the segments
 
 ##### Returns
 
-
+the concatenated path
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') |  |
-| segments | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') |  |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | root directory path |
+| segments | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') | segments to add |
 
 ##### Example
 
@@ -247,14 +258,14 @@ Concatenate the directory path with the segments
 
 ##### Returns
 
-
+the concatenated path
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | first segment |
-| segments | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') |  |
+| segments | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') | segments to add |
 
 ##### Example
 
@@ -416,8 +427,8 @@ return true if the copy is successfully
 "c:\\temp\\filename.cs".AsFile().CopyToDirectory("target path".AsDirectory(), true);
 ```
 
-<a name='M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-String-'></a>
-### CreateFolderIfNotExists(self) `method`
+<a name='M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-String,System-Boolean-'></a>
+### CreateFolderIfNotExists(self,format) `method`
 
 ##### Summary
 
@@ -425,13 +436,14 @@ Create the directory if not exists
 
 ##### Returns
 
-
+source folder to create
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | folder path |
+| format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
 ##### Example
 
@@ -448,13 +460,13 @@ Create the directory if not exists
 
 ##### Returns
 
-
+source folder to create
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') |  |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | folder path |
 
 ##### Example
 
@@ -471,14 +483,14 @@ Delete the directory if exists
 
 ##### Returns
 
-
+source folder to delete
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
-| recursive | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | folder path |
+| recursive | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | delete all children |
 
 ##### Example
 
@@ -487,7 +499,7 @@ Delete the directory if exists
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-IO-DirectoryInfo,System-Boolean-'></a>
-### DeleteFolderIfExists(self) `method`
+### DeleteFolderIfExists(self,recursive) `method`
 
 ##### Summary
 
@@ -495,13 +507,14 @@ Delete the directory if not exists
 
 ##### Returns
 
-
+source folder to delete
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') |  |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | folder path |
+| recursive | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | delete all children |
 
 ##### Example
 
@@ -518,7 +531,7 @@ return true if the directory path is absolute
 
 ##### Returns
 
-
+true if the path is absolute form
 
 ##### Parameters
 
@@ -543,7 +556,7 @@ return true if the file path is absolute
 
 ##### Returns
 
-
+true if the path is absolute form
 
 ##### Parameters
 
@@ -558,6 +571,124 @@ return true if the file path is absolute
     {
     }
 ```
+
+<a name='M-Bb-DirectoryInfoExtension-FormatPath-System-String-'></a>
+### FormatPath(path) `method`
+
+##### Summary
+
+Formats the specified path to a standard format.
+
+##### Returns
+
+The formatted path.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path to format. |
+
+##### Example
+
+```C#
+string path = "file:///C:/Path1";
+string formattedPath = path.FormatPath();
+```
+
+##### Remarks
+
+This method converts the path to a lower-case invariant string and removes URI encoding.
+
+<a name='M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-DirectoryInfo,System-IO-DirectoryInfo-'></a>
+### IsPathEquals(path1,path2) `method`
+
+##### Summary
+
+Determines whether the specified directory paths are equal.
+
+##### Returns
+
+`true` if the specified paths are equal; otherwise, `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path1 | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | The first directory path. |
+| path2 | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | The second directory path. |
+
+##### Example
+
+```C#
+var dir1 = new DirectoryInfo("C:\\Path1");
+var dir2 = new DirectoryInfo("C:\\path1");
+bool areEqual = dir1.IsPathEquals(dir2);
+```
+
+##### Remarks
+
+This method compares the full names of the directories in a case-insensitive manner.
+
+<a name='M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-FileInfo,System-IO-FileInfo-'></a>
+### IsPathEquals(path1,path2) `method`
+
+##### Summary
+
+Determines whether the specified file paths are equal.
+
+##### Returns
+
+`true` if the specified paths are equal; otherwise, `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path1 | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The first file path. |
+| path2 | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | The second file path. |
+
+##### Example
+
+```C#
+var file1 = new FileInfo("C:\\Path1\\file.txt");
+var file2 = new FileInfo("C:\\path1\\FILE.TXT");
+bool areEqual = file1.IsPathEquals(file2);
+```
+
+##### Remarks
+
+This method compares the full names of the files in a case-insensitive manner.
+
+<a name='M-Bb-DirectoryInfoExtension-IsPathEquals-System-String,System-String-'></a>
+### IsPathEquals(path1,path2) `method`
+
+##### Summary
+
+Determines whether the specified string paths are equal.
+
+##### Returns
+
+`true` if the specified paths are equal; otherwise, `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path1 | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The first string path. |
+| path2 | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The second string path. |
+
+##### Example
+
+```C#
+string path1 = "C:\\Path1";
+string path2 = "C:\\path1";
+bool areEqual = path1.IsPathEquals(path2);
+```
+
+##### Remarks
+
+This method compares the formatted paths in a case-insensitive manner.
 
 <a name='T-Bb-HttpHelper'></a>
 ## HttpHelper `type`
@@ -641,6 +772,66 @@ Return a uri with first available port from specified port.
 ```csharp
 Uri uri = HttpHelper.GetLocalUri(true, "localhost", 8080);
 ```
+
+<a name='T-Bb-PathComparer'></a>
+## PathComparer `type`
+
+##### Namespace
+
+Bb
+
+##### Summary
+
+Compares file and directory paths for equality.
+
+<a name='M-Bb-PathComparer-Equals-System-String,System-String-'></a>
+### Equals(x,y) `method`
+
+##### Summary
+
+Determines whether the specified paths are equal.
+
+##### Returns
+
+`true` if the specified paths are equal; otherwise, `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| x | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The first path. |
+| y | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The second path. |
+
+##### Remarks
+
+This method compares the full paths in a case-insensitive manner.
+
+<a name='M-Bb-PathComparer-GetHashCode-System-String-'></a>
+### GetHashCode(obj) `method`
+
+##### Summary
+
+Returns a hash code for the specified path.
+
+##### Returns
+
+A hash code for the specified path.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when the path is null. |
+
+##### Remarks
+
+This method returns a hash code for the full path in a case-insensitive manner.
 
 <a name='T-Bb-UriExtensions'></a>
 ## UriExtensions `type`
