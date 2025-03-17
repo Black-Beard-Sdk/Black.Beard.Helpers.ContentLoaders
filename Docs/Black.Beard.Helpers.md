@@ -10,23 +10,23 @@
 - [DirectoryInfoExtension](#T-Bb-DirectoryInfoExtension 'Bb.DirectoryInfoExtension')
   - [AsDirectory(self,format)](#M-Bb-DirectoryInfoExtension-AsDirectory-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsDirectory(System.String,System.Boolean)')
   - [AsFile(self,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.Boolean)')
-  - [AsFile(sourceFilePath,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.IO.DirectoryInfo,System.String,System.Boolean)')
-  - [AsFile(sourceFilePath,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.String,System.Boolean)')
+  - [AsFile(self,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.IO.DirectoryInfo,System.String,System.Boolean)')
+  - [AsFile(self,filename,format)](#M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.AsFile(System.String,System.String,System.Boolean)')
   - [Combine(self,segments)](#M-Bb-DirectoryInfoExtension-Combine-System-IO-DirectoryInfo,System-String[]- 'Bb.DirectoryInfoExtension.Combine(System.IO.DirectoryInfo,System.String[])')
   - [Combine(self,segments)](#M-Bb-DirectoryInfoExtension-Combine-System-String,System-String[]- 'Bb.DirectoryInfoExtension.Combine(System.String,System.String[])')
-  - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.IO.DirectoryInfo,System.Boolean)')
-  - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.IO.DirectoryInfo,System.String,System.IO.DirectoryInfo,System.Boolean)')
-  - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.IO.DirectoryInfo,System.String,System.String,System.Boolean)')
-  - [Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.String,System.Boolean)')
-  - [CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.String,System.Boolean)')
-  - [CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.IO.DirectoryInfo,System.Boolean)')
+  - [Copy(self,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.IO.DirectoryInfo,System.Boolean)')
+  - [Copy(self,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.IO.DirectoryInfo,System.String,System.IO.DirectoryInfo,System.Boolean)')
+  - [Copy(self,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.IO.DirectoryInfo,System.String,System.String,System.Boolean)')
+  - [Copy(self,filename,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.Copy(System.String,System.String,System.String,System.Boolean)')
+  - [CopyToDirectory(self,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-String,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.String,System.Boolean)')
+  - [CopyToDirectory(self,directoryTargetPath,overwrite)](#M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.CopyToDirectory(System.IO.FileInfo,System.IO.DirectoryInfo,System.Boolean)')
   - [CreateFolderIfNotExists(self,format)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.String,System.Boolean)')
   - [CreateFolderIfNotExists(self)](#M-Bb-DirectoryInfoExtension-CreateFolderIfNotExists-System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.CreateFolderIfNotExists(System.IO.DirectoryInfo)')
   - [DeleteFolderIfExists(self,recursive)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-String,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.String,System.Boolean)')
   - [DeleteFolderIfExists(self,recursive)](#M-Bb-DirectoryInfoExtension-DeleteFolderIfExists-System-IO-DirectoryInfo,System-Boolean- 'Bb.DirectoryInfoExtension.DeleteFolderIfExists(System.IO.DirectoryInfo,System.Boolean)')
   - [DirectoryPathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-DirectoryPathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.DirectoryPathIsAbsolute(System.String)')
   - [FilePathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-FilePathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.FilePathIsAbsolute(System.String)')
-  - [FormatPath(path)](#M-Bb-DirectoryInfoExtension-FormatPath-System-String- 'Bb.DirectoryInfoExtension.FormatPath(System.String)')
+  - [FormatPath(self)](#M-Bb-DirectoryInfoExtension-FormatPath-System-String- 'Bb.DirectoryInfoExtension.FormatPath(System.String)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-DirectoryInfo,System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.DirectoryInfo,System.IO.DirectoryInfo)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-FileInfo,System-IO-FileInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.FileInfo,System.IO.FileInfo)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-String,System-String- 'Bb.DirectoryInfoExtension.IsPathEquals(System.String,System.String)')
@@ -176,7 +176,7 @@ var file = "c:\\temp\\file.cs".AsFile();
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-AsFile-System-IO-DirectoryInfo,System-String,System-Boolean-'></a>
-### AsFile(sourceFilePath,filename,format) `method`
+### AsFile(self,filename,format) `method`
 
 ##### Summary
 
@@ -190,7 +190,7 @@ the [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceFilePath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | file to copy in the target folder |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | file to copy in the target folder |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
@@ -201,7 +201,7 @@ var file = "c:\\temp\\".AsDirectory().AsFile("filename.cs");
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-AsFile-System-String,System-String,System-Boolean-'></a>
-### AsFile(sourceFilePath,filename,format) `method`
+### AsFile(self,filename,format) `method`
 
 ##### Summary
 
@@ -215,7 +215,7 @@ the [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file to copy in the target folder |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file to copy in the target folder |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | format | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | format the path |
 
@@ -274,7 +274,7 @@ var path = "c:\\temp".Combine("subfolder1", "subfolder2", "subfolder3");
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-IO-DirectoryInfo,System-Boolean-'></a>
-### Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite) `method`
+### Copy(self,filename,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -288,7 +288,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceDirectoryPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | source directory where found the file |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | source directory where found the file |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | directoryTargetPath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
@@ -300,7 +300,7 @@ return true if the copy is successfully
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-IO-DirectoryInfo,System-Boolean-'></a>
-### Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite) `method`
+### Copy(self,filename,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -314,7 +314,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceDirectoryPath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | source directory where found the file |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | source directory where found the file |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | directoryTargetPath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
@@ -326,7 +326,7 @@ return true if the copy is successfully
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-Copy-System-IO-DirectoryInfo,System-String,System-String,System-Boolean-'></a>
-### Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite) `method`
+### Copy(self,filename,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -340,7 +340,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceDirectoryPath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | source directory where found the file |
+| self | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | source directory where found the file |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | directoryTargetPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
@@ -352,7 +352,7 @@ return true if the copy is successfully
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-Copy-System-String,System-String,System-String,System-Boolean-'></a>
-### Copy(sourceDirectoryPath,filename,directoryTargetPath,overwrite) `method`
+### Copy(self,filename,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -366,7 +366,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceDirectoryPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | source directory where found the file |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | source directory where found the file |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | filename to copy in the target folder |
 | directoryTargetPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
@@ -378,7 +378,7 @@ return true if the copy is successfully
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-String,System-Boolean-'></a>
-### CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite) `method`
+### CopyToDirectory(self,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -392,7 +392,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceFilePath | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file to copy in the target folder |
+| self | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file to copy in the target folder |
 | directoryTargetPath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
 
@@ -403,7 +403,7 @@ return true if the copy is successfully
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-CopyToDirectory-System-IO-FileInfo,System-IO-DirectoryInfo,System-Boolean-'></a>
-### CopyToDirectory(sourceFilePath,directoryTargetPath,overwrite) `method`
+### CopyToDirectory(self,directoryTargetPath,overwrite) `method`
 
 ##### Summary
 
@@ -417,7 +417,7 @@ return true if the copy is successfully
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sourceFilePath | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file to copy in the target folder |
+| self | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file to copy in the target folder |
 | directoryTargetPath | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | target directory to copy source file |
 | overwrite | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | override file if already exists |
 
@@ -573,7 +573,7 @@ true if the path is absolute form
 ```
 
 <a name='M-Bb-DirectoryInfoExtension-FormatPath-System-String-'></a>
-### FormatPath(path) `method`
+### FormatPath(self) `method`
 
 ##### Summary
 
@@ -587,7 +587,7 @@ The formatted path.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path to format. |
+| self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path to format. |
 
 ##### Example
 

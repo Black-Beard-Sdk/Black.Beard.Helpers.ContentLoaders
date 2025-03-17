@@ -80,6 +80,10 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string Combine(this DirectoryInfo self, params string[] segments)
         {
+
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
             var lst = new string[segments.Length + 1];
             lst[0] = self.FullName;
             segments.CopyTo(lst, 1);
@@ -100,6 +104,10 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string Combine(this string self, params string[] segments)
         {
+
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
+
             var lst = new string[segments.Length + 1];
             lst[0] = self;
             segments.CopyTo(lst, 1);
@@ -122,15 +130,19 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static FileInfo AsFile(this string self, bool format = true)
         {
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
+
             if (format)
-                return new FileInfo(self.FormatPath());
+                self = self.FormatPath();
+
             return new FileInfo(self);
         }
 
         /// <summary>
         /// Return a file from a directory and specified filename
         /// </summary>
-        /// <param name="sourceFilePath">file to copy in the target folder</param>
+        /// <param name="self">file to copy in the target folder</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="format">format the path</param>
         /// <returns>the <see cref="FileInfo"/> </returns>
@@ -140,15 +152,15 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static FileInfo AsFile(this DirectoryInfo sourceFilePath, string filename, bool format = true)
+        public static FileInfo AsFile(this DirectoryInfo self, string filename, bool format = true)
         {
-            return sourceFilePath.Combine(filename).AsFile(format);
+            return self.Combine(filename).AsFile(format);
         }
 
         /// <summary>
         /// Return a file from a directory and specified filename
         /// </summary>
-        /// <param name="sourceFilePath">file to copy in the target folder</param>
+        /// <param name="self">file to copy in the target folder</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="format">format the path</param>
         /// <returns>the <see cref="FileInfo"/> </returns>
@@ -158,9 +170,9 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static FileInfo AsFile(this string sourceFilePath, string filename, bool format = true)
+        public static FileInfo AsFile(this string self, string filename, bool format = true)
         {
-            return sourceFilePath.Combine(filename).AsFile(format);
+            return self.Combine(filename).AsFile(format);
         }
 
 
@@ -179,8 +191,10 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo AsDirectory(this string self, bool format = true)
         {
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
             if (format)
-                return new DirectoryInfo(self.FormatPath());
+                self = self.FormatPath();
             return new DirectoryInfo(self);
         }
 
@@ -216,6 +230,10 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo DeleteFolderIfExists(this string self, bool recursive = false)
         {
+
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
+
             return self.AsDirectory().DeleteFolderIfExists(recursive);
         }
 
@@ -232,6 +250,11 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo CreateFolderIfNotExists(this DirectoryInfo self)
         {
+
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            self.Refresh();
             if (!self.Exists)
                 self.Create();
             return self;
@@ -251,6 +274,11 @@ namespace Bb
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DirectoryInfo DeleteFolderIfExists(this DirectoryInfo self, bool recursive = false)
         {
+
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            self.Refresh();
             if (self.Exists)
             {
                 self.Delete(recursive);
@@ -262,7 +290,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceFilePath">file to copy in the target folder</param>
+        /// <param name="self">file to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
@@ -272,15 +300,23 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool CopyToDirectory(this FileInfo sourceFilePath, string directoryTargetPath, bool overwrite = false)
+        public static bool CopyToDirectory(this FileInfo self, string directoryTargetPath, bool overwrite = false)
         {
 
-            if (!sourceFilePath.Exists)
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            if (string.IsNullOrEmpty(directoryTargetPath))
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            self.Refresh();
+
+            if (!self.Exists)
                 return false;
 
-            var filename = sourceFilePath.Name;
+            var filename = self.Name;
             var fileTarget = directoryTargetPath.Combine(filename);
-            var target = sourceFilePath.CopyTo(fileTarget, overwrite);
+            var target = self.CopyTo(fileTarget, overwrite);
 
             target.Refresh();
 
@@ -291,7 +327,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceFilePath">file to copy in the target folder</param>
+        /// <param name="self">file to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
         /// <returns>return true if the copy is successfully</returns>
@@ -301,15 +337,21 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool CopyToDirectory(this FileInfo sourceFilePath, DirectoryInfo directoryTargetPath, bool overwrite = false)
+        public static bool CopyToDirectory(this FileInfo self, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
 
-            if (!sourceFilePath.Exists)
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            if (directoryTargetPath == null)
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            if (!self.Exists)
                 return false;
 
-            var filename = sourceFilePath.Name;
+            var filename = self.Name;
             var fileTarget = directoryTargetPath.Combine(filename);
-            var target = sourceFilePath.CopyTo(fileTarget, overwrite);
+            var target = self.CopyTo(fileTarget, overwrite);
 
             target.Refresh();
 
@@ -320,7 +362,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceDirectoryPath">source directory where found the file</param>
+        /// <param name="self">source directory where found the file</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
@@ -331,10 +373,19 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Copy(this string sourceDirectoryPath, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
+        public static bool Copy(this string self, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
 
-            var fileSource = sourceDirectoryPath.Combine(filename).AsFile();
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
+
+            if (string.IsNullOrEmpty(filename))
+                throw new ArgumentNullException(nameof(filename));
+
+            if (directoryTargetPath == null)
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            var fileSource = self.Combine(filename).AsFile();
 
             if (!fileSource.Exists)
                 return false;
@@ -350,7 +401,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceDirectoryPath">source directory where found the file</param>
+        /// <param name="self">source directory where found the file</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
@@ -361,9 +412,19 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Copy(this DirectoryInfo sourceDirectoryPath, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
+        public static bool Copy(this DirectoryInfo self, string filename, DirectoryInfo directoryTargetPath, bool overwrite = false)
         {
-            var fileSource = sourceDirectoryPath.Combine(filename).AsFile();
+
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            if (string.IsNullOrEmpty(filename))
+                throw new ArgumentNullException(nameof(filename));
+
+            if (directoryTargetPath == null)
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            var fileSource = self.Combine(filename).AsFile();
 
             if (!fileSource.Exists)
                 return false;
@@ -379,7 +440,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceDirectoryPath">source directory where found the file</param>
+        /// <param name="self">source directory where found the file</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
@@ -390,9 +451,19 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Copy(this DirectoryInfo sourceDirectoryPath, string filename, string directoryTargetPath, bool overwrite = false)
+        public static bool Copy(this DirectoryInfo self, string filename, string directoryTargetPath, bool overwrite = false)
         {
-            var fileSource = sourceDirectoryPath.Combine(filename).AsFile();
+
+            if (self == null)
+                throw new ArgumentNullException(nameof(self));
+
+            if (string.IsNullOrEmpty(filename))
+                throw new ArgumentNullException(nameof(filename));
+
+            if (string.IsNullOrEmpty(directoryTargetPath))
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            var fileSource = self.Combine(filename).AsFile();
 
             if (!fileSource.Exists)
                 return false;
@@ -408,7 +479,7 @@ namespace Bb
         /// <summary>
         /// Copy the specified file to a directory
         /// </summary>
-        /// <param name="sourceDirectoryPath">source directory where found the file</param>
+        /// <param name="self">source directory where found the file</param>
         /// <param name="filename">filename to copy in the target folder</param>
         /// <param name="directoryTargetPath">target directory to copy source file</param>
         /// <param name="overwrite">override file if already exists</param>
@@ -419,10 +490,19 @@ namespace Bb
         /// </code>
         /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Copy(this string sourceDirectoryPath, string filename, string directoryTargetPath, bool overwrite = false)
+        public static bool Copy(this string self, string filename, string directoryTargetPath, bool overwrite = false)
         {
 
-            var fileSource = sourceDirectoryPath.Combine(filename).AsFile();
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
+
+            if (string.IsNullOrEmpty(filename))
+                throw new ArgumentNullException(nameof(filename));
+
+            if (string.IsNullOrEmpty(directoryTargetPath))
+                throw new ArgumentNullException(nameof(directoryTargetPath));
+
+            var fileSource = self.Combine(filename).AsFile();
 
             if (!fileSource.Exists)
                 return false;
@@ -501,7 +581,7 @@ namespace Bb
         /// <summary>
         /// Formats the specified path to a standard format.
         /// </summary>
-        /// <param name="path">The path to format.</param>
+        /// <param name="self">The path to format.</param>
         /// <returns>The formatted path.</returns>
         /// <remarks>
         /// This method converts the path to a lower-case invariant string and removes URI encoding.
@@ -512,19 +592,23 @@ namespace Bb
         /// string formattedPath = path.FormatPath();
         /// </code>
         /// </example>
-        public static string FormatPath(this string path)
+        public static string FormatPath(this string self)
         {
-            if (path.StartsWith("file:///"))
-                path = new Uri(path).LocalPath;
 
-            path = Uri.UnescapeDataString(path);
+            if (string.IsNullOrEmpty(self))
+                throw new ArgumentNullException(nameof(self));
 
-            path = Path.GetFullPath(path).TrimEnd(Path.DirectorySeparatorChar);
+            if (self.StartsWith("file:///"))
+                self = new Uri(self).LocalPath;
+
+            self = Uri.UnescapeDataString(self);
+
+            self = Path.GetFullPath(self).TrimEnd(Path.DirectorySeparatorChar);
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                path = path.ToLowerInvariant();
+                self = self.ToLowerInvariant();
 
-            return path;
+            return self;
 
         }
 
