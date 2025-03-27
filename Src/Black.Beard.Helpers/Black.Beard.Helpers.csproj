@@ -21,6 +21,9 @@
 
 	<PropertyGroup>
 		<VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</RepositoryUrl>
+		<RepositoryType>github</RepositoryType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -28,6 +31,13 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
