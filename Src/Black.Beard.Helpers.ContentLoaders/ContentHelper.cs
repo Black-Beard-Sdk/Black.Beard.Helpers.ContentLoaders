@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace Bb
 {
 
-    public static partial class ContentHelper
+        public static partial class ContentHelper
     {
 
         /// <summary>

@@ -28,6 +28,9 @@
   - [Serialize(self,indented)](#M-Bb-ContentHelper-Serialize-System-Object,System-Boolean- 'Bb.ContentHelper.Serialize(System.Object,System.Boolean)')
   - [SerializeToMemory(self,options)](#M-Bb-ContentHelper-SerializeToMemory-System-Object,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToMemory(System.Object,System.Text.Json.JsonSerializerOptions)')
   - [SerializeToStream(self,stream,options)](#M-Bb-ContentHelper-SerializeToStream-System-Object,System-IO-Stream,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelper.SerializeToStream(System.Object,System.IO.Stream,System.Text.Json.JsonSerializerOptions)')
+- [ContentHelper2](#T-Bb-ContentHelper2 'Bb.ContentHelper2')
+  - [DecryptStringAes256(encryptedText,encryptionKey)](#M-Bb-ContentHelper2-DecryptStringAes256-System-String,System-String- 'Bb.ContentHelper2.DecryptStringAes256(System.String,System.String)')
+  - [EncryptStringAes256(plainText,encryptionKey)](#M-Bb-ContentHelper2-EncryptStringAes256-System-String,System-String- 'Bb.ContentHelper2.EncryptStringAes256(System.String,System.String)')
 
 <a name='T-Bb-ConfigurationHelper'></a>
 ## ConfigurationHelper `type`
@@ -1049,3 +1052,92 @@ using (var memoryStream = new MemoryStream())
 This method serializes an object to a stream in JSON format using System.Text.Json.
 It uses a Utf8JsonWriter to write directly to the stream, which is more efficient than
 serializing to a string first and then writing the string to a stream.
+
+<a name='T-Bb-ContentHelper2'></a>
+## ContentHelper2 `type`
+
+##### Namespace
+
+Bb
+
+<a name='M-Bb-ContentHelper2-DecryptStringAes256-System-String,System-String-'></a>
+### DecryptStringAes256(encryptedText,encryptionKey) `method`
+
+##### Summary
+
+Decrypts an AES-256 encrypted base64 string and returns its original content as a string.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the decrypted content.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| encryptedText | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The base64 encoded string to decrypt. Must not be null or empty. |
+| encryptionKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The encryption key used to encrypt the string. Must be 32 characters long to match AES-256 requirements. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when the input string is null or empty. |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the encryption key is not 32 characters long or contains non-ASCII characters. |
+
+##### Example
+
+```C#
+// Decrypt a string
+string encryptedText = "Base64EncryptedStringHere";
+string encryptionKey = "12345678901234567890123456789012"; // 32 characters
+string decryptedText = encryptedText.DecryptStringAes256(encryptionKey);
+Console.WriteLine($"Decrypted Text: {decryptedText}");
+```
+
+##### Remarks
+
+This method uses AES-256 decryption to securely decrypt the provided base64 encoded string. 
+The encryption key must be exactly 32 characters long to meet the AES-256 key size requirement.
+A 16-byte initialization vector (IV) is used for decryption.
+
+<a name='M-Bb-ContentHelper2-EncryptStringAes256-System-String,System-String-'></a>
+### EncryptStringAes256(plainText,encryptionKey) `method`
+
+##### Summary
+
+Encrypts a string using AES-256 encryption and returns the encrypted content as a base64 string.
+
+##### Returns
+
+A base64 encoded string containing the encrypted content.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| plainText | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The string to encrypt. Must not be null or empty. |
+| encryptionKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The encryption key to use. Must be 32 characters long to match AES-256 requirements. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when the input string is null or empty. |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the encryption key is not 32 characters long or contains non-ASCII characters. |
+
+##### Example
+
+```C#
+// Encrypt a string
+string plainText = "Sensitive data to encrypt";
+string encryptionKey = "12345678901234567890123456789012"; // 32 characters
+string encryptedText = plainText.EncryptStringAes256(encryptionKey);
+Console.WriteLine($"Encrypted Text: {encryptedText}");
+```
+
+##### Remarks
+
+This method uses AES-256 encryption to securely encrypt the provided string. 
+The encryption key must be exactly 32 characters long to meet the AES-256 key size requirement.
+A 16-byte initialization vector (IV) is used for encryption.

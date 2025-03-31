@@ -35,6 +35,8 @@
   - [#ctor(header,colunmName,index)](#M-Bb-MultiCsv-ColumnDefinition-#ctor-Bb-MultiCsv-HeaderReference,System-String,System-Int32- 'Bb.MultiCsv.ColumnDefinition.#ctor(Bb.MultiCsv.HeaderReference,System.String,System.Int32)')
   - [Name](#P-Bb-MultiCsv-ColumnDefinition-Name 'Bb.MultiCsv.ColumnDefinition.Name')
 - [ContentHelperFiles](#T-Bb-ContentHelperFiles 'Bb.ContentHelperFiles')
+  - [DecryptFileEas256(encryptedFilePath,encryptionKey)](#M-Bb-ContentHelperFiles-DecryptFileEas256-System-String,System-String- 'Bb.ContentHelperFiles.DecryptFileEas256(System.String,System.String)')
+  - [EncryptFileAes256(filePath,encryptionKey,outputFilePath)](#M-Bb-ContentHelperFiles-EncryptFileAes256-System-String,System-String,System-String- 'Bb.ContentHelperFiles.EncryptFileAes256(System.String,System.String,System.String)')
   - [EvaluateEncoding(self)](#M-Bb-ContentHelperFiles-EvaluateEncoding-System-String- 'Bb.ContentHelperFiles.EvaluateEncoding(System.String)')
   - [EvaluateEncoding(self)](#M-Bb-ContentHelperFiles-EvaluateEncoding-System-IO-FileInfo- 'Bb.ContentHelperFiles.EvaluateEncoding(System.IO.FileInfo)')
   - [LoadFromFile(sourcePath)](#M-Bb-ContentHelperFiles-LoadFromFile-System-String[]- 'Bb.ContentHelperFiles.LoadFromFile(System.String[])')
@@ -769,6 +771,87 @@ Bb
 ##### Summary
 
 Content helper for managing files
+
+<a name='M-Bb-ContentHelperFiles-DecryptFileEas256-System-String,System-String-'></a>
+### DecryptFileEas256(encryptedFilePath,encryptionKey) `method`
+
+##### Summary
+
+Decrypts an AES-256 encrypted file and returns its original content as a string.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the decrypted content of the file.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| encryptedFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path of the encrypted file to decrypt. Must not be null or empty. |
+| encryptionKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The encryption key used to encrypt the file. Must be 32 characters long to match AES-256 requirements. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | Thrown when the encrypted file does not exist. |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the encryption key is not 32 characters long. |
+
+##### Example
+
+```C#
+// Decrypt a file
+string encryptedFilePath = "example_encrypted.txt";
+string encryptionKey = "12345678901234567890123456789012"; // 32 characters
+string decryptedContent = encryptedFilePath.DecryptFileEas256(encryptionKey);
+Console.WriteLine("Decrypted content:");
+Console.WriteLine(decryptedContent);
+```
+
+##### Remarks
+
+This method uses AES-256 decryption to securely decrypt the contents of the specified file.
+The encryption key must be exactly 32 characters long to meet the AES-256 key size requirement.
+The method also initializes a 16-byte IV (Initialization Vector) with default values.
+
+<a name='M-Bb-ContentHelperFiles-EncryptFileAes256-System-String,System-String,System-String-'></a>
+### EncryptFileAes256(filePath,encryptionKey,outputFilePath) `method`
+
+##### Summary
+
+Encrypts a file using AES-256 encryption and writes the encrypted content to a specified output file.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| filePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path of the file to encrypt. Must not be null or empty. |
+| encryptionKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The encryption key to use. Must be 32 characters long to match AES-256 requirements. |
+| outputFilePath | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path where the encrypted file will be saved. Must not be null or empty. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | Thrown when the input file does not exist. |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the encryption key is not 32 characters long. |
+
+##### Example
+
+```C#
+// Encrypt a file
+string filePath = "example.txt";
+string encryptionKey = "12345678901234567890123456789012"; // 32 characters
+string outputFilePath = "example_encrypted.txt";
+filePath.EncryptFileAes256(encryptionKey, outputFilePath);
+Console.WriteLine("File encrypted successfully.");
+```
+
+##### Remarks
+
+This method uses AES-256 encryption to securely encrypt the contents of the specified file.
+The encryption key must be exactly 32 characters long to meet the AES-256 key size requirement.
+The method also initializes a 16-byte IV (Initialization Vector) with default values.
 
 <a name='M-Bb-ContentHelperFiles-EvaluateEncoding-System-String-'></a>
 ### EvaluateEncoding(self) `method`

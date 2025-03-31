@@ -7,7 +7,7 @@ namespace Randoms.UnitTests
 {
 
     [TestClass]
-    public class UnitTest1
+    public class RandomUnitTest1
     {
 
         [TestMethod]
