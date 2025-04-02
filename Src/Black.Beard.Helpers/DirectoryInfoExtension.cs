@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,6 +16,21 @@ namespace Bb
             _pathComparer = new PathComparer();
         }
 
+
+        /// <summary>
+        /// get the directory of the assembly
+        /// </summary>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        public static DirectoryInfo GetDirectory(this Assembly self)
+        {
+
+            if (!self.IsDynamic && !string.IsNullOrEmpty(self.Location))
+                return new FileInfo(self.Location).Directory;
+
+            return null;
+
+        }
 
         /// <summary>
         /// Determines if a file path is absolute.
