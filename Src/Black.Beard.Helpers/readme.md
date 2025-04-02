@@ -36,6 +36,23 @@ dotnet add package Black.Beard.Helpers
 
 ## Features
 
+### Generic singleton
+use a generic method for store datas in a singleton
+
+```csharp
+using Bb;
+
+// global
+StaticContainer.Set(new MyClass())
+var value = StaticContainer.Get<MyClass>();
+
+// For the current thread
+StaticThreadContainer.Set(new MyClass())
+var value = StaticThreadContainer.Get<MyClass>();
+
+```
+
+
 ### File and Directory Management
 Easily work with files and directories using intuitive extension methods.
 ```csharp

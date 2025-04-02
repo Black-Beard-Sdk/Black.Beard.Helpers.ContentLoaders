@@ -1,12 +1,15 @@
 ﻿using Json.Schema;
 using Json.Schema.Generation;
+using System;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Ude.Core;
 
-namespace Bb
+namespace Bb.Configurations
 {
 
+    /// <summary>
+    /// Helper class for working with JSON schemas and configuration serialization.
+    /// </summary>
     public static partial class ConfigurationHelper
     {
 
@@ -47,7 +50,7 @@ namespace Bb
         /// string customSchema = typeof(MyAppConfig).GenerateSchemaForConfiguration(schemaId);
         /// </code>
         /// </example>
-        public static string GenerateSchemaForConfiguration(this Type type, Uri? id = null, SchemaGeneratorConfiguration? configuration = null)
+        public static string GenerateSchemaForConfiguration(this Type type, Uri id = null, SchemaGeneratorConfiguration configuration = null)
         {
 
             string name = type.Name.Replace("`", "");
@@ -72,7 +75,7 @@ namespace Bb
 
             var result = builder.Serialize(null);
 
-            var n = JsonObject.Parse(result).AsObject();
+            var n = JsonNode.Parse(result).AsObject();
             var n1 = n["properties"];
             var n2 = n1["Configuration"];
             (n1 as JsonObject).Remove("Configuration");
@@ -116,7 +119,7 @@ namespace Bb
         /// string compactSchemaJson = builder.Serialize(options);
         /// </code>
         /// </example>
-        public static string Serialize(this JsonSchemaBuilder schemaBuilder, JsonSerializerOptions? options = null)
+        public static string Serialize(this JsonSchemaBuilder schemaBuilder, JsonSerializerOptions options = null)
         {
 
             if (options == null)
@@ -157,7 +160,7 @@ namespace Bb
         /// string compactSchemaJson = schema.Serialize(options);
         /// </code>
         /// </example>
-        public static string Serialize(this JsonSchema schema, JsonSerializerOptions? options = null)
+        public static string Serialize(this JsonSchema schema, JsonSerializerOptions options = null)
         {
 
             if (options == null)
@@ -169,7 +172,6 @@ namespace Bb
             return JsonSerializer.Serialize(schema, options);
 
         }
-
 
         /// <summary>
         /// Serializes the specified self instance to a configuration JSON string.
@@ -183,7 +185,7 @@ namespace Bb
         /// <remarks>
         /// This method serializes an object into a JSON string with a specific structure where
         /// the object is nested under a property named after its type. This format is designed
-        /// to be compatible with the DeserializeConfiguration method.
+        /// to be compatible with the DeserializesConfiguration method.
         /// </remarks>
         /// <example>
         /// <code lang="C#">
@@ -203,7 +205,7 @@ namespace Bb
         /// string compactJson = config.SerializeConfiguration(options);
         /// </code>
         /// </example>
-        public static string? SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions? options = null)
+        public static string SerializeConfiguration<SourceType>(this SourceType self, JsonSerializerOptions options = null)
             where SourceType : class
         {
 
@@ -218,7 +220,6 @@ namespace Bb
             return default;
 
         }
-
 
         /// <summary>
         /// Deserializes the specified payload into a strongly typed configuration object.
@@ -248,18 +249,17 @@ namespace Bb
         /// string json = "{\"ServerConfig\":{\"Host\":\"example.com\",\"Port\":443}}";
         /// 
         /// // Deserialize the configuration
-        /// ServerConfig config = json.DeserializeConfiguration&lt;ServerConfig&gt;();
+        /// ServerConfig config = json.DeserializesConfiguration&lt;ServerConfig&gt;();
         /// 
         /// Console.WriteLine($"Host: {config.Host}, Port: {config.Port}");
         /// // Output: Host: example.com, Port: 443
         /// </code>
         /// </example>
-        public static TargetType? DeserializeConfiguration<TargetType>(this string payload, JsonSerializerOptions? options = null)
+        public static TargetType DeserializesConfiguration<TargetType>(this string payload, JsonSerializerOptions options = null)
             where TargetType : class
         {
-            return payload.DeserializeConfiguration(typeof(TargetType), options) as TargetType;
+            return payload.DeserializesConfiguration(typeof(TargetType), options) as TargetType;
         }
-
 
         /// <summary>
         /// Deserializes the specified self payload.
@@ -268,7 +268,7 @@ namespace Bb
         /// <param name="targetType">target Type</param>
         /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns></returns>
-        public static object? DeserializeConfiguration(this string payload, Type targetType, JsonSerializerOptions? options = null)
+        public static object DeserializesConfiguration(this string payload, Type targetType, JsonSerializerOptions options = null)
         {
 
             using (JsonDocument doc = JsonDocument.Parse(payload))
@@ -277,15 +277,13 @@ namespace Bb
                 options ??= new JsonSerializerOptions { WriteIndented = true };
 
                 var element = doc.RootElement.GetProperty(targetType.Name);
-                var instance = JsonSerializer.Deserialize(element, targetType, options);
+                var instance = element.Deserialize(targetType, options);
                 return instance;
             }
 
         }
 
-
     }
-
 
     /// <summary>
     /// Helper struct for serializing a configuration object with a standardized wrapper.

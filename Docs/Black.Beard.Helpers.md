@@ -40,6 +40,10 @@
 - [PathComparer](#T-Bb-PathComparer 'Bb.PathComparer')
   - [Equals(x,y)](#M-Bb-PathComparer-Equals-System-String,System-String- 'Bb.PathComparer.Equals(System.String,System.String)')
   - [GetHashCode(obj)](#M-Bb-PathComparer-GetHashCode-System-String- 'Bb.PathComparer.GetHashCode(System.String)')
+- [StaticContainer](#T-Bb-StaticContainer 'Bb.StaticContainer')
+  - [Set\`\`1(self)](#M-Bb-StaticContainer-Set``1-``0- 'Bb.StaticContainer.Set``1(``0)')
+- [StaticThreadContainer](#T-Bb-StaticThreadContainer 'Bb.StaticThreadContainer')
+  - [Set\`\`1(self)](#M-Bb-StaticThreadContainer-Set``1-``0- 'Bb.StaticThreadContainer.Set``1(``0)')
 - [UriExtensions](#T-Bb-UriExtensions 'Bb.UriExtensions')
   - [AddLocalhostSecureUrlWithDynamicPort(self,host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-List{System-Uri},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.List{System.Uri},System.String,System.Int32@,System.String[])')
   - [AddLocalhostSecureUrlWithDynamicPort(self,host,startingPort,segments)](#M-Bb-UriExtensions-AddLocalhostSecureUrlWithDynamicPort-System-Collections-Generic-ICollection{System-String},System-String,System-Int32@,System-String[]- 'Bb.UriExtensions.AddLocalhostSecureUrlWithDynamicPort(System.Collections.Generic.ICollection{System.String},System.String,System.Int32@,System.String[])')
@@ -1319,6 +1323,98 @@ A hash code for the specified path.
 ##### Remarks
 
 This method returns a hash code for the full path in a case-insensitive manner.
+
+<a name='T-Bb-StaticContainer'></a>
+## StaticContainer `type`
+
+##### Namespace
+
+Bb
+
+<a name='M-Bb-StaticContainer-Set``1-``0-'></a>
+### Set\`\`1(self) `method`
+
+##### Summary
+
+Sets the instance of the specified type in the static container.
+
+##### Returns
+
+The same instance that was passed as a parameter.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [\`\`0](#T-``0 '``0') | The instance to store in the container. Must not be null. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | The type of the object to store in the container. Must be a reference type. |
+
+##### Example
+
+```C#
+// Store an instance in the static container
+var myObject = new MyClass();
+StaticContainer.Set(myObject);
+// Retrieve the stored instance
+var retrievedObject = StaticContainer.Get&lt;MyClass&gt;();
+Console.WriteLine(retrievedObject == myObject); // Outputs: True
+```
+
+##### Remarks
+
+This method allows you to store a single instance of a specified type in a static container.
+The stored instance can later be retrieved using the [Get\`\`1](#M-Bb-StaticContainer-Get``1 'Bb.StaticContainer.Get``1') method.
+
+<a name='T-Bb-StaticThreadContainer'></a>
+## StaticThreadContainer `type`
+
+##### Namespace
+
+Bb
+
+<a name='M-Bb-StaticThreadContainer-Set``1-``0-'></a>
+### Set\`\`1(self) `method`
+
+##### Summary
+
+Sets the instance of the specified type in the thread-local static container.
+
+##### Returns
+
+The same instance that was passed as a parameter.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [\`\`0](#T-``0 '``0') | The instance to store in the container. Must not be null. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | The type of the object to store in the container. Must be a reference type. |
+
+##### Example
+
+```C#
+// Store an instance in the thread-local static container
+var myObject = new MyClass();
+StaticThreadContainer.Set(myObject);
+// Retrieve the stored instance
+var retrievedObject = StaticThreadContainer.Get&lt;MyClass&gt;();
+Console.WriteLine(retrievedObject == myObject); // Outputs: True
+```
+
+##### Remarks
+
+This method allows you to store a single instance of a specified type in a thread-local static container.
+Each thread will have its own instance of the object.
 
 <a name='T-Bb-UriExtensions'></a>
 ## UriExtensions `type`

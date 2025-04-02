@@ -34,6 +34,27 @@
 - [ColumnDefinition](#T-Bb-MultiCsv-ColumnDefinition 'Bb.MultiCsv.ColumnDefinition')
   - [#ctor(header,colunmName,index)](#M-Bb-MultiCsv-ColumnDefinition-#ctor-Bb-MultiCsv-HeaderReference,System-String,System-Int32- 'Bb.MultiCsv.ColumnDefinition.#ctor(Bb.MultiCsv.HeaderReference,System.String,System.Int32)')
   - [Name](#P-Bb-MultiCsv-ColumnDefinition-Name 'Bb.MultiCsv.ColumnDefinition.Name')
+- [ConfigurationHelper](#T-Bb-Configurations-ConfigurationHelper 'Bb.Configurations.ConfigurationHelper')
+  - [DeserializesConfiguration(payload,targetType,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration(System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
+  - [DeserializesConfiguration\`\`1(payload,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration``1(System.String,System.Text.Json.JsonSerializerOptions)')
+  - [GenerateSchemaForConfiguration(type,id,configuration)](#M-Bb-Configurations-ConfigurationHelper-GenerateSchemaForConfiguration-System-Type,System-Uri,Json-Schema-Generation-SchemaGeneratorConfiguration- 'Bb.Configurations.ConfigurationHelper.GenerateSchemaForConfiguration(System.Type,System.Uri,Json.Schema.Generation.SchemaGeneratorConfiguration)')
+  - [Serialize(schemaBuilder,options)](#M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.Serialize(Json.Schema.JsonSchemaBuilder,System.Text.Json.JsonSerializerOptions)')
+  - [Serialize(schema,options)](#M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchema,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.Serialize(Json.Schema.JsonSchema,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeConfiguration\`\`1(self,options)](#M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.SerializeConfiguration``1(``0,System.Text.Json.JsonSerializerOptions)')
+- [ConfigurationSerializer\`1](#T-Bb-Configurations-ConfigurationSerializer`1 'Bb.Configurations.ConfigurationSerializer`1')
+  - [Configuration](#P-Bb-Configurations-ConfigurationSerializer`1-Configuration 'Bb.Configurations.ConfigurationSerializer`1.Configuration')
+- [ContentFolder](#T-Bb-Configurations-ContentFolder 'Bb.Configurations.ContentFolder')
+  - [#ctor(name)](#M-Bb-Configurations-ContentFolder-#ctor-System-String- 'Bb.Configurations.ContentFolder.#ctor(System.String)')
+  - [Name](#P-Bb-Configurations-ContentFolder-Name 'Bb.Configurations.ContentFolder.Name')
+  - [AddAssemblyDirectory(assembly,insertFirst)](#M-Bb-Configurations-ContentFolder-AddAssemblyDirectory-System-Reflection-Assembly,System-Boolean- 'Bb.Configurations.ContentFolder.AddAssemblyDirectory(System.Reflection.Assembly,System.Boolean)')
+  - [AddDirectory(folder,insertFirst)](#M-Bb-Configurations-ContentFolder-AddDirectory-System-String,System-Boolean- 'Bb.Configurations.ContentFolder.AddDirectory(System.String,System.Boolean)')
+  - [AddDirectory(folder,insertFirst)](#M-Bb-Configurations-ContentFolder-AddDirectory-System-IO-DirectoryInfo,System-Boolean- 'Bb.Configurations.ContentFolder.AddDirectory(System.IO.DirectoryInfo,System.Boolean)')
+  - [AddDirectoryIfExists(path,insertFirst)](#M-Bb-Configurations-ContentFolder-AddDirectoryIfExists-System-String,System-Boolean- 'Bb.Configurations.ContentFolder.AddDirectoryIfExists(System.String,System.Boolean)')
+  - [AddDirectoryIfExists(folder,insertFirst)](#M-Bb-Configurations-ContentFolder-AddDirectoryIfExists-System-IO-DirectoryInfo,System-Boolean- 'Bb.Configurations.ContentFolder.AddDirectoryIfExists(System.IO.DirectoryInfo,System.Boolean)')
+  - [AddEntryAssemblyDirectory(insertFirst)](#M-Bb-Configurations-ContentFolder-AddEntryAssemblyDirectory-System-Boolean- 'Bb.Configurations.ContentFolder.AddEntryAssemblyDirectory(System.Boolean)')
+  - [AddExecutingAssemblyDirectory(insertFirst)](#M-Bb-Configurations-ContentFolder-AddExecutingAssemblyDirectory-System-Boolean- 'Bb.Configurations.ContentFolder.AddExecutingAssemblyDirectory(System.Boolean)')
+  - [GetFiles(searchPattern)](#M-Bb-Configurations-ContentFolder-GetFiles-System-String- 'Bb.Configurations.ContentFolder.GetFiles(System.String)')
+  - [GetPaths()](#M-Bb-Configurations-ContentFolder-GetPaths 'Bb.Configurations.ContentFolder.GetPaths')
 - [ContentHelperFiles](#T-Bb-ContentHelperFiles 'Bb.ContentHelperFiles')
   - [DecryptFileEas256(encryptedFilePath,encryptionKey)](#M-Bb-ContentHelperFiles-DecryptFileEas256-System-String,System-String- 'Bb.ContentHelperFiles.DecryptFileEas256(System.String,System.String)')
   - [EncryptFileAes256(filePath,encryptionKey,outputFilePath)](#M-Bb-ContentHelperFiles-EncryptFileAes256-System-String,System-String,System-String- 'Bb.ContentHelperFiles.EncryptFileAes256(System.String,System.String,System.String)')
@@ -257,6 +278,11 @@
   - [FileReadFile(filePath,rulePayload,initializer)](#M-Bb-MultiCsv-FileReader-FileReadFile-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}- 'Bb.MultiCsv.FileReader.FileReadFile(System.String,System.String,System.Action{Bb.MultiCsv.FileReader})')
   - [FileReadFile(filePath,rulePayload,initializer)](#M-Bb-MultiCsv-FileReader-FileReadFile-System-String,Bb-MultiCsv-IndentationRules,System-Action{Bb-MultiCsv-FileReader}- 'Bb.MultiCsv.FileReader.FileReadFile(System.String,Bb.MultiCsv.IndentationRules,System.Action{Bb.MultiCsv.FileReader})')
   - [See(see,filter)](#M-Bb-MultiCsv-FileReader-See-System-String,System-Func{Bb-MultiCsv-Block,System-Boolean}- 'Bb.MultiCsv.FileReader.See(System.String,System.Func{Bb.MultiCsv.Block,System.Boolean})')
+- [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration')
+  - [#ctor()](#M-Bb-Configurations-GlobalConfiguration-#ctor 'Bb.Configurations.GlobalConfiguration.#ctor')
+  - [Item](#P-Bb-Configurations-GlobalConfiguration-Item-System-String- 'Bb.Configurations.GlobalConfiguration.Item(System.String)')
+  - [Execute(name,action)](#M-Bb-Configurations-GlobalConfiguration-Execute-System-String,System-Action{System-IO-DirectoryInfo}- 'Bb.Configurations.GlobalConfiguration.Execute(System.String,System.Action{System.IO.DirectoryInfo})')
+  - [ExecuteFirst(name,action)](#M-Bb-Configurations-GlobalConfiguration-ExecuteFirst-System-String,System-Action{System-IO-DirectoryInfo}- 'Bb.Configurations.GlobalConfiguration.ExecuteFirst(System.String,System.Action{System.IO.DirectoryInfo})')
 - [HeaderReference](#T-Bb-MultiCsv-HeaderReference 'Bb.MultiCsv.HeaderReference')
   - [#ctor(headerName)](#M-Bb-MultiCsv-HeaderReference-#ctor-System-String,System-String- 'Bb.MultiCsv.HeaderReference.#ctor(System.String,System.String)')
   - [LabelLine](#P-Bb-MultiCsv-HeaderReference-LabelLine 'Bb.MultiCsv.HeaderReference.LabelLine')
@@ -760,6 +786,579 @@ Initializes a new instance of the [ColumnDefinition](#T-Bb-MultiCsv-ColumnDefini
 ##### Summary
 
 Gets the name.
+
+<a name='T-Bb-Configurations-ConfigurationHelper'></a>
+## ConfigurationHelper `type`
+
+##### Namespace
+
+Bb.Configurations
+
+##### Summary
+
+Helper class for working with JSON schemas and configuration serialization.
+
+<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
+### DeserializesConfiguration(payload,targetType,options) `method`
+
+##### Summary
+
+Deserializes the specified self payload.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
+| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target Type |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+
+<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions-'></a>
+### DeserializesConfiguration\`\`1(payload,options) `method`
+
+##### Summary
+
+Deserializes the specified payload into a strongly typed configuration object.
+
+##### Returns
+
+A [](#!-TargetType 'TargetType') instance deserialized from the JSON payload, or null if deserialization fails.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The JSON string payload to deserialize. Must not be null or empty. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for deserialization. If null, default options with indented formatting will be used. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TargetType | The type of the target object to deserialize to. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.Text.Json.JsonException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonException 'System.Text.Json.JsonException') | Thrown when the JSON is invalid or doesn't match the expected structure. |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when payload is null. |
+
+##### Example
+
+```C#
+public class ServerConfig
+{
+    public string Host { get; set; } = "localhost";
+    public int Port { get; set; } = 8080;
+}
+// JSON string with the configuration in the expected format
+string json = "{\"ServerConfig\":{\"Host\":\"example.com\",\"Port\":443}}";
+// Deserialize the configuration
+ServerConfig config = json.DeserializesConfiguration&lt;ServerConfig&gt;();
+Console.WriteLine($"Host: {config.Host}, Port: {config.Port}");
+// Output: Host: example.com, Port: 443
+```
+
+##### Remarks
+
+This method deserializes a JSON string with a specific structure where
+the object is expected to be nested under a property named after its type.
+It's designed to work with JSON produced by the SerializeConfiguration method.
+
+<a name='M-Bb-Configurations-ConfigurationHelper-GenerateSchemaForConfiguration-System-Type,System-Uri,Json-Schema-Generation-SchemaGeneratorConfiguration-'></a>
+### GenerateSchemaForConfiguration(type,id,configuration) `method`
+
+##### Summary
+
+Generates a JSON schema from a Type.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the JSON schema representation of the type.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | Type to generate schema for. Must not be null. |
+| id | [System.Uri](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Uri 'System.Uri') | Optional URI identifier for the schema. If null, a default URI will be constructed using the type name. |
+| configuration | [Json.Schema.Generation.SchemaGeneratorConfiguration](#T-Json-Schema-Generation-SchemaGeneratorConfiguration 'Json.Schema.Generation.SchemaGeneratorConfiguration') | Optional configuration for schema generation. If null, default settings will be used. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when type is null. |
+
+##### Example
+
+```C#
+// Generate schema for a configuration class
+public class MyAppConfig
+{
+    public string ServerUrl { get; set; }
+    public int Port { get; set; }
+    public bool EnableLogging { get; set; }
+}
+// Generate schema with default settings
+string schema = typeof(MyAppConfig).GenerateSchemaForConfiguration();
+// Generate schema with custom URI
+Uri schemaId = new Uri("https://mycompany.com/schemas/appconfig");
+string customSchema = typeof(MyAppConfig).GenerateSchemaForConfiguration(schemaId);
+```
+
+##### Remarks
+
+This method creates a JSON schema that describes the structure of the specified type.
+It uses Json.Schema.Generation to generate the schema, then performs post-processing to
+rename the root property from "Configuration" to the actual type name.
+
+For more details on schema generation options, see the documentation:
+https://docs.json-everything.net/schema/schemagen/data-annotations/
+
+<a name='M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions-'></a>
+### Serialize(schemaBuilder,options) `method`
+
+##### Summary
+
+Serialize to string the specified schema.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the JSON serialized schema.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| schemaBuilder | [Json.Schema.JsonSchemaBuilder](#T-Json-Schema-JsonSchemaBuilder 'Json.Schema.JsonSchemaBuilder') | Schema builder to serialize. Must not be null. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for serialization. If null, default options with indented formatting will be used. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when schemaBuilder is null. |
+
+##### Example
+
+```C#
+// Create a schema builder
+var builder = new JsonSchemaBuilder()
+    .Schema("https://json-schema.org/draft/2020-12/schema")
+    .Id("https://example.com/schemas/person")
+    .Title("Person")
+    .Type(SchemaValueType.Object)
+    .Properties(
+        ("name", new JsonSchemaBuilder().Type(SchemaValueType.String)),
+        ("age", new JsonSchemaBuilder().Type(SchemaValueType.Integer).Minimum(0))
+    );
+// Serialize the schema
+string schemaJson = builder.Serialize();
+// With custom options
+var options = new JsonSerializerOptions { WriteIndented = false };
+string compactSchemaJson = builder.Serialize(options);
+```
+
+##### Remarks
+
+This method builds the schema from the JsonSchemaBuilder and serializes it to a formatted JSON string.
+It's useful for saving schema definitions to files or sending them over network.
+
+<a name='M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchema,System-Text-Json-JsonSerializerOptions-'></a>
+### Serialize(schema,options) `method`
+
+##### Summary
+
+Serialize to string the specified schema.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the JSON serialized schema.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| schema | [Json.Schema.JsonSchema](#T-Json-Schema-JsonSchema 'Json.Schema.JsonSchema') | Schema to serialize. Must not be null. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for serialization. If null, default options with indented formatting will be used. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when schema is null. |
+
+##### Example
+
+```C#
+// With an existing JsonSchema object
+JsonSchema schema = JsonSchema.FromText("{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"}}}");
+// Serialize the schema
+string schemaJson = schema.Serialize();
+// With custom options
+var options = new JsonSerializerOptions { WriteIndented = false };
+string compactSchemaJson = schema.Serialize(options);
+```
+
+##### Remarks
+
+This method serializes a JsonSchema object to a formatted JSON string.
+It's useful for saving schema definitions to files or sending them over network.
+
+<a name='M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeConfiguration\`\`1(self,options) `method`
+
+##### Summary
+
+Serializes the specified self instance to a configuration JSON string.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') containing the serialized configuration, or null if the input is null.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [\`\`0](#T-``0 '``0') | The instance to serialize. May be null. |
+| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for serialization. If null, default options with indented formatting will be used. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TSource | The type of the object to serialize. |
+
+##### Example
+
+```C#
+public class ServerConfig
+{
+    public string Host { get; set; } = "localhost";
+    public int Port { get; set; } = 8080;
+}
+// Serialize a configuration
+var config = new ServerConfig { Host = "example.com", Port = 443 };
+string json = config.SerializeConfiguration();
+// Result: {"ServerConfig":{"Host":"example.com","Port":443}}
+// With custom serialization options
+var options = new JsonSerializerOptions { WriteIndented = false };
+string compactJson = config.SerializeConfiguration(options);
+```
+
+##### Remarks
+
+This method serializes an object into a JSON string with a specific structure where
+the object is nested under a property named after its type. This format is designed
+to be compatible with the DeserializesConfiguration method.
+
+<a name='T-Bb-Configurations-ConfigurationSerializer`1'></a>
+## ConfigurationSerializer\`1 `type`
+
+##### Namespace
+
+Bb.Configurations
+
+##### Summary
+
+Helper struct for serializing a configuration object with a standardized wrapper.
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | The type of configuration object to wrap. |
+
+##### Remarks
+
+This struct is used internally by the GenerateSchemaForConfiguration method
+to provide a consistent structure for configuration objects in JSON schemas.
+
+<a name='P-Bb-Configurations-ConfigurationSerializer`1-Configuration'></a>
+### Configuration `property`
+
+##### Summary
+
+Gets or sets the configuration object.
+
+<a name='T-Bb-Configurations-ContentFolder'></a>
+## ContentFolder `type`
+
+##### Namespace
+
+Bb.Configurations
+
+##### Summary
+
+Represents a collection of directories used for configuration purposes.
+
+<a name='M-Bb-Configurations-ContentFolder-#ctor-System-String-'></a>
+### #ctor(name) `constructor`
+
+##### Summary
+
+Initializes a new instance of the [ContentFolder](#T-Bb-Configurations-ContentFolder 'Bb.Configurations.ContentFolder') class with the specified name.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+
+##### Remarks
+
+This constructor creates a new instance of the [ContentFolder](#T-Bb-Configurations-ContentFolder 'Bb.Configurations.ContentFolder') class and initializes an empty collection of directories.
+
+<a name='P-Bb-Configurations-ContentFolder-Name'></a>
+### Name `property`
+
+##### Summary
+
+Gets the name of the content folder.
+
+##### Remarks
+
+This property holds the name assigned to the content folder during initialization.
+
+<a name='M-Bb-Configurations-ContentFolder-AddAssemblyDirectory-System-Reflection-Assembly,System-Boolean-'></a>
+### AddAssemblyDirectory(assembly,insertFirst) `method`
+
+##### Summary
+
+Adds the directory of the specified assembly to the collection.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| assembly | [System.Reflection.Assembly](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Reflection.Assembly 'System.Reflection.Assembly') | The assembly whose directory is to be added. Must not be null. |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | If true, inserts the directory at the first position in the collection; otherwise, appends it to the end. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.InvalidOperationException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.InvalidOperationException 'System.InvalidOperationException') | Thrown if the assembly is dynamic or has no location. |
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+Assembly assembly = Assembly.GetExecutingAssembly();
+folder.AddAssemblyDirectory(assembly);
+```
+
+##### Remarks
+
+This method retrieves the directory of the specified assembly and adds it to the collection.
+
+<a name='M-Bb-Configurations-ContentFolder-AddDirectory-System-String,System-Boolean-'></a>
+### AddDirectory(folder,insertFirst) `method`
+
+##### Summary
+
+Adds the specified directory to the collection.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| folder | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path of the directory to add. Must not be null or empty. |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Insert item in the first position. |
+
+##### Example
+
+```C#
+ConfigurationFolder.AddDirectory("C:\\MyConfigs");
+```
+
+##### Remarks
+
+This method adds a directory to the collection without checking if it exists.
+
+<a name='M-Bb-Configurations-ContentFolder-AddDirectory-System-IO-DirectoryInfo,System-Boolean-'></a>
+### AddDirectory(folder,insertFirst) `method`
+
+##### Summary
+
+Adds the specified directory to the collection.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| folder | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | The directory to add. Must not be null. |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Insert item in the first position. |
+
+##### Example
+
+```C#
+var directory = new DirectoryInfo("C:\\MyConfigs");
+ConfigurationFolder.AddDirectory(directory);
+```
+
+##### Remarks
+
+This method adds a directory to the collection without checking if it exists.
+
+<a name='M-Bb-Configurations-ContentFolder-AddDirectoryIfExists-System-String,System-Boolean-'></a>
+### AddDirectoryIfExists(path,insertFirst) `method`
+
+##### Summary
+
+Adds the specified directory to the collection if it exists.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path of the directory to add. Must not be null or empty. |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | If true, inserts the directory at the first position in the collection; otherwise, appends it to the end. |
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+folder.AddDirectoryIfExists("C:\\MyConfigs");
+```
+
+##### Remarks
+
+This method checks if the specified directory exists and adds it to the collection if it does.
+
+<a name='M-Bb-Configurations-ContentFolder-AddDirectoryIfExists-System-IO-DirectoryInfo,System-Boolean-'></a>
+### AddDirectoryIfExists(folder,insertFirst) `method`
+
+##### Summary
+
+Adds the specified directory to the collection if it exists.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| folder | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | The directory to add. |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Insert item in the first position. |
+
+##### Remarks
+
+This method checks if the specified directory exists and adds it to the collection if it does.
+
+<a name='M-Bb-Configurations-ContentFolder-AddEntryAssemblyDirectory-System-Boolean-'></a>
+### AddEntryAssemblyDirectory(insertFirst) `method`
+
+##### Summary
+
+Adds the directory of the entry assembly to the collection.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | If true, inserts the directory at the first position in the collection; otherwise, appends it to the end. |
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+folder.AddEntryAssemblyDirectory();
+```
+
+##### Remarks
+
+This method retrieves the directory of the entry assembly (the application entry point) and adds it to the collection.
+
+<a name='M-Bb-Configurations-ContentFolder-AddExecutingAssemblyDirectory-System-Boolean-'></a>
+### AddExecutingAssemblyDirectory(insertFirst) `method`
+
+##### Summary
+
+Adds the directory of the executing assembly to the collection.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| insertFirst | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | If true, inserts the directory at the first position in the collection; otherwise, appends it to the end. |
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+folder.AddExecutingAssemblyDirectory();
+```
+
+##### Remarks
+
+This method retrieves the directory of the currently executing assembly and adds it to the collection.
+
+<a name='M-Bb-Configurations-ContentFolder-GetFiles-System-String-'></a>
+### GetFiles(searchPattern) `method`
+
+##### Summary
+
+Retrieves all files matching the specified search pattern from the directories in the collection.
+
+##### Returns
+
+A collection of [FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') objects representing the matching files.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| searchPattern | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The search pattern to match file names (e.g., "*.txt"). Must not be null or empty. |
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+IEnumerable&lt;FileInfo&gt; files = folder.GetFiles("*.config");
+foreach (var file in files)
+{
+    Console.WriteLine(file.FullName);
+}
+```
+
+##### Remarks
+
+This method searches all directories in the collection for files matching the specified search pattern.
+
+<a name='M-Bb-Configurations-ContentFolder-GetPaths'></a>
+### GetPaths() `method`
+
+##### Summary
+
+Gets an array of paths for all the directories in the collection.
+
+##### Returns
+
+An array of paths for all the directories in the collection.
+
+##### Parameters
+
+This method has no parameters.
+
+##### Example
+
+```C#
+var folder = new ContentFolder("MyFolder");
+string[] paths = folder.GetPaths();
+foreach (var path in paths)
+{
+    Console.WriteLine(path);
+}
+```
+
+##### Remarks
+
+This method retrieves the full paths of all directories currently in the collection.
 
 <a name='T-Bb-ContentHelperFiles'></a>
 ## ContentHelperFiles `type`
@@ -4094,6 +4693,125 @@ Intercepts the block to see.
 | Name | Description |
 | ---- | ----------- |
 | [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') |  |
+
+<a name='T-Bb-Configurations-GlobalConfiguration'></a>
+## GlobalConfiguration `type`
+
+##### Namespace
+
+Bb.Configurations
+
+##### Summary
+
+Represents a configuration for starting the application.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Initializes a new instance of the [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') class.
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='P-Bb-Configurations-GlobalConfiguration-Item-System-String-'></a>
+### Item `property`
+
+##### Summary
+
+Gets the content folder associated with the specified name.
+
+##### Returns
+
+A [ContentFolder](#T-Bb-Configurations-ContentFolder 'Bb.Configurations.ContentFolder') instance associated with the specified name. If the folder does not exist, a new one is created.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+
+##### Example
+
+```C#
+var config = new StartingConfiguration();
+var folder = config["MyFolder"];
+Console.WriteLine($"Folder name: {folder.Name}");
+```
+
+##### Remarks
+
+This indexer retrieves the content folder by its name. If the folder does not exist, it creates a new instance and adds it to the collection.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-Execute-System-String,System-Action{System-IO-DirectoryInfo}-'></a>
+### Execute(name,action) `method`
+
+##### Summary
+
+Executes an action for each directory in the specified content folder.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+| action | [System.Action{System.IO.DirectoryInfo}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{System.IO.DirectoryInfo}') | The action to execute for each directory. Must not be null. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.Collections.Generic.KeyNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyNotFoundException 'System.Collections.Generic.KeyNotFoundException') | Thrown if the specified content folder does not exist. |
+
+##### Example
+
+```C#
+var config = new StartingConfiguration();
+config.Execute("MyFolder", directory =&gt;
+{
+    Console.WriteLine($"Processing directory: {directory.FullName}");
+});
+```
+
+##### Remarks
+
+This method retrieves the content folder by its name and executes the specified action for each directory in the folder.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-ExecuteFirst-System-String,System-Action{System-IO-DirectoryInfo}-'></a>
+### ExecuteFirst(name,action) `method`
+
+##### Summary
+
+Executes an action for the first directory in the specified content folder.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+| action | [System.Action{System.IO.DirectoryInfo}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{System.IO.DirectoryInfo}') | The action to execute for the first directory. Must not be null. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.Collections.Generic.KeyNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.KeyNotFoundException 'System.Collections.Generic.KeyNotFoundException') | Thrown if the specified content folder does not exist. |
+
+##### Example
+
+```C#
+var config = new StartingConfiguration();
+config.ExecuteFirst("MyFolder", directory =&gt;
+{
+    Console.WriteLine($"Processing first directory: {directory.FullName}");
+});
+```
+
+##### Remarks
+
+This method retrieves the content folder by its name and executes the specified action for the first directory in the folder.
 
 <a name='T-Bb-MultiCsv-HeaderReference'></a>
 ## HeaderReference `type`

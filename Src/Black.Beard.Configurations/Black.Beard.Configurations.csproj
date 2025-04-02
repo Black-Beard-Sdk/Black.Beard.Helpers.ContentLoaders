@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Bb</RootNamespace>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Black.Beard.Helpers</Title>
+    <Description>provide helpers Crc32 and extension for Path.Combine</Description>
+    <PackageId>Black.Beard.Helpers</PackageId>
+    <Authors>Black.Beard</Authors>
+    <Company>Black.Beard</Company>
+    <Product>Black.Beard.Helpers</Product>
+    <PackageProjectUrl>https://github.com/Black-Beard-Sdk/Black.Beard.Helpers.ContentLoaders</PackageProjectUrl>
+    <RootNamespace>Bb</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSchema.Net" Version="7.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="JsonSchema.Net.Generation" Version="4.6.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0" />
+    <PackageReference Include="Ude.NetStandard" Version="1.2.0" />
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Black.Beard.Helpers.ContentLoaders.Files\Black.Beard.Helpers.ContentLoaders.Files.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationMarkdown>$(MSBuildProjectDirectory)\..\..\Docs\$(MSBuildProjectName).md</DocumentationMarkdown>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
+  </PropertyGroup>
+
+  
+</Project>
