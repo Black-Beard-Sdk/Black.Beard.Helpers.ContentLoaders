@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Security.AccessControl;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -268,19 +269,23 @@ namespace Bb
         /// </summary>
         /// <typeparam name="SourceType">The type of the source type.</typeparam>
         /// <param name="filename">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
-        public static void SerializeAndSaveConfiguration<SourceType>(this string filename, SourceType instance, JsonSerializerOptions options = null)
+        public static void SerializeAndSaveConfiguration<SourceType>(this string filename, string key, SourceType instance, JsonSerializerOptions options = null)
             where SourceType : class
         {
 
             if (instance != null)
             {
 
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(SourceType).Name;
+
                 if (options != null)
                     options = new JsonSerializerOptions { WriteIndented = true };
 
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance) };
                 string config = t2.ToJsonString(options);
                 filename.Save(() => config, Encoding.UTF8);
             }
@@ -293,14 +298,19 @@ namespace Bb
         /// </summary>
         /// <typeparam name="SourceType">The type of the source type.</typeparam>
         /// <param name="file">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
-        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance)
+        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, string key, SourceType instance)
             where SourceType : class
         {
 
             if (instance != null)
             {
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(SourceType).Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance) };
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string config = t2.ToJsonString(options);
                 file.Save(() => config, Encoding.UTF8);
@@ -314,9 +324,10 @@ namespace Bb
         /// </summary>
         /// <typeparam name="SourceType">The type of the source type.</typeparam>
         /// <param name="file">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
-        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, SourceType instance, JsonSerializerOptions options = null)
+        public static void SerializeAndSaveConfiguration<SourceType>(this FileInfo file, string key, SourceType instance, JsonSerializerOptions options = null)
             where SourceType : class
         {
 
@@ -326,7 +337,10 @@ namespace Bb
                 if (options != null)
                     options = new JsonSerializerOptions { WriteIndented = true };
 
-                var t2 = new JsonObject() { [nameof(SourceType)] = JsonSerializer.SerializeToNode(instance) };
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(SourceType).Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance) };
                 string config = t2.ToJsonString(options);
                 file.Save(() => config, Encoding.UTF8);
             }
@@ -338,9 +352,10 @@ namespace Bb
         /// If the directory don't exist. it is created.
         /// </summary>
         /// <param name="filename">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="sourceType">source type</param>
-        public static void SerializeAndSaveConfiguration(this string filename, object instance, Type sourceType = null)
+        public static void SerializeAndSaveConfiguration(this string filename, string key, object instance, Type sourceType = null)
         {
 
             if (instance != null)
@@ -349,7 +364,10 @@ namespace Bb
                 if (sourceType == null)
                     sourceType = instance.GetType();
 
-                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
+                if (string.IsNullOrEmpty(key))
+                    key = sourceType.Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance, sourceType) };
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string config = t2.ToJsonString(options);
                 filename.Save(() => config, Encoding.UTF8);
@@ -362,10 +380,11 @@ namespace Bb
         /// If the directory don't exist. it is created.
         /// </summary>
         /// <param name="filename">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="sourceType">source type</param>
         /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
-        public static void SerializeAndSaveConfiguration(this string filename, object instance, Type sourceType = null, JsonSerializerOptions options = null)
+        public static void SerializeAndSaveConfiguration(this string filename, string key, object instance, Type sourceType = null, JsonSerializerOptions options = null)
         {
 
             if (instance != null)
@@ -377,7 +396,10 @@ namespace Bb
                 if (options != null)
                     options = new JsonSerializerOptions { WriteIndented = true };
 
-                var t2 = new JsonObject() { [sourceType.Name] = JsonSerializer.SerializeToNode(instance, sourceType) };
+                if (string.IsNullOrEmpty(key))
+                    key = sourceType.Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance, sourceType) };
                 string config = t2.ToJsonString(options);
                 filename.Save(() => config, Encoding.UTF8);
             }
@@ -389,9 +411,10 @@ namespace Bb
         /// If the directory don't exist. it is created.
         /// </summary>
         /// <param name="file">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="targetType">target type</param>
-        public static void SerializeAndSaveConfiguration(this FileInfo file, object instance, Type targetType = null)
+        public static void SerializeAndSaveConfiguration(this FileInfo file, string key, object instance, Type targetType = null)
         {
 
             if (instance != null)
@@ -400,7 +423,10 @@ namespace Bb
                 if (targetType == null)
                     targetType = instance.GetType();
 
-                var t2 = new JsonObject() { [targetType.Name] = JsonSerializer.SerializeToNode(instance, targetType) };
+                if (string.IsNullOrEmpty(key))
+                    key = targetType.Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance, targetType) };
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string config = t2.ToJsonString(options);
                 file.Save(() => config, Encoding.UTF8);
@@ -413,10 +439,11 @@ namespace Bb
         /// If the directory don't exist. it is created.
         /// </summary>
         /// <param name="file">file path</param>
+        /// <param name="key">name of the section</param>
         /// <param name="instance">object to serialize</param>
         /// <param name="targetType">target type</param>
         /// <param name="options">options of serialization.<see cref="JsonSerializerOptions"/></param>
-        public static void SerializeAndSaveConfiguration(this FileInfo file, object instance, Type targetType = null, JsonSerializerOptions options = null)
+        public static void SerializeAndSaveConfiguration(this FileInfo file, string key, object instance, Type targetType = null, JsonSerializerOptions options = null)
         {
 
             if (instance != null)
@@ -428,7 +455,10 @@ namespace Bb
                 if (options != null)
                     options = new JsonSerializerOptions { WriteIndented = true };
 
-                var t2 = new JsonObject() { [targetType.Name] = JsonSerializer.SerializeToNode(instance, targetType) };
+                if (string.IsNullOrEmpty(key))
+                    key = targetType.Name;
+
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(instance, targetType) };
                 string config = t2.ToJsonString(options);
                 file.Save(() => config, Encoding.UTF8);
             }

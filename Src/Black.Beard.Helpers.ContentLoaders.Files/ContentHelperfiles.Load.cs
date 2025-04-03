@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Net.WebRequestMethods;
 
 namespace Bb
 {
@@ -283,7 +281,7 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserialize<TargetType>(this FileInfo self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static TargetType LoadFromFileAndDeserializes<TargetType>(this FileInfo self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
             where TargetType : class
         {
             options ??= new JsonSerializerOptions { WriteIndented = true };
@@ -302,7 +300,7 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserialize<TargetType>(this string self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static TargetType LoadFromFileAndDeserializes<TargetType>(this string self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
             where TargetType : class
         {
             options ??= new JsonSerializerOptions { WriteIndented = true };
@@ -321,14 +319,18 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this string self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static TargetType LoadFromFileAndDeserializesConfiguration<TargetType>(this string self, string key, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
             where TargetType : class
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
+
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(TargetType).Name;
+
                 options ??= new JsonSerializerOptions { WriteIndented = true };
-                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var element = doc.RootElement.GetProperty(key);
                 var instance = JsonSerializer.Deserialize<TargetType>(element, options);
                 return instance;
             }
@@ -344,14 +346,18 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static TargetType LoadFromFileAndDeserializeConfiguration<TargetType>(this FileInfo self, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static TargetType LoadFromFileAndDeserializesConfiguration<TargetType>(this FileInfo self, string key, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
         where TargetType : class
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
+
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(TargetType).Name;
+
                 options ??= new JsonSerializerOptions { WriteIndented = true };
-                var element = doc.RootElement.GetProperty(nameof(TargetType));
+                var element = doc.RootElement.GetProperty(key);
                 var instance = JsonSerializer.Deserialize<TargetType>(element, options);
                 return instance;
             }
@@ -367,11 +373,15 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static object LoadFromFileAndDeserializeConfiguration(this string self, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static object LoadFromFileAndDeserializesConfiguration(this string self, string key, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
+
+                if (string.IsNullOrEmpty(key))
+                    key = targetType.Name;
+
                 options ??= new JsonSerializerOptions { WriteIndented = true };
                 var element = doc.RootElement.GetProperty(targetType.Name);
                 var instance = JsonSerializer.Deserialize(element, targetType, options);
@@ -389,13 +399,17 @@ namespace Bb
         /// <returns>the content of the text document</returns>
         /// <exception cref="NullReferenceException">If self is null</exception>
         /// <exception cref="FileNotFoundException">If the file is not found</exception>
-        public static object LoadFromFileAndDeserializeConfiguration(this FileInfo self, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
+        public static object LoadFromFileAndDeserializesConfiguration(this FileInfo self, string key, Type targetType, Encoding defaultEncoding = null, JsonSerializerOptions? options = null)
         {
             var payload = self.LoadFromFile(defaultEncoding);
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
+
+                if (string.IsNullOrEmpty(key))
+                    key = targetType.Name;
+
                 options ??= new JsonSerializerOptions { WriteIndented = true };
-                var element = doc.RootElement.GetProperty(targetType.Name);
+                var element = doc.RootElement.GetProperty(key);
                 var instance = JsonSerializer.Deserialize(element, targetType, options);
                 return instance;
             }

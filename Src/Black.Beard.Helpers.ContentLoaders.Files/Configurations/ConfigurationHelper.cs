@@ -208,6 +208,7 @@ namespace Bb.Configurations
         public static string SerializeConfiguration<TSource>
         (
             this TSource self, 
+            string key,
             JsonSerializerOptions options = null
         )
             where TSource : class
@@ -215,8 +216,12 @@ namespace Bb.Configurations
 
             if (self != null)
             {
+
+                if (string.IsNullOrEmpty(key))
+                    key = typeof(TSource).Name;
+
                 options ??= new JsonSerializerOptions { WriteIndented = true };
-                var t2 = new JsonObject() { [nameof(TSource)] = JsonSerializer.SerializeToNode(self, options) };
+                var t2 = new JsonObject() { [key] = JsonSerializer.SerializeToNode(self, options) };
                 string config = t2.ToJsonString(options);
                 return config;
             }
@@ -259,10 +264,10 @@ namespace Bb.Configurations
         /// // Output: Host: example.com, Port: 443
         /// </code>
         /// </example>
-        public static TargetType DeserializesConfiguration<TargetType>(this string payload, JsonSerializerOptions options = null)
+        public static TargetType DeserializesConfiguration<TargetType>(this string payload, string key, JsonSerializerOptions options = null)
             where TargetType : class
         {
-            return payload.DeserializesConfiguration(typeof(TargetType), options) as TargetType;
+            return payload.DeserializesConfiguration(key, typeof(TargetType), options) as TargetType;
         }
 
         /// <summary>
@@ -272,15 +277,17 @@ namespace Bb.Configurations
         /// <param name="targetType">target Type</param>
         /// <param name="options"><see cref="JsonSerializerOptions"/>options of serialization</param>
         /// <returns></returns>
-        public static object DeserializesConfiguration(this string payload, Type targetType, JsonSerializerOptions options = null)
+        public static object DeserializesConfiguration(this string payload, string key, Type targetType, JsonSerializerOptions options = null)
         {
 
             using (JsonDocument doc = JsonDocument.Parse(payload))
             {
 
-                options ??= new JsonSerializerOptions { WriteIndented = true };
+                if (string.IsNullOrEmpty(key))
+                    key = targetType.Name;
 
-                var element = doc.RootElement.GetProperty(targetType.Name);
+                options ??= new JsonSerializerOptions { WriteIndented = true };
+                var element = doc.RootElement.GetProperty(key);
                 var instance = element.Deserialize(targetType, options);
                 return instance;
             }

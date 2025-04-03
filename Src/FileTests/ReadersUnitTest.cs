@@ -6,7 +6,7 @@ namespace FileTests
 
 
     [TestClass]
-    public class UnitTest1
+    public class ReadersUnitTest
     {
 
 
@@ -25,7 +25,7 @@ namespace FileTests
         //}
 
 
-        public UnitTest1()
+        public ReadersUnitTest()
         {
 
         }

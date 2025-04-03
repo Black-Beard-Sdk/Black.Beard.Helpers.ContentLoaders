@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Bb;
 using System.Text;
 using Json.Schema.Generation;
+using System.Linq;
 
 namespace Bb.Configurations
 {
@@ -13,11 +15,9 @@ namespace Bb.Configurations
     public class GlobalConfiguration
     {
 
-
         public const string Configuration = "Configurations";
         public const string Nuget = ".nugets";
         public const string Schema = "Schemas";
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlobalConfiguration"/> class.
@@ -26,6 +26,34 @@ namespace Bb.Configurations
         {
             _folders = new Dictionary<string, ContentFolder>();
         }
+
+        public GlobalConfiguration SetRoot(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                throw new ArgumentException("Path cannot be null or empty.", nameof(path));
+            return SetRoot(new DirectoryInfo(path));
+            return this;
+        }
+
+        public GlobalConfiguration SetRoot(DirectoryInfo directory)
+        {
+            if (directory == null)
+                throw new ArgumentException("Path cannot be null or empty.", nameof(directory));
+            if (!directory.Exists)
+                directory.Create();
+            _root = directory;
+            return this;
+        }
+
+        public GlobalConfiguration WithDirectory(string name, params string[] paths)
+        {
+            var item = this[name];
+            var o = new List<string>(paths.Length + 1) { _root.FullName };
+            o.AddRange(paths.Where(c => !string.IsNullOrEmpty(c)));
+            item.AddDirectory(Path.Combine(o.ToArray()));
+            return this;
+        }
+
 
         /// <summary>
         /// Executes an action for each directory in the specified content folder.
@@ -63,11 +91,25 @@ namespace Bb.Configurations
         }
 
 
+
+        public T GetDocument<T>(string name)
+            where T : class
+        {
+            var item = this[name];
+            if (item.Any)
+            {
+                var filename = GetFilename(typeof(T));
+                var content = item.GetDocument<T>(filename + ".json");
+                return content;
+            }
+            return null;
+        }
+
         public bool AppendDocument<T>(string name, T content)
             where T : class
         {
 
-            var filename = GetFilename(typeof(T).Name);
+            var filename = GetFilename(typeof(T));
             var item = this[GlobalConfiguration.Schema];
             if (item.Any)
             {
@@ -148,8 +190,12 @@ namespace Bb.Configurations
             }
         }
 
+        public static string GetFilename(Type type)
+        {
+            return GetFilename(type.Name);
+        }
 
-        private string GetFilename(string name)
+        public static string GetFilename(string name)
         {
 
             if (string.IsNullOrEmpty(name))
@@ -160,9 +206,18 @@ namespace Bb.Configurations
 
             foreach (var c in name)
             {
-                if (char.IsLetterOrDigit(c) || c == '.')
+
+                if (cleanName.Length == 0 && char.IsLetterOrDigit(c))
+                    cleanName.Append(char.ToUpper(c));
+
+                else if (char.IsLetterOrDigit(c) || c == '.')
                 {
-                    cleanName.Append(capitalizeNext ? char.ToUpper(c) : char.ToLower(c));
+
+                    var v = capitalizeNext || char.IsUpper(c)
+                        ? char.ToUpper(c)
+                        : char.ToLower(c);
+
+                    cleanName.Append(v);
                     capitalizeNext = false;
                 }
                 else
@@ -184,7 +239,7 @@ namespace Bb.Configurations
             value(item);
 
             return this;
-        
+
         }
 
         public object SetRoot()
@@ -195,7 +250,7 @@ namespace Bb.Configurations
         private static object _lock = new object();
         private Dictionary<string, ContentFolder> _folders;
         private Uri _uri;
-
+        private DirectoryInfo _root;
     }
 
 

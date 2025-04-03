@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bb;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -239,9 +240,22 @@ namespace Bb.Configurations
         internal void Append<T>(T content, string filename)
             where T : class
         {
-            var payload = content.SerializeConfiguration();
+            var key = GlobalConfiguration.GetFilename(typeof(T));
             filename = Path.Combine(this._list[0].FullName, filename);
-            filename.Save(payload);
+            filename.SerializeAndSaveConfiguration<T>(key, content);
+        }
+
+        internal T GetDocument<T>(string filename) where T : class
+        {
+            var files = this.GetFiles(filename).ToList();
+            if (files.Count == 0)
+                return null;
+            
+            var key = GlobalConfiguration.GetFilename(typeof(T));
+            var content = files[0].LoadFromFileAndDeserializesConfiguration<T>(key);
+            
+            return content;
+
         }
 
         /// <summary>

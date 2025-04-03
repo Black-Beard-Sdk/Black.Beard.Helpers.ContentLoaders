@@ -35,12 +35,12 @@
   - [#ctor(header,colunmName,index)](#M-Bb-MultiCsv-ColumnDefinition-#ctor-Bb-MultiCsv-HeaderReference,System-String,System-Int32- 'Bb.MultiCsv.ColumnDefinition.#ctor(Bb.MultiCsv.HeaderReference,System.String,System.Int32)')
   - [Name](#P-Bb-MultiCsv-ColumnDefinition-Name 'Bb.MultiCsv.ColumnDefinition.Name')
 - [ConfigurationHelper](#T-Bb-Configurations-ConfigurationHelper 'Bb.Configurations.ConfigurationHelper')
-  - [DeserializesConfiguration(payload,targetType,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration(System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
-  - [DeserializesConfiguration\`\`1(payload,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration``1(System.String,System.Text.Json.JsonSerializerOptions)')
+  - [DeserializesConfiguration(payload,targetType,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-String,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration(System.String,System.String,System.Type,System.Text.Json.JsonSerializerOptions)')
+  - [DeserializesConfiguration\`\`1(payload,options)](#M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-String,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.DeserializesConfiguration``1(System.String,System.String,System.Text.Json.JsonSerializerOptions)')
   - [GenerateSchemaForConfiguration(type,id,configuration)](#M-Bb-Configurations-ConfigurationHelper-GenerateSchemaForConfiguration-System-Type,System-Uri,Json-Schema-Generation-SchemaGeneratorConfiguration- 'Bb.Configurations.ConfigurationHelper.GenerateSchemaForConfiguration(System.Type,System.Uri,Json.Schema.Generation.SchemaGeneratorConfiguration)')
   - [Serialize(schemaBuilder,options)](#M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchemaBuilder,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.Serialize(Json.Schema.JsonSchemaBuilder,System.Text.Json.JsonSerializerOptions)')
   - [Serialize(schema,options)](#M-Bb-Configurations-ConfigurationHelper-Serialize-Json-Schema-JsonSchema,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.Serialize(Json.Schema.JsonSchema,System.Text.Json.JsonSerializerOptions)')
-  - [SerializeConfiguration\`\`1(self,options)](#M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.SerializeConfiguration``1(``0,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeConfiguration\`\`1(self,options)](#M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-String,System-Text-Json-JsonSerializerOptions- 'Bb.Configurations.ConfigurationHelper.SerializeConfiguration``1(``0,System.String,System.Text.Json.JsonSerializerOptions)')
 - [ConfigurationSerializer\`1](#T-Bb-Configurations-ConfigurationSerializer`1 'Bb.Configurations.ConfigurationSerializer`1')
   - [Configuration](#P-Bb-Configurations-ConfigurationSerializer`1-Configuration 'Bb.Configurations.ConfigurationSerializer`1.Configuration')
 - [ContentFolder](#T-Bb-Configurations-ContentFolder 'Bb.Configurations.ContentFolder')
@@ -63,12 +63,12 @@
   - [LoadFromFile(sourcePath)](#M-Bb-ContentHelperFiles-LoadFromFile-System-String[]- 'Bb.ContentHelperFiles.LoadFromFile(System.String[])')
   - [LoadFromFile(path,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadFromFile-System-String,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadFromFile(System.String,System.Text.Encoding)')
   - [LoadFromFile(self,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadFromFile-System-IO-FileInfo,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadFromFile(System.IO.FileInfo,System.Text.Encoding)')
-  - [LoadFromFileAndDeserializeConfiguration(self,targetType,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration-System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializeConfiguration(System.String,System.Type,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
-  - [LoadFromFileAndDeserializeConfiguration(self,targetType,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration-System-IO-FileInfo,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializeConfiguration(System.IO.FileInfo,System.Type,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
-  - [LoadFromFileAndDeserializeConfiguration\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializeConfiguration``1(System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
-  - [LoadFromFileAndDeserializeConfiguration\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializeConfiguration``1(System.IO.FileInfo,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
-  - [LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserialize``1(System.IO.FileInfo,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
-  - [LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserialize``1(System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializesConfiguration(self,targetType,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration-System-String,System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializesConfiguration(System.String,System.String,System.Type,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializesConfiguration(self,targetType,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration-System-IO-FileInfo,System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializesConfiguration(System.IO.FileInfo,System.String,System.Type,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializesConfiguration\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration``1-System-String,System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializesConfiguration``1(System.String,System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializesConfiguration\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration``1-System-IO-FileInfo,System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializesConfiguration``1(System.IO.FileInfo,System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializes\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializes``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializes``1(System.IO.FileInfo,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
+  - [LoadFromFileAndDeserializes\`\`1(self,defaultEncoding,options)](#M-Bb-ContentHelperFiles-LoadFromFileAndDeserializes``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.LoadFromFileAndDeserializes``1(System.String,System.Text.Encoding,System.Text.Json.JsonSerializerOptions)')
   - [LoadJsonFromFile(self,defaultEncoding)](#M-Bb-ContentHelperFiles-LoadJsonFromFile-System-String,System-Text-Encoding- 'Bb.ContentHelperFiles.LoadJsonFromFile(System.String,System.Text.Encoding)')
   - [LoadMultiCsv(file)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String)')
   - [LoadMultiCsv(file,rulePayload,initializer)](#M-Bb-ContentHelperFiles-LoadMultiCsv-System-String,System-String,System-Action{Bb-MultiCsv-FileReader}- 'Bb.ContentHelperFiles.LoadMultiCsv(System.String,System.String,System.Action{Bb.MultiCsv.FileReader})')
@@ -101,13 +101,13 @@
   - [Save(file,sourceStream,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-IO-Stream,System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.IO.Stream,System.Text.Encoding)')
   - [Save(file,saveMethod,encoding)](#M-Bb-ContentHelperFiles-Save-System-IO-FileInfo,System-Action{System-IO-FileStream},System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.IO.FileInfo,System.Action{System.IO.FileStream},System.Text.Encoding)')
   - [Save(filename,document,indented,encoding)](#M-Bb-ContentHelperFiles-Save-System-String,System-Text-Json-JsonDocument,System-Boolean,System-Text-Encoding- 'Bb.ContentHelperFiles.Save(System.String,System.Text.Json.JsonDocument,System.Boolean,System.Text.Encoding)')
-  - [SerializeAndSaveConfiguration(filename,instance,sourceType)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.Object,System.Type)')
-  - [SerializeAndSaveConfiguration(filename,instance,sourceType,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.Object,System.Type,System.Text.Json.JsonSerializerOptions)')
-  - [SerializeAndSaveConfiguration(file,instance,targetType)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-Object,System-Type- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.IO.FileInfo,System.Object,System.Type)')
-  - [SerializeAndSaveConfiguration(file,instance,targetType,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-Object,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.IO.FileInfo,System.Object,System.Type,System.Text.Json.JsonSerializerOptions)')
-  - [SerializeAndSaveConfiguration\`\`1(filename,instance,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-String,``0,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.String,``0,System.Text.Json.JsonSerializerOptions)')
-  - [SerializeAndSaveConfiguration\`\`1(file,instance)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,``0- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.IO.FileInfo,``0)')
-  - [SerializeAndSaveConfiguration\`\`1(file,instance,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,``0,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.IO.FileInfo,``0,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeAndSaveConfiguration(filename,key,instance,sourceType)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-String,System-Object,System-Type- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.String,System.Object,System.Type)')
+  - [SerializeAndSaveConfiguration(filename,key,instance,sourceType,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.String,System.String,System.Object,System.Type,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeAndSaveConfiguration(file,key,instance,targetType)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-String,System-Object,System-Type- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.IO.FileInfo,System.String,System.Object,System.Type)')
+  - [SerializeAndSaveConfiguration(file,key,instance,targetType,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration(System.IO.FileInfo,System.String,System.Object,System.Type,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeAndSaveConfiguration\`\`1(filename,key,instance,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-String,System-String,``0,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.String,System.String,``0,System.Text.Json.JsonSerializerOptions)')
+  - [SerializeAndSaveConfiguration\`\`1(file,key,instance)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,System-String,``0- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.IO.FileInfo,System.String,``0)')
+  - [SerializeAndSaveConfiguration\`\`1(file,key,instance,options)](#M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,System-String,``0,System-Text-Json-JsonSerializerOptions- 'Bb.ContentHelperFiles.SerializeAndSaveConfiguration``1(System.IO.FileInfo,System.String,``0,System.Text.Json.JsonSerializerOptions)')
   - [SerializesAndSave(filename,instance,indented,encoding)](#M-Bb-ContentHelperFiles-SerializesAndSave-System-String,System-Object,System-Boolean,System-Text-Encoding- 'Bb.ContentHelperFiles.SerializesAndSave(System.String,System.Object,System.Boolean,System.Text.Encoding)')
   - [SerializesAndSave(file,instance,indented,encoding)](#M-Bb-ContentHelperFiles-SerializesAndSave-System-IO-FileInfo,System-Object,System-Boolean,System-Text-Encoding- 'Bb.ContentHelperFiles.SerializesAndSave(System.IO.FileInfo,System.Object,System.Boolean,System.Text.Encoding)')
   - [Sha256(filePath)](#M-Bb-ContentHelperFiles-Sha256-System-String- 'Bb.ContentHelperFiles.Sha256(System.String)')
@@ -798,7 +798,7 @@ Bb.Configurations
 
 Helper class for working with JSON schemas and configuration serialization.
 
-<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
+<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration-System-String,System-String,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
 ### DeserializesConfiguration(payload,targetType,options) `method`
 
 ##### Summary
@@ -814,10 +814,10 @@ Deserializes the specified self payload.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | the instance to serialize. |
-| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target Type |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+| targetType | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target Type |
+| options | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
 
-<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-Text-Json-JsonSerializerOptions-'></a>
+<a name='M-Bb-Configurations-ConfigurationHelper-DeserializesConfiguration``1-System-String,System-String,System-Text-Json-JsonSerializerOptions-'></a>
 ### DeserializesConfiguration\`\`1(payload,options) `method`
 
 ##### Summary
@@ -833,7 +833,7 @@ A [](#!-TargetType 'TargetType') instance deserialized from the JSON payload, or
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | payload | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The JSON string payload to deserialize. Must not be null or empty. |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for deserialization. If null, default options with indented formatting will be used. |
+| options | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Options for deserialization. If null, default options with indented formatting will be used. |
 
 ##### Generic Types
 
@@ -1011,7 +1011,7 @@ string compactSchemaJson = schema.Serialize(options);
 This method serializes a JsonSchema object to a formatted JSON string.
 It's useful for saving schema definitions to files or sending them over network.
 
-<a name='M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-Text-Json-JsonSerializerOptions-'></a>
+<a name='M-Bb-Configurations-ConfigurationHelper-SerializeConfiguration``1-``0,System-String,System-Text-Json-JsonSerializerOptions-'></a>
 ### SerializeConfiguration\`\`1(self,options) `method`
 
 ##### Summary
@@ -1027,7 +1027,7 @@ A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [\`\`0](#T-``0 '``0') | The instance to serialize. May be null. |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | Options for serialization. If null, default options with indented formatting will be used. |
+| options | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Options for serialization. If null, default options with indented formatting will be used. |
 
 ##### Generic Types
 
@@ -1573,8 +1573,8 @@ the content of the text document
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration-System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserializeConfiguration(self,targetType,defaultEncoding,options) `method`
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration-System-String,System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializesConfiguration(self,targetType,defaultEncoding,options) `method`
 
 ##### Summary
 
@@ -1589,9 +1589,9 @@ the content of the text document
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
-| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target type |
-| defaultEncoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+| targetType | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target type |
+| defaultEncoding | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
+| options | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
 
 ##### Exceptions
 
@@ -1600,8 +1600,8 @@ the content of the text document
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration-System-IO-FileInfo,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserializeConfiguration(self,targetType,defaultEncoding,options) `method`
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration-System-IO-FileInfo,System-String,System-Type,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializesConfiguration(self,targetType,defaultEncoding,options) `method`
 
 ##### Summary
 
@@ -1616,9 +1616,9 @@ the content of the text document
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | [FileInfo](#T-FileInfo 'FileInfo') |
-| targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target type |
-| defaultEncoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+| targetType | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | target type |
+| defaultEncoding | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
+| options | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
 
 ##### Exceptions
 
@@ -1627,8 +1627,8 @@ the content of the text document
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserializeConfiguration\`\`1(self,defaultEncoding,options) `method`
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration``1-System-String,System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializesConfiguration\`\`1(self,defaultEncoding,options) `method`
 
 ##### Summary
 
@@ -1643,8 +1643,8 @@ the content of the text document
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | self | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
-| defaultEncoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+| defaultEncoding | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
+| options | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
 
 ##### Generic Types
 
@@ -1659,8 +1659,40 @@ the content of the text document
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializeConfiguration``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserializeConfiguration\`\`1(self,defaultEncoding,options) `method`
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializesConfiguration``1-System-IO-FileInfo,System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializesConfiguration\`\`1(self,defaultEncoding,options) `method`
+
+##### Summary
+
+Load the content from file
+
+##### Returns
+
+the content of the text document
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | [FileInfo](#T-FileInfo 'FileInfo') |
+| defaultEncoding | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
+| options | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TargetType | The type of the target type. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
+| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
+
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializes``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializes\`\`1(self,defaultEncoding,options) `method`
 
 ##### Summary
 
@@ -1691,40 +1723,8 @@ the content of the text document
 | [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
 | [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
 
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-IO-FileInfo,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options) `method`
-
-##### Summary
-
-Load the content from file
-
-##### Returns
-
-the content of the text document
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| self | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | [FileInfo](#T-FileInfo 'FileInfo') |
-| defaultEncoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | [Encoding](#T-Encoding 'Encoding')if null Utf8 is used by default |
-| options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | [JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions')options of serialization |
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| TargetType | The type of the target type. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.NullReferenceException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NullReferenceException 'System.NullReferenceException') | If self is null |
-| [System.IO.FileNotFoundException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileNotFoundException 'System.IO.FileNotFoundException') | If the file is not found |
-
-<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserialize``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
-### LoadFromFileAndDeserialize\`\`1(self,defaultEncoding,options) `method`
+<a name='M-Bb-ContentHelperFiles-LoadFromFileAndDeserializes``1-System-String,System-Text-Encoding,System-Text-Json-JsonSerializerOptions-'></a>
+### LoadFromFileAndDeserializes\`\`1(self,defaultEncoding,options) `method`
 
 ##### Summary
 
@@ -2402,8 +2402,8 @@ If the directory don't exist. it is created.
 | indented | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | if set to `true` [indented]. |
 | encoding | [System.Text.Encoding](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Encoding 'System.Text.Encoding') | encoding for write. if null the data are written in UTF8 |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type-'></a>
-### SerializeAndSaveConfiguration(filename,instance,sourceType) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-String,System-Object,System-Type-'></a>
+### SerializeAndSaveConfiguration(filename,key,instance,sourceType) `method`
 
 ##### Summary
 
@@ -2415,11 +2415,12 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | object to serialize |
 | sourceType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | source type |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
-### SerializeAndSaveConfiguration(filename,instance,sourceType,options) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-String,System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeAndSaveConfiguration(filename,key,instance,sourceType,options) `method`
 
 ##### Summary
 
@@ -2431,12 +2432,13 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | object to serialize |
 | sourceType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | source type |
 | options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options of serialization.[JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-Object,System-Type-'></a>
-### SerializeAndSaveConfiguration(file,instance,targetType) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-String,System-Object,System-Type-'></a>
+### SerializeAndSaveConfiguration(file,key,instance,targetType) `method`
 
 ##### Summary
 
@@ -2448,11 +2450,12 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | object to serialize |
 | targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target type |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-Object,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
-### SerializeAndSaveConfiguration(file,instance,targetType,options) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration-System-IO-FileInfo,System-String,System-Object,System-Type,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeAndSaveConfiguration(file,key,instance,targetType,options) `method`
 
 ##### Summary
 
@@ -2464,12 +2467,13 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | object to serialize |
 | targetType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | target type |
 | options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options of serialization.[JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-String,``0,System-Text-Json-JsonSerializerOptions-'></a>
-### SerializeAndSaveConfiguration\`\`1(filename,instance,options) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-String,System-String,``0,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeAndSaveConfiguration\`\`1(filename,key,instance,options) `method`
 
 ##### Summary
 
@@ -2481,6 +2485,7 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | filename | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [\`\`0](#T-``0 '``0') | object to serialize |
 | options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options of serialization.[JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |
 
@@ -2490,8 +2495,8 @@ If the directory don't exist. it is created.
 | ---- | ----------- |
 | SourceType | The type of the source type. |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,``0-'></a>
-### SerializeAndSaveConfiguration\`\`1(file,instance) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,System-String,``0-'></a>
+### SerializeAndSaveConfiguration\`\`1(file,key,instance) `method`
 
 ##### Summary
 
@@ -2503,6 +2508,7 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [\`\`0](#T-``0 '``0') | object to serialize |
 
 ##### Generic Types
@@ -2511,8 +2517,8 @@ If the directory don't exist. it is created.
 | ---- | ----------- |
 | SourceType | The type of the source type. |
 
-<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,``0,System-Text-Json-JsonSerializerOptions-'></a>
-### SerializeAndSaveConfiguration\`\`1(file,instance,options) `method`
+<a name='M-Bb-ContentHelperFiles-SerializeAndSaveConfiguration``1-System-IO-FileInfo,System-String,``0,System-Text-Json-JsonSerializerOptions-'></a>
+### SerializeAndSaveConfiguration\`\`1(file,key,instance,options) `method`
 
 ##### Summary
 
@@ -2524,6 +2530,7 @@ If the directory don't exist. it is created.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | file | [System.IO.FileInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.FileInfo 'System.IO.FileInfo') | file path |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | name of the section |
 | instance | [\`\`0](#T-``0 '``0') | object to serialize |
 | options | [System.Text.Json.JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') | options of serialization.[JsonSerializerOptions](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Text.Json.JsonSerializerOptions 'System.Text.Json.JsonSerializerOptions') |
 

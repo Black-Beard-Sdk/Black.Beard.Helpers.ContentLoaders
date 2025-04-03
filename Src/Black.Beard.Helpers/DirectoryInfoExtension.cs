@@ -212,6 +212,17 @@ namespace Bb
         }
 
 
+        /// <summary>
+        /// return a temporary path for a context.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static DirectoryInfo GetTempPath(this string context)
+        {
+            var tmp = Guid.NewGuid().ToString().Replace("-", "");
+            var path = Path.GetTempPath().Combine(context, tmp).AsDirectory();
+            return path;
+        }
 
         /// <summary>
         /// Converts a string path to a FileInfo object.

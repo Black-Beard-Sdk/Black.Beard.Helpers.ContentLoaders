@@ -27,6 +27,8 @@
   - [DirectoryPathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-DirectoryPathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.DirectoryPathIsAbsolute(System.String)')
   - [FilePathIsAbsolute(path)](#M-Bb-DirectoryInfoExtension-FilePathIsAbsolute-System-String- 'Bb.DirectoryInfoExtension.FilePathIsAbsolute(System.String)')
   - [FormatPath(self)](#M-Bb-DirectoryInfoExtension-FormatPath-System-String- 'Bb.DirectoryInfoExtension.FormatPath(System.String)')
+  - [GetDirectory(self)](#M-Bb-DirectoryInfoExtension-GetDirectory-System-Reflection-Assembly- 'Bb.DirectoryInfoExtension.GetDirectory(System.Reflection.Assembly)')
+  - [GetTempPath(context)](#M-Bb-DirectoryInfoExtension-GetTempPath-System-String- 'Bb.DirectoryInfoExtension.GetTempPath(System.String)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-DirectoryInfo,System-IO-DirectoryInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.DirectoryInfo,System.IO.DirectoryInfo)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-FileInfo,System-IO-FileInfo- 'Bb.DirectoryInfoExtension.IsPathEquals(System.IO.FileInfo,System.IO.FileInfo)')
   - [IsPathEquals(path1,path2)](#M-Bb-DirectoryInfoExtension-IsPathEquals-System-String,System-String- 'Bb.DirectoryInfoExtension.IsPathEquals(System.String,System.String)')
@@ -906,6 +908,40 @@ This method standardizes paths by:
 3. Converting to absolute path format
 4. Trimming trailing directory separators
 5. Converting to lowercase on Windows platforms for case-insensitive comparison
+
+<a name='M-Bb-DirectoryInfoExtension-GetDirectory-System-Reflection-Assembly-'></a>
+### GetDirectory(self) `method`
+
+##### Summary
+
+get the directory of the assembly
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| self | [System.Reflection.Assembly](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Reflection.Assembly 'System.Reflection.Assembly') |  |
+
+<a name='M-Bb-DirectoryInfoExtension-GetTempPath-System-String-'></a>
+### GetTempPath(context) `method`
+
+##### Summary
+
+return a temporary path for a context.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| context | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Bb-DirectoryInfoExtension-IsPathEquals-System-IO-DirectoryInfo,System-IO-DirectoryInfo-'></a>
 ### IsPathEquals(path1,path2) `method`
