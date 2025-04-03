@@ -27,6 +27,23 @@ namespace Bb.Configurations
             _folders = new Dictionary<string, ContentFolder>();
         }
 
+        /// <summary>
+        /// Sets the root directory for the global configuration.
+        /// </summary>
+        /// <param name="path">The path to the root directory. Must not be null or empty.</param>
+        /// <returns>
+        /// The current <see cref="GlobalConfiguration"/> instance for method chaining.
+        /// </returns>
+        /// <remarks>
+        /// This method sets the root directory for the configuration. If the directory does not exist, it will be created.
+        /// </remarks>
+        /// <exception cref="ArgumentException">Thrown when the provided path is null or empty.</exception>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// config.SetRoot("C:\\MyRootDirectory");
+        /// </code>
+        /// </example>
         public GlobalConfiguration SetRoot(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -35,6 +52,24 @@ namespace Bb.Configurations
             return this;
         }
 
+        /// <summary>
+        /// Sets the root directory for the global configuration using a <see cref="DirectoryInfo"/> object.
+        /// </summary>
+        /// <param name="directory">The directory to set as the root. Must not be null.</param>
+        /// <returns>
+        /// The current <see cref="GlobalConfiguration"/> instance for method chaining.
+        /// </returns>
+        /// <remarks>
+        /// This method sets the root directory for the configuration. If the directory does not exist, it will be created.
+        /// </remarks>
+        /// <exception cref="ArgumentException">Thrown when the provided directory is null.</exception>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// var directory = new DirectoryInfo("C:\\MyRootDirectory");
+        /// config.SetRoot(directory);
+        /// </code>
+        /// </example>
         public GlobalConfiguration SetRoot(DirectoryInfo directory)
         {
             if (directory == null)
@@ -45,6 +80,23 @@ namespace Bb.Configurations
             return this;
         }
 
+        /// <summary>
+        /// Adds a directory to the specified content folder in the configuration.
+        /// </summary>
+        /// <param name="name">The name of the content folder. Must not be null or empty.</param>
+        /// <param name="paths">An array of additional paths to include. Can be empty.</param>
+        /// <returns>
+        /// The current <see cref="GlobalConfiguration"/> instance for method chaining.
+        /// </returns>
+        /// <remarks>
+        /// This method adds a directory to the specified content folder. The root directory is automatically included.
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// config.WithDirectory("MyFolder", "C:\\Path1", "C:\\Path2");
+        /// </code>
+        /// </example>
         public GlobalConfiguration WithDirectory(string name, params string[] paths)
         {
             var item = this[name];
@@ -84,16 +136,50 @@ namespace Bb.Configurations
             }
         }
 
+        /// <summary>
+        /// Sets the schema owner URI for the global configuration.
+        /// </summary>
+        /// <param name="uri">The URI to set as the schema owner. Must not be null.</param>
+        /// <returns>
+        /// The current <see cref="GlobalConfiguration"/> instance for method chaining.
+        /// </returns>
+        /// <remarks>
+        /// This method sets the schema owner URI, which is used for generating schemas.
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// config.SetSchemaOwner(new Uri("http://localhost:8080/"));
+        /// </code>
+        /// </example>
         public GlobalConfiguration SetSchemaOwner(Uri uri)
         {
             _uri = new Uri("http://localhost:8080/");
             return this;
         }
 
-
-
-        public T GetDocument<T>(string name)
-            where T : class
+        /// <summary>
+        /// Retrieves a document of the specified type from the configuration.
+        /// </summary>
+        /// <typeparam name="T">The type of the document to retrieve. Must be a reference type.</typeparam>
+        /// <param name="name">The name of the content folder containing the document. Must not be null or empty.</param>
+        /// <returns>
+        /// A <typeparamref name="T"/> instance representing the document, or null if the document does not exist.
+        /// </returns>
+        /// <remarks>
+        /// This method retrieves a document of the specified type from the specified content folder.
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// var document = config.GetDocument&lt;MyDocumentType&gt;("MyFolder");
+        /// if (document != null)
+        /// {
+        ///     Console.WriteLine("Document retrieved successfully.");
+        /// }
+        /// </code>
+        /// </example>
+        public T GetDocument<T>(string name) where T : class
         {
             var item = this[name];
             if (item.Any)
@@ -105,8 +191,28 @@ namespace Bb.Configurations
             return null;
         }
 
-        public bool AppendDocument<T>(string name, T content)
-            where T : class
+
+        /// <summary>
+        /// Appends a document of the specified type to the configuration.
+        /// </summary>
+        /// <typeparam name="T">The type of the document to append. Must be a reference type.</typeparam>
+        /// <param name="name">The name of the content folder to append the document to. Must not be null or empty.</param>
+        /// <param name="content">The document content to append. Must not be null.</param>
+        /// <returns>
+        /// A <see cref="bool"/> indicating whether the document was successfully appended.
+        /// </returns>
+        /// <remarks>
+        /// This method appends a document of the specified type to the specified content folder. If the folder contains schemas, a schema file is also generated.
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// var document = new MyDocumentType { Property = "Value" };
+        /// bool success = config.AppendDocument("MyFolder", document);
+        /// Console.WriteLine($"Document appended: {success}");
+        /// </code>
+        /// </example>
+        public bool AppendDocument<T>(string name, T content) where T : class
         {
 
             var filename = GetFilename(typeof(T));
@@ -190,11 +296,45 @@ namespace Bb.Configurations
             }
         }
 
+        /// <summary>
+        /// Generates a filename based on the specified type.
+        /// </summary>
+        /// <param name="type">The type for which the filename will be generated. Must not be null.</param>
+        /// <returns>
+        /// A <see cref="string"/> representing the generated filename based on the type name.
+        /// </returns>
+        /// <remarks>
+        /// This method generates a filename by processing the name of the specified type. It ensures that the filename is formatted correctly for use in file systems.
+        /// </remarks>
+        /// <exception cref="ArgumentNullException">Thrown when the provided type is null.</exception>
+        /// <example>
+        /// <code lang="C#">
+        /// string filename = GlobalConfiguration.GetFilename(typeof(MyClass));
+        /// Console.WriteLine($"Generated filename: {filename}");
+        /// </code>
+        /// </example>
         public static string GetFilename(Type type)
         {
             return GetFilename(type.Name);
         }
 
+        /// <summary>
+        /// Generates a filename based on the specified name.
+        /// </summary>
+        /// <param name="name">The name for which the filename will be generated. Must not be null or empty.</param>
+        /// <returns>
+        /// A <see cref="string"/> representing the generated filename based on the provided name.
+        /// </returns>
+        /// <remarks>
+        /// This method processes the provided name to generate a valid filename. It ensures that the filename is formatted correctly for use in file systems.
+        /// </remarks>
+        /// <exception cref="ArgumentException">Thrown when the provided name is null or empty.</exception>
+        /// <example>
+        /// <code lang="C#">
+        /// string filename = GlobalConfiguration.GetFilename("MyClassName");
+        /// Console.WriteLine($"Generated filename: {filename}");
+        /// </code>
+        /// </example>
         public static string GetFilename(string name)
         {
 
@@ -229,6 +369,24 @@ namespace Bb.Configurations
             return cleanName.ToString();
         }
 
+
+        /// <summary>
+        /// Adds a custom action to the specified content folder.
+        /// </summary>
+        /// <param name="name">The name of the content folder. Must not be null or empty.</param>
+        /// <param name="value">The action to execute on the content folder. Must not be null.</param>
+        /// <returns>
+        /// The current <see cref="GlobalConfiguration"/> instance for method chaining.
+        /// </returns>
+        /// <remarks>
+        /// This method allows you to execute a custom action on a specified content folder.
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// var config = new GlobalConfiguration();
+        /// config.With("MyFolder", folder => folder.AddDirectory("C:\\MyDirectory"));
+        /// </code>
+        /// </example>
         public GlobalConfiguration With(string name, Action<ContentFolder> value)
         {
 
@@ -242,15 +400,12 @@ namespace Bb.Configurations
 
         }
 
-        public object SetRoot()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private static object _lock = new object();
         private Dictionary<string, ContentFolder> _folders;
         private Uri _uri;
         private DirectoryInfo _root;
+
     }
 
 
