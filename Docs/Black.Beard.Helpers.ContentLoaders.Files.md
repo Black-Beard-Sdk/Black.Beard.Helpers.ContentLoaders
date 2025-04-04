@@ -281,8 +281,17 @@
 - [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration')
   - [#ctor()](#M-Bb-Configurations-GlobalConfiguration-#ctor 'Bb.Configurations.GlobalConfiguration.#ctor')
   - [Item](#P-Bb-Configurations-GlobalConfiguration-Item-System-String- 'Bb.Configurations.GlobalConfiguration.Item(System.String)')
+  - [AppendDocument\`\`1(name,content)](#M-Bb-Configurations-GlobalConfiguration-AppendDocument``1-System-String,``0- 'Bb.Configurations.GlobalConfiguration.AppendDocument``1(System.String,``0)')
   - [Execute(name,action)](#M-Bb-Configurations-GlobalConfiguration-Execute-System-String,System-Action{System-IO-DirectoryInfo}- 'Bb.Configurations.GlobalConfiguration.Execute(System.String,System.Action{System.IO.DirectoryInfo})')
   - [ExecuteFirst(name,action)](#M-Bb-Configurations-GlobalConfiguration-ExecuteFirst-System-String,System-Action{System-IO-DirectoryInfo}- 'Bb.Configurations.GlobalConfiguration.ExecuteFirst(System.String,System.Action{System.IO.DirectoryInfo})')
+  - [GetDocument\`\`1(name)](#M-Bb-Configurations-GlobalConfiguration-GetDocument``1-System-String- 'Bb.Configurations.GlobalConfiguration.GetDocument``1(System.String)')
+  - [GetFilename(type)](#M-Bb-Configurations-GlobalConfiguration-GetFilename-System-Type- 'Bb.Configurations.GlobalConfiguration.GetFilename(System.Type)')
+  - [GetFilename(name)](#M-Bb-Configurations-GlobalConfiguration-GetFilename-System-String- 'Bb.Configurations.GlobalConfiguration.GetFilename(System.String)')
+  - [SetRoot(path)](#M-Bb-Configurations-GlobalConfiguration-SetRoot-System-String- 'Bb.Configurations.GlobalConfiguration.SetRoot(System.String)')
+  - [SetRoot(directory)](#M-Bb-Configurations-GlobalConfiguration-SetRoot-System-IO-DirectoryInfo- 'Bb.Configurations.GlobalConfiguration.SetRoot(System.IO.DirectoryInfo)')
+  - [SetSchemaOwner(uri)](#M-Bb-Configurations-GlobalConfiguration-SetSchemaOwner-System-Uri- 'Bb.Configurations.GlobalConfiguration.SetSchemaOwner(System.Uri)')
+  - [With(name,value)](#M-Bb-Configurations-GlobalConfiguration-With-System-String,System-Action{Bb-Configurations-ContentFolder}- 'Bb.Configurations.GlobalConfiguration.With(System.String,System.Action{Bb.Configurations.ContentFolder})')
+  - [WithRelatedDirectory(name,paths)](#M-Bb-Configurations-GlobalConfiguration-WithRelatedDirectory-System-String,System-String[]- 'Bb.Configurations.GlobalConfiguration.WithRelatedDirectory(System.String,System.String[])')
 - [HeaderReference](#T-Bb-MultiCsv-HeaderReference 'Bb.MultiCsv.HeaderReference')
   - [#ctor(headerName)](#M-Bb-MultiCsv-HeaderReference-#ctor-System-String,System-String- 'Bb.MultiCsv.HeaderReference.#ctor(System.String,System.String)')
   - [LabelLine](#P-Bb-MultiCsv-HeaderReference-LabelLine 'Bb.MultiCsv.HeaderReference.LabelLine')
@@ -4752,6 +4761,43 @@ Console.WriteLine($"Folder name: {folder.Name}");
 
 This indexer retrieves the content folder by its name. If the folder does not exist, it creates a new instance and adds it to the collection.
 
+<a name='M-Bb-Configurations-GlobalConfiguration-AppendDocument``1-System-String,``0-'></a>
+### AppendDocument\`\`1(name,content) `method`
+
+##### Summary
+
+Appends a document of the specified type to the configuration.
+
+##### Returns
+
+A [Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') indicating whether the document was successfully appended.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder to append the document to. Must not be null or empty. |
+| content | [\`\`0](#T-``0 '``0') | The document content to append. Must not be null. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | The type of the document to append. Must be a reference type. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+var document = new MyDocumentType { Property = "Value" };
+bool success = config.AppendDocument("MyFolder", document);
+Console.WriteLine($"Document appended: {success}");
+```
+
+##### Remarks
+
+This method appends a document of the specified type to the specified content folder. If the folder contains schemas, a schema file is also generated.
+
 <a name='M-Bb-Configurations-GlobalConfiguration-Execute-System-String,System-Action{System-IO-DirectoryInfo}-'></a>
 ### Execute(name,action) `method`
 
@@ -4819,6 +4865,267 @@ config.ExecuteFirst("MyFolder", directory =&gt;
 ##### Remarks
 
 This method retrieves the content folder by its name and executes the specified action for the first directory in the folder.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-GetDocument``1-System-String-'></a>
+### GetDocument\`\`1(name) `method`
+
+##### Summary
+
+Retrieves a document of the specified type from the configuration.
+
+##### Returns
+
+A `T` instance representing the document, or null if the document does not exist.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder containing the document. Must not be null or empty. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | The type of the document to retrieve. Must be a reference type. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+var document = config.GetDocument&lt;MyDocumentType&gt;("MyFolder");
+if (document != null)
+{
+    Console.WriteLine("Document retrieved successfully.");
+}
+```
+
+##### Remarks
+
+This method retrieves a document of the specified type from the specified content folder.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-GetFilename-System-Type-'></a>
+### GetFilename(type) `method`
+
+##### Summary
+
+Generates a filename based on the specified type.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') representing the generated filename based on the type name.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| type | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') | The type for which the filename will be generated. Must not be null. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Thrown when the provided type is null. |
+
+##### Example
+
+```C#
+string filename = GlobalConfiguration.GetFilename(typeof(MyClass));
+Console.WriteLine($"Generated filename: {filename}");
+```
+
+##### Remarks
+
+This method generates a filename by processing the name of the specified type. It ensures that the filename is formatted correctly for use in file systems.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-GetFilename-System-String-'></a>
+### GetFilename(name) `method`
+
+##### Summary
+
+Generates a filename based on the specified name.
+
+##### Returns
+
+A [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') representing the generated filename based on the provided name.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name for which the filename will be generated. Must not be null or empty. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the provided name is null or empty. |
+
+##### Example
+
+```C#
+string filename = GlobalConfiguration.GetFilename("MyClassName");
+Console.WriteLine($"Generated filename: {filename}");
+```
+
+##### Remarks
+
+This method processes the provided name to generate a valid filename. It ensures that the filename is formatted correctly for use in file systems.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-SetRoot-System-String-'></a>
+### SetRoot(path) `method`
+
+##### Summary
+
+Sets the root directory for the global configuration.
+
+##### Returns
+
+The current [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') instance for method chaining.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| path | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The path to the root directory. Must not be null or empty. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the provided path is null or empty. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+config.SetRoot("C:\\MyRootDirectory");
+```
+
+##### Remarks
+
+This method sets the root directory for the configuration. If the directory does not exist, it will be created.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-SetRoot-System-IO-DirectoryInfo-'></a>
+### SetRoot(directory) `method`
+
+##### Summary
+
+Sets the root directory for the global configuration using a [DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') object.
+
+##### Returns
+
+The current [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') instance for method chaining.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| directory | [System.IO.DirectoryInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.IO.DirectoryInfo 'System.IO.DirectoryInfo') | The directory to set as the root. Must not be null. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | Thrown when the provided directory is null. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+var directory = new DirectoryInfo("C:\\MyRootDirectory");
+config.SetRoot(directory);
+```
+
+##### Remarks
+
+This method sets the root directory for the configuration. If the directory does not exist, it will be created.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-SetSchemaOwner-System-Uri-'></a>
+### SetSchemaOwner(uri) `method`
+
+##### Summary
+
+Sets the schema owner URI for the global configuration.
+
+##### Returns
+
+The current [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') instance for method chaining.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| uri | [System.Uri](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Uri 'System.Uri') | The URI to set as the schema owner. Must not be null. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+config.SetSchemaOwner(new Uri("http://localhost:8080/"));
+```
+
+##### Remarks
+
+This method sets the schema owner URI, which is used for generating schemas.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-With-System-String,System-Action{Bb-Configurations-ContentFolder}-'></a>
+### With(name,value) `method`
+
+##### Summary
+
+Adds a custom action to the specified content folder.
+
+##### Returns
+
+The current [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') instance for method chaining.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+| value | [System.Action{Bb.Configurations.ContentFolder}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Action 'System.Action{Bb.Configurations.ContentFolder}') | The action to execute on the content folder. Must not be null. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+config.With("MyFolder", folder =&gt; folder.AddDirectory("C:\\MyDirectory"));
+```
+
+##### Remarks
+
+This method allows you to execute a custom action on a specified content folder.
+
+<a name='M-Bb-Configurations-GlobalConfiguration-WithRelatedDirectory-System-String,System-String[]-'></a>
+### WithRelatedDirectory(name,paths) `method`
+
+##### Summary
+
+Adds a directory to the specified content folder in the configuration.
+
+##### Returns
+
+The current [GlobalConfiguration](#T-Bb-Configurations-GlobalConfiguration 'Bb.Configurations.GlobalConfiguration') instance for method chaining.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The name of the content folder. Must not be null or empty. |
+| paths | [System.String[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String[] 'System.String[]') | An array of additional paths to include. Can be empty. |
+
+##### Example
+
+```C#
+var config = new GlobalConfiguration();
+config.WithDirectory("MyFolder", "C:\\Path1", "C:\\Path2");
+```
+
+##### Remarks
+
+This method adds a directory to the specified content folder. The root directory is automatically included.
 
 <a name='T-Bb-MultiCsv-HeaderReference'></a>
 ## HeaderReference `type`

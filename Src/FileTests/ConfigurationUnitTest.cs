@@ -41,7 +41,6 @@ namespace FileTests
         public void UnitTest2()
         {
 
-
             var expected = new ConfigurationModelTest()
             {
                 Name = "testName",
@@ -51,8 +50,8 @@ namespace FileTests
 
             var conf = new GlobalConfiguration()
                 .SetRoot("test".GetTempPath())
-                .WithDirectory(GlobalConfiguration.Configuration, "Config")
-                .WithDirectory(GlobalConfiguration.Schema, "Config")
+                .WithRelatedDirectory(GlobalConfiguration.Configuration, "Config")
+                .WithRelatedDirectory(GlobalConfiguration.Schema, "Config")
                 ;
 
             conf.AppendDocument(GlobalConfiguration.Configuration, expected);
@@ -62,7 +61,6 @@ namespace FileTests
             Assert.AreEqual(expected.Name, model.Name);
             Assert.AreEqual(expected.Address, model.Address);
             Assert.AreEqual(expected.Age, model.Age);
-
 
         }
 

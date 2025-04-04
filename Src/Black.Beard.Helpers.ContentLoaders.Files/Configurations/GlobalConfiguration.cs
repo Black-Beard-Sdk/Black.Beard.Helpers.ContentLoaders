@@ -18,6 +18,7 @@ namespace Bb.Configurations
         public const string Configuration = "Configurations";
         public const string Nuget = ".nugets";
         public const string Schema = "Schemas";
+        public const string Logs = "Logs";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlobalConfiguration"/> class.
@@ -97,12 +98,19 @@ namespace Bb.Configurations
         /// config.WithDirectory("MyFolder", "C:\\Path1", "C:\\Path2");
         /// </code>
         /// </example>
-        public GlobalConfiguration WithDirectory(string name, params string[] paths)
+        public GlobalConfiguration WithRelatedDirectory(string name, params string[] paths)
         {
             var item = this[name];
             var o = new List<string>(paths.Length + 1) { _root.FullName };
             o.AddRange(paths.Where(c => !string.IsNullOrEmpty(c)));
             item.AddDirectory(Path.Combine(o.ToArray()));
+            return this;
+        }
+
+        public GlobalConfiguration WithDirectory(string name, params string[] paths)
+        {
+            var item = this[name];
+            item.AddDirectory(Path.Combine(paths.ToArray()));
             return this;
         }
 
